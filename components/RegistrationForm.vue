@@ -110,7 +110,7 @@ const selectedmaritalStatus = ref(maritalStatus[0])
                     color="primary"
                     variant="outline"
                     required
-                    icon="wpf:namer"
+                    icon="wpf:name"
                     placeholder="Kuala Lapmur Ampang"
                 />
               </div>
