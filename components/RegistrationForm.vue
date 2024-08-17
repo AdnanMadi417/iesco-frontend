@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue';
 
-let passportNumber;
 const formData = ref({
   arabicName: '',
   englishName:'',

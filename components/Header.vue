@@ -39,8 +39,8 @@
 }
 
 .logo {
-  height: 100px;
-  width: 100px;
+  height: 20px;
+  width: 80px;
   margin-right: 10px;
 }
 .project-name {
