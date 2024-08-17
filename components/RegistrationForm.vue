@@ -22,6 +22,308 @@ const nationality = [ "Algerian", "Egyptian", "Libyan", "Moroccan", "Sudanese", 
 
 const selected = ref(nationality[0])
 
+const educationLevel=[
+  {
+    name:"Education level",
+    value:"EL",
+    disabled:true,
+  },
+  {
+    name:"High School",
+    value:"HS",
+  },
+  {
+    name:"Bachelor",
+    value:"Ba",
+  },
+  {
+    name:"Master",
+    value:"Ma",
+  },
+  {
+    name:"Doctorate ",
+    value:"PHD",
+  }
+]
+
+let levelsQuestions = ref({
+  HS:[
+      {
+        label:"University Name or School Name",
+        type:"text",
+        id:"localNumber",
+        color:"rgb(28, 100, 188)",
+        icon:"fa-solid-university",
+        placeholder:"Enter your University Name",
+      },
+    {
+      label:"Passport 1st page (1 MB max) :",
+      type:"file",
+      id:"passportFile",
+      color:"rgb(28, 100, 188)",
+      icon:"i-heroicons-folder",
+      placeholder: "Passport 1st page (1 MB max) :"
+    },
+    {
+      label:"Certified Original Copy of High School Academic Certificate :",
+      type:"file",
+      id:"highSchoolFile",
+      color:"rgb(28, 100, 188)",
+      icon:"i-heroicons-folder",
+      placeholder: "Certified Original Copy of High School Academic Certificate :"
+    },
+    {
+      label:"Certified Original Copy of English Proficiency Qualification (MUET, TOEFL, IELTS, or Equivalent, if available):",
+      type:"file",
+      id:"EnglishQualificationFile",
+      color:"rgb(28, 100, 188)",
+      icon:"i-heroicons-folder",
+      placeholder: "(MUET, TOEFL, IELTS, or Equivalent, if available):",
+      required:false,
+    }
+  ],
+  Ba:[
+    {
+      label:"Current University Name",
+      type:"text",
+      id:"CurrentUniversityName",
+      color:"rgb(28, 100, 188)",
+      icon:"fa-solid-university",
+      placeholder:"Enter your Current University Name",
+    },
+    {
+      label:"Number of Semesters Remaining Until Graduation",
+      type:"text",
+      id:"NumSemToGraduation",
+      color:"rgb(28, 100, 188)",
+      icon:"system-uicons:book",
+      placeholder:"Number of Semesters Remaining Until Graduation",
+    },
+    {
+      label:"Fees per Semester",
+      type:"text",
+      id:"FeesperSemester",
+      color:"rgb(28, 100, 188)",
+      icon:"solar-money-bag-broken",
+      placeholder:"Fees per Semester",
+    },
+    {
+      label:"Passport 1st page (1 MB max) :",
+      type:"file",
+      id:"passportFile",
+      color:"rgb(28, 100, 188)",
+      icon:"i-heroicons-folder",
+      placeholder: "Passport 1st page (1 MB max) :"
+    },
+    {
+      label:"Candidate Progress Report (for postgraduate students) :",
+      type:"file",
+      id:"candidateProgressReport",
+      color:"rgb(28, 100, 188)",
+      icon:"i-heroicons-folder",
+      placeholder: "Candidate Progress Report (for postgraduate students) :"
+    },
+    {
+      label:"Tuition Fees Statement (latest from university) :",
+      type:"file",
+      id:"tuitionFeesStatement",
+      color:"rgb(28, 100, 188)",
+      icon:"i-heroicons-folder",
+      placeholder: "Tuition Fees Statement (latest from university) :"
+    },
+    {
+      label:"Confirmation Letter from University (latest date) :",
+      type:"file",
+      id:"confirmationLetter",
+      color:"rgb(28, 100, 188)",
+      icon:"i-heroicons-folder",
+      placeholder: "Confirmation Letter from University (latest date) :"
+    },
+    {
+      label:"Offer Letter:",
+      type:"file",
+      id:"OfferLetterFile",
+      color:"rgb(28, 100, 188)",
+      icon:"i-heroicons-folder",
+      placeholder: "Offer Letter :"
+    },
+    {
+      label: "Other supporting document (1 MB max) :",
+      type:"file",
+      id:"OtherSupportingFile",
+      color:"rgb(28, 100, 188)",
+      icon:"i-heroicons-folder",
+      placeholder: "Other supporting document (1 MB max) :"
+    }
+  ],
+  Ma:[
+      {
+        label:"Current University Name",
+        type:"text",
+        id:"CurrentUniversityName",
+        color:"rgb(28, 100, 188)",
+        icon:"fa-solid-university",
+        placeholder:"Enter your Current University Name",
+      },
+      {
+        label:"Name of Graduate University",
+        type:"text",
+        id:"NameGraduateUniversity",
+        color:"rgb(28, 100, 188)",
+        icon:"fa-solid-university",
+        placeholder:"Name of Graduate University",
+      },
+      {
+        label:"Academic Specialization",
+        type:"text",
+        id:"academicSpecializationFile",
+        color:"rgb(28, 100, 188)",
+        icon:"system-uicons:book",
+        placeholder:"Academic Specialization",
+      },
+      {
+        label:"Fees per Semester",
+        type:"text",
+        id:"FeesperSemester",
+        color:"rgb(28, 100, 188)",
+        icon:"solar-money-bag-broken",
+        placeholder:"Fees per Semester",
+      },
+      {
+        label:"Passport 1st page (1 MB max) :",
+        type:"file",
+        id:"passportFile",
+        color:"rgb(28, 100, 188)",
+        icon:"i-heroicons-folder",
+        placeholder: "Passport 1st page (1 MB max) :"
+      },
+      {
+        label:"A Paper from the Supervisor (for Master’s and Doctoral levels):",
+        type:"file",
+        id:"paperFromSupervisor",
+        color:"rgb(28, 100, 188)",
+        icon:"i-heroicons-folder",
+        placeholder: "A Paper from the Supervisor (for Master’s and Doctoral levels):"
+      },
+      {
+        label:"Tuition Fees Statement (latest from university) :",
+        type:"file",
+        id:"tuitionFeesStatement",
+        color:"rgb(28, 100, 188)",
+        icon:"i-heroicons-folder",
+        placeholder: "Tuition Fees Statement (latest from university) :"
+      },
+      {
+        label:"Confirmation Letter from University (latest date) :",
+        type:"file",
+        id:"confirmationLetter",
+        color:"rgb(28, 100, 188)",
+        icon:"i-heroicons-folder",
+        placeholder: "Confirmation Letter from University (latest date) :"
+      },
+      {
+        label:"Offer Letter:",
+        type:"file",
+        id:"OfferLetterFile",
+        color:"rgb(28, 100, 188)",
+        icon:"i-heroicons-folder",
+        placeholder: "Offer Letter :"
+      },
+      {
+        label: "Other supporting document (1 MB max) :",
+        type:"file",
+        id:"OtherSupportingFile",
+        color:"rgb(28, 100, 188)",
+        icon:"i-heroicons-folder",
+        placeholder: "Other supporting document (1 MB max) :"
+      }
+      ],
+  PHD:[
+      {
+        label:"Current University Name",
+        type:"text",
+        id:"CurrentUniversityName",
+        color:"rgb(28, 100, 188)",
+        icon:"fa-solid-university",
+        placeholder:"Enter your Current University Name",
+      },
+      {
+        label:"Name of Graduate University",
+        type:"text",
+        id:"NameGraduateUniversity",
+        color:"rgb(28, 100, 188)",
+        icon:"fa-solid-university",
+        placeholder:"Name of Graduate University",
+      },
+      {
+        label:"Academic Specialization",
+        type:"text",
+        id:"academicSpecializationFile",
+        color:"rgb(28, 100, 188)",
+        icon:"system-uicons:book",
+        placeholder:"Academic Specialization",
+      },
+      {
+        label:"Fees per Semester",
+        type:"text",
+        id:"FeesperSemester",
+        color:"rgb(28, 100, 188)",
+        icon:"solar-money-bag-broken",
+        placeholder:"Fees per Semester",
+      },
+      {
+        label:"Passport 1st page (1 MB max) :",
+        type:"file",
+        id:"passportFile",
+        color:"rgb(28, 100, 188)",
+        icon:"i-heroicons-folder",
+        placeholder: "Passport 1st page (1 MB max) :"
+      },
+      {
+        label:"A Paper from the Supervisor (for Master’s and Doctoral levels):",
+        type:"file",
+        id:"paperFromSupervisor",
+        color:"rgb(28, 100, 188)",
+        icon:"i-heroicons-folder",
+        placeholder: "A Paper from the Supervisor (for Master’s and Doctoral levels):"
+      },
+      {
+        label:"Tuition Fees Statement (latest from university) :",
+        type:"file",
+        id:"tuitionFeesStatement",
+        color:"rgb(28, 100, 188)",
+        icon:"i-heroicons-folder",
+        placeholder: "Tuition Fees Statement (latest from university) :"
+      },
+      {
+        label:"Confirmation Letter from University (latest date) :",
+        type:"file",
+        id:"confirmationLetter",
+        color:"rgb(28, 100, 188)",
+        icon:"i-heroicons-folder",
+        placeholder: "Confirmation Letter from University (latest date) :"
+      },
+      {
+        label:"Offer Letter:",
+        type:"file",
+        id:"OfferLetterFile",
+        color:"rgb(28, 100, 188)",
+        icon:"i-heroicons-folder",
+        placeholder: "Offer Letter :"
+      },
+      {
+      label: "Other supporting document (1 MB max) :",
+      type:"file",
+      id:"OtherSupportingFile",
+      color:"rgb(28, 100, 188)",
+      icon:"i-heroicons-folder",
+      placeholder: "Other supporting document (1 MB max) :"
+    }
+    ],
+  })
+
+const educationLevelSelected=ref("EL");
+
 const maritalStatus=["Single", "married"]
 const selectedmaritalStatus = ref(maritalStatus[0])
 </script>
@@ -39,11 +341,11 @@ const selectedmaritalStatus = ref(maritalStatus[0])
           the selected Malaysian universities.</p>
         <ul class="">
           <li class="">
-            <UButton icon="i-heroicons-magnifying-glass" />
+            <UIcon name="bxs-down-arrow" class="w-5 h-5" style="color: white" />
             ISM Scholarship covers bachelor’s, master’s, and PhD programmes.
           </li>
           <li class="">
-            <UButton icon="i-heroicons-magnifying-glass" />
+            <UIcon name="bxs-down-arrow" class="w-5 h-5" style="color: white"  />
             ISM Scholarship is for students who come from conflict zones;
             namely: Palestine, Yemen, Lebanon, Syria and Rohingya
           </li>
@@ -59,8 +361,9 @@ const selectedmaritalStatus = ref(maritalStatus[0])
                     type="text"
                     id="arabicName"
                     v-model="formData.arabicName"
-                    color="primary"
+                    color= rgb(28, 100, 188)
                     variant="outline"
+                    icon="ph-user"
                     required
                     placeholder="Enter your Arabic name"
                 />
@@ -71,8 +374,9 @@ const selectedmaritalStatus = ref(maritalStatus[0])
                     type="text"
                     id="englishName"
                     v-model="formData.englishName"
-                    color="primary"
+                    color= rgb(28, 100, 188)
                     variant="outline"
+                    icon="ph-user"
                     required
                     placeholder="Enter your English name"
                 />
@@ -83,8 +387,9 @@ const selectedmaritalStatus = ref(maritalStatus[0])
                     type="text"
                     id="passportNumber"
                     v-model="formData.passportNumber"
-                    color="primary"
+                    color= rgb(28, 100, 188)
                     variant="outline"
+                    icon="mdi-passport"
                     required
                     placeholder="67710323"
                 />
@@ -95,8 +400,9 @@ const selectedmaritalStatus = ref(maritalStatus[0])
                     type="email"
                     id="emailAddress"
                     v-model="formData.emailAddress"
-                    color="primary"
+                    color= rgb(28, 100, 188)
                     variant="outline"
+                    icon="ic-outline-email"
                     required
                     placeholder="emailAddress@gmail.com"
                 />
@@ -107,10 +413,10 @@ const selectedmaritalStatus = ref(maritalStatus[0])
                     type="address"
                     id="malaysiainAddress"
                     v-model="formData.malaysiainAddress"
-                    color="primary"
+                    color= rgb(28, 100, 188)
                     variant="outline"
+                    icon="tabler-world"
                     required
-                    icon="wpf:name"
                     placeholder="Kuala Lapmur Ampang"
                 />
               </div>
@@ -120,8 +426,9 @@ const selectedmaritalStatus = ref(maritalStatus[0])
                     id="nationality "
                     :options="nationality"
                     v-model="selected"
-                    color="primary"
+                    color= rgb(28, 100, 188)
                     variant="outline"
+                    icon="tabler-world"
                     required
                     placeholder="Palestinian"
                 />
@@ -132,8 +439,9 @@ const selectedmaritalStatus = ref(maritalStatus[0])
                     type="text"
                     id="localNumber"
                     v-model="formData.localNumber"
-                    color="primary"
                     variant="outline"
+                    color= rgb(28, 100, 188)
+                    icon="ic-outline-phone"
                     required
                     placeholder="Enter your local Number"
                 />
@@ -144,8 +452,9 @@ const selectedmaritalStatus = ref(maritalStatus[0])
                     type="text"
                     id="whatsAppNumber"
                     v-model="formData.whatsAppNumber"
-                    color="primary"
+                    color= rgb(28, 100, 188)
                     variant="outline"
+                    icon="ic-outline-phone"
                     required
                     placeholder="Enter your whatsApp Number"
                 />
@@ -157,96 +466,54 @@ const selectedmaritalStatus = ref(maritalStatus[0])
                     type="text"
                     id="maritalStatus"
                     v-model="formData.maritalStatus"
-                    color="primary"
+                    color= rgb(28, 100, 188)
                     variant="outline"
+                    icon="solar-user-id-linear"
                     required
                     placeholder="Marital Status"
                 />
               </div>
             </div>
-              <div class="form-group" id ="localNumber">
-                <label for="localNumber">Local Number :</label>
+              <div class="form-group" id ="gender">
+                <label for="gender">Gender :</label>
                 <UInput
                     type="text"
-                    id="localNumber"
-                    v-model="formData.localNumber"
-                    color="primary"
+                    id="gender"
+                    v-model="formData.gender"
+                    color= rgb(28, 100, 188)
                     variant="outline"
+                    icon="solar-user-id-linear"
                     required
-                    placeholder="Enter your local Number"
+                    placeholder="Male or Female "
                 />
               </div>
               <div class="form-group-file">
-                <label for="passportFile"> Passport 1st page (1 MB max) :</label>
-                <UInput
-                    type="file"
-                    id="passportFile"
+                <label for="conformationFile">Education Level :</label>
+                <USelect
+                    id="educationLevel"
+                    :options="educationLevel"
+                    option-attribute="name"
                     size="md"
-                    color="primary"
+                    color= rgb(28, 100, 188)
                     variant="outline"
+                    icon="fa-solid-university"
                     required
-                    icon="i-heroicons-folder"
+                    v-model="educationLevelSelected"
                 />
-              </div>
-              <div class="form-group-file">
-                <label for="conformationFile"> Certified original copy of High School Academic Certificate :</label>
-                <UInput
-                    type="file"
-                    id="highSchoolFile"
-                    size="md"
-                    color="primary"
-                    variant="outline"
-                    required
-                    icon="i-heroicons-folder"
-                />
-              </div>
-              <div class="form-group-file">
-                <label for="conformationFile"> Confirmation letter from your university (latest date) :</label>
-                <UInput
-                    type="file"
-                    id="conformationFile"
-                    size="md"
-                    color="primary"
-                    variant="outline"
-                    required
-                    icon="i-heroicons-folder"
-                />
-              </div>
-              <div class="form-group-file">
-                <label for="conformationFile"> Offer Letter :</label>
-                <UInput
-                    type="file"
-                    id=" OfferLetterFile"
-                    size="md"
-                    color="primary"
-                    variant="outline"
-                    required
-                    icon="i-heroicons-folder"
-                />
-              </div>
-              <div class="form-group-file">
-                <label for="conformationFile"> Confirmation letter from your university (latest date) :</label>
-                <UInput
-                    type="file"
-                    id="conformationFile"
-                    size="md"
-                    color="primary"
-                    variant="outline"
-                    required
-                    icon="i-heroicons-folder"
-                />
-              </div>
-              <div class="form-group-file">
-                <label for="conformationFile"> Other supporting document  (1 MB max) :</label>
-                <UInput
-                    type="file"
-                    id="supportingFiles"
-                    size="md"
-                    color="primary"
-                    variant="outline"
-                    required
-                    icon="i-heroicons-folder"
-                />
+                <div class="form-group-file">
+                  <div class="form-group-file" v-for="question in levelsQuestions[educationLevelSelected]">
+                    <label  for="conformationFile">{{question.label}}</label>
+                    <UInput
+                        :type="question.type"
+                        size="md"
+                        :color="question.color"
+                        variant="outline"
+                        :icon="question.icon"
+                        :placeholder="question.placeholder"
+                        required
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <button class="subBotton" type="submit">Submit</button>
@@ -350,6 +617,6 @@ const selectedmaritalStatus = ref(maritalStatus[0])
   }
   .registrationForm .container .subBotton{
     text-align: center;
-    margin: 10px;
+    margin-top: 20px;
   }
 </style>

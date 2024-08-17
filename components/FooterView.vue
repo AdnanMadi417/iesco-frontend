@@ -16,19 +16,19 @@
           <h2>Contact Us</h2>
           <div class="whatsappNum">
           <span>
-            <UIcon name="i-heroicons-light-bulb" class="" />
+            <UIcon name="ic-baseline-whatsapp" class="" />
           </span>
             <span> <a href=""> +(60) 3-4144 2894</a></span>
           </div>
           <div class="InfoEmailAddress">
           <span>
-            <UIcon name="i-heroicons-light-bulb" class="" />
+            <UIcon name="ic-outline-email" class="" />
           </span>
             <span> <a href=""> info@iesco.my</a></span>
           </div>
           <div class="ScholarEmailAddress">
           <span>
-            <UIcon name="i-heroicons-light-bulb" class="" />
+            <UIcon name="ic-outline-email" class="" />
           </span>
             <span> <a href="">  Scholarship@iesco.my</a></span>
           </div>
@@ -39,7 +39,7 @@
             <a class="text-decoration-none"
                href="https://www.google.com/maps/place/IESCO+MALAYSIA/@3.2046512,101.7219557,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc381168cf8e6f:0xfd29cb7efe012fd4!8m2!3d3.2046512!4d101.7219557!16s%2Fg%2F11bzsgc_qv?entry=ttu"
             >
-              <UIcon name="i-heroicons-light-bulb" class="w-5 h-5" />
+              <UIcon name="mdi-location" class="w-5 h-5" />
               <span class=""
               >E-3A-07, Pusat Komersial Setapak, Jln Taman Ibu Kota, Taman
                 Danau Kota, 53300 Kuala Lumpur, Malaysia</span
@@ -52,18 +52,19 @@
           <div class="container">
             <ul class="scoial-media-icon">
               <li>
-                <a class="" href="">
-                  <UButton icon="i-heroicons-magnifying-glass" />
+                <a href="">
+                  <UIcon name="mdi-instagram"  />
                 </a>
+
               </li>
               <li>
                 <a class="" href="">
-                  <UButton icon="i-heroicons-magnifying-glass" />
-                </a>
+                  <UIcon name="hugeicons-youtube" />
+                  </a>
               </li>
               <li>
                 <a class="" href="">
-                  <UButton icon="i-heroicons-magnifying-glass" />
+                  <UIcon name="mingcute-facebook-line"  />
                 </a>
               </li>
             </ul>
@@ -117,13 +118,11 @@ footer .container div{
     flex: 100%;
   }
 }
-
 footer .img-logo {
   max-width: 100%;
   height: auto;
   display: block;
   }
-
 footer .container .cantact-detail div{
   font-size: 20px;
   color:white ;
@@ -136,7 +135,7 @@ footer .container .cantact-detail > h2{
   font-size: 28px;
 }
 footer .container .cantact-detail div span:first-child{
-  padding: 10px;
+  padding: 0;
   font-size: 22px;
 }
 footer .container .cantact-detail div span:nth-child(2){
@@ -148,7 +147,7 @@ footer .container .location-detail > h2{
   font-size: 28px;
 }
 footer .container .location-detail div span{
-  padding: 10px;
+  padding: 0;
   font-size: 16px;
   color: #eeeeee;
 }
@@ -169,6 +168,10 @@ footer .scoial-media .scoial-media-icon li{
   justify-content: center;
   position: relative;
   padding: 10px;
+}
+footer .scoial-media li a{
+  font-size: 30px;
+  color: white;
 }
 footer .copyrights{
   font-size: 16px;

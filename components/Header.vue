@@ -39,7 +39,7 @@
 }
 
 .logo {
-  height: 20px;
+  height: 40px;
   width: 80px;
   margin-right: 10px;
 }
