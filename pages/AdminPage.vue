@@ -9,6 +9,7 @@
         <div class="title"></div>
         <Header/>
         <ProjectDetails/>
+        <FooterAdminPage/>
       </div>
     </div>
   </div>
