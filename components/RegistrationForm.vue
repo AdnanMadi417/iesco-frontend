@@ -10,15 +10,13 @@ const formData = ref({
 });
 
 const handleSubmit = () => {
-  alert(`Name: ${formData.value.arabicName}, Name: ${formData.value.englishName},
+  alert(`arabicName: ${formData.value.arabicName}, Name: ${formData.value.englishName},
   passport Number: ${formData.value.passportNumber}`);
-  // You can also send the data to a server here
 };
 
 const nationality = [ "Algerian", "Egyptian", "Libyan", "Moroccan", "Sudanese", "Tunisian", "Mauritanian", "Bahraini",
-  "Kuwaiti",  "Omani", "Qatari", "Saudi Arabian", "Emirati",
-  "Yemeni", "Jordanian", "Lebanese", "Palestinian", "Syrian", "Somali",
-  "Djiboutian", "Comorian"]
+  "Kuwaiti",  "Omani", "Qatari", "Saudi Arabian", "Emirati", "Yemeni", "Jordanian", "Lebanese", "Palestinian", "Syrian", "Somali",
+  "Djiboutian", "Comorian"];
 
 const selected = ref(nationality[0])
 
@@ -80,6 +78,14 @@ let levelsQuestions = ref({
       icon:"i-heroicons-folder",
       placeholder: "(MUET, TOEFL, IELTS, or Equivalent, if available):",
       required:false,
+    },
+    {
+      label: "Other supporting document (1 MB max) :",
+      type:"file",
+      id:"OtherSupportingFile",
+      color:"rgb(28, 100, 188)",
+      icon:"i-heroicons-folder",
+      placeholder: "Other supporting document (1 MB max) :"
     }
   ],
   Ba:[
@@ -324,8 +330,8 @@ let levelsQuestions = ref({
 
 const educationLevelSelected=ref("EL");
 
-const maritalStatus=["Single", "married"]
-const selectedmaritalStatus = ref(maritalStatus[0])
+const maritalStatus=["Marital Status","Single", "Married"]
+const selectedMaritalStatus=ref(maritalStatus[0])
 </script>
 <template>
   <div class="registrationForm">
@@ -352,6 +358,7 @@ const selectedmaritalStatus = ref(maritalStatus[0])
         </ul>
       </div>
       <div class="registerationQuestions">
+        <h1>IESCO Online Application System</h1>
         <div class="container">
           <form @submit.prevent="handleSubmit">
             <div class="form-row">
@@ -462,14 +469,15 @@ const selectedmaritalStatus = ref(maritalStatus[0])
               <div class="form-group">
               <div class="form-group" id ="maritalStatus">
                 <label for="maritalStatus ">Marital Status :</label>
-                <UInput
-                    type="text"
+                <USelect
                     id="maritalStatus"
-                    v-model="formData.maritalStatus"
+                    :option="maritalStatus"
                     color= rgb(28, 100, 188)
                     variant="outline"
                     icon="solar-user-id-linear"
+                    size="sm"
                     required
+                    v-model="selectedMaritalStatus"
                     placeholder="Marital Status"
                 />
               </div>
@@ -487,7 +495,7 @@ const selectedmaritalStatus = ref(maritalStatus[0])
                     placeholder="Male or Female "
                 />
               </div>
-              <div class="form-group-file">
+              <div class="form-group-file" id="educationLevelDiv">
                 <label for="conformationFile">Education Level :</label>
                 <USelect
                     id="educationLevel"
@@ -604,16 +612,25 @@ const selectedmaritalStatus = ref(maritalStatus[0])
     padding: 8px;
     box-sizing: border-box;
   }
+  .registrationForm .registerationQuestions > h1{
+    color:var(--main-color);
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+  }
   .registrationForm .container  button {
     padding: 10px 20px;
-    background-color: var(--background-color);
+    background-color: var(--main-color);
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
   }
   .registrationForm .container  button:hover {
-    background-color: var(--main-color);
+    background-color: #eeeeee;
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
+    transition: .3s;
   }
   .registrationForm .container .subBotton{
     text-align: center;
