@@ -36,11 +36,11 @@ const educationLevel=[
   },
   {
     name:"Master",
-    value:"Ma",
+    value:"MaPHD",
   },
   {
     name:"Doctorate ",
-    value:"PHD",
+    value:"MaPHD",
   }
 ]
 
@@ -55,7 +55,7 @@ let levelsQuestions = ref({
         placeholder:"Enter your University Name",
       },
     {
-      label:"Passport 1st page (1 MB max) :",
+      label:"Passport 1st page",
       type:"file",
       id:"passportFile",
       color:"rgb(28, 100, 188)",
@@ -63,7 +63,7 @@ let levelsQuestions = ref({
       placeholder: "Passport 1st page (1 MB max) :"
     },
     {
-      label:"Certified Original Copy of High School Academic Certificate :",
+      label:"Certified Original Copy of High School Academic Certificate ",
       type:"file",
       id:"highSchoolFile",
       color:"rgb(28, 100, 188)",
@@ -71,7 +71,7 @@ let levelsQuestions = ref({
       placeholder: "Certified Original Copy of High School Academic Certificate :"
     },
     {
-      label:"Certified Original Copy of English Proficiency Qualification (MUET, TOEFL, IELTS, or Equivalent, if available):",
+      label:"Certified Original Copy of English Proficiency Qualification (MUET, TOEFL, IELTS, or Equivalent, if available)",
       type:"file",
       id:"EnglishQualificationFile",
       color:"rgb(28, 100, 188)",
@@ -80,12 +80,12 @@ let levelsQuestions = ref({
       required:false,
     },
     {
-      label: "Other supporting document (1 MB max) :",
+      label: "Other supporting document",
       type:"file",
       id:"OtherSupportingFile",
       color:"rgb(28, 100, 188)",
       icon:"i-heroicons-folder",
-      placeholder: "Other supporting document (1 MB max) :"
+      placeholder: "Other supporting document"
     }
   ],
   Ba:[
@@ -114,7 +114,7 @@ let levelsQuestions = ref({
       placeholder:"Fees per Semester",
     },
     {
-      label:"Passport 1st page (1 MB max) :",
+      label:"Passport 1st page",
       type:"file",
       id:"passportFile",
       color:"rgb(28, 100, 188)",
@@ -122,12 +122,11 @@ let levelsQuestions = ref({
       placeholder: "Passport 1st page (1 MB max) :"
     },
     {
-      label:"Candidate Progress Report (for postgraduate students) :",
+      label:"Candidate Progress Report (for postgraduate students)",
       type:"file",
       id:"candidateProgressReport",
       color:"rgb(28, 100, 188)",
       icon:"i-heroicons-folder",
-      placeholder: "Candidate Progress Report (for postgraduate students) :"
     },
     {
       label:"Tuition Fees Statement (latest from university) :",
@@ -138,31 +137,31 @@ let levelsQuestions = ref({
       placeholder: "Tuition Fees Statement (latest from university) :"
     },
     {
-      label:"Confirmation Letter from University (latest date) :",
+      label:"Confirmation Letter from University (latest date)",
       type:"file",
       id:"confirmationLetter",
       color:"rgb(28, 100, 188)",
       icon:"i-heroicons-folder",
-      placeholder: "Confirmation Letter from University (latest date) :"
+      placeholder: "Confirmation Letter from University (latest date)"
     },
     {
-      label:"Offer Letter:",
+      label:"Offer Letter",
       type:"file",
       id:"OfferLetterFile",
       color:"rgb(28, 100, 188)",
       icon:"i-heroicons-folder",
-      placeholder: "Offer Letter :"
+      placeholder: "Offer Letter "
     },
     {
-      label: "Other supporting document (1 MB max) :",
+      label: "Other supporting document ",
       type:"file",
       id:"OtherSupportingFile",
       color:"rgb(28, 100, 188)",
       icon:"i-heroicons-folder",
-      placeholder: "Other supporting document (1 MB max) :"
+      placeholder: "Other supporting document"
     }
   ],
-  Ma:[
+  MaPHD:[
       {
         label:"Current University Name",
         type:"text",
@@ -196,142 +195,53 @@ let levelsQuestions = ref({
         placeholder:"Fees per Semester",
       },
       {
-        label:"Passport 1st page (1 MB max) :",
+        label:"Passport 1st page",
         type:"file",
         id:"passportFile",
         color:"rgb(28, 100, 188)",
         icon:"i-heroicons-folder",
-        placeholder: "Passport 1st page (1 MB max) :"
+        placeholder: "Passport 1st page "
       },
       {
-        label:"A Paper from the Supervisor (for Master’s and Doctoral levels):",
+        label:"A Paper from the Supervisor (for Master’s and Doctoral levels)",
         type:"file",
         id:"paperFromSupervisor",
         color:"rgb(28, 100, 188)",
         icon:"i-heroicons-folder",
-        placeholder: "A Paper from the Supervisor (for Master’s and Doctoral levels):"
       },
       {
-        label:"Tuition Fees Statement (latest from university) :",
+        label:"Tuition Fees Statement (latest from university) ",
         type:"file",
         id:"tuitionFeesStatement",
         color:"rgb(28, 100, 188)",
         icon:"i-heroicons-folder",
-        placeholder: "Tuition Fees Statement (latest from university) :"
       },
       {
-        label:"Confirmation Letter from University (latest date) :",
+        label:"Confirmation Letter from University (latest date)",
         type:"file",
         id:"confirmationLetter",
         color:"rgb(28, 100, 188)",
         icon:"i-heroicons-folder",
-        placeholder: "Confirmation Letter from University (latest date) :"
       },
       {
-        label:"Offer Letter:",
+        label:"Offer Letter",
         type:"file",
         id:"OfferLetterFile",
         color:"rgb(28, 100, 188)",
         icon:"i-heroicons-folder",
-        placeholder: "Offer Letter :"
       },
       {
-        label: "Other supporting document (1 MB max) :",
+        label: "Other supporting document",
         type:"file",
         id:"OtherSupportingFile",
         color:"rgb(28, 100, 188)",
         icon:"i-heroicons-folder",
-        placeholder: "Other supporting document (1 MB max) :"
       }
       ],
-  PHD:[
-      {
-        label:"Current University Name",
-        type:"text",
-        id:"CurrentUniversityName",
-        color:"rgb(28, 100, 188)",
-        icon:"fa-solid-university",
-        placeholder:"Enter your Current University Name",
-      },
-      {
-        label:"Name of Graduate University",
-        type:"text",
-        id:"NameGraduateUniversity",
-        color:"rgb(28, 100, 188)",
-        icon:"fa-solid-university",
-        placeholder:"Name of Graduate University",
-      },
-      {
-        label:"Academic Specialization",
-        type:"text",
-        id:"academicSpecializationFile",
-        color:"rgb(28, 100, 188)",
-        icon:"system-uicons:book",
-        placeholder:"Academic Specialization",
-      },
-      {
-        label:"Fees per Semester",
-        type:"text",
-        id:"FeesperSemester",
-        color:"rgb(28, 100, 188)",
-        icon:"solar-money-bag-broken",
-        placeholder:"Fees per Semester",
-      },
-      {
-        label:"Passport 1st page (1 MB max) :",
-        type:"file",
-        id:"passportFile",
-        color:"rgb(28, 100, 188)",
-        icon:"i-heroicons-folder",
-        placeholder: "Passport 1st page (1 MB max) :"
-      },
-      {
-        label:"A Paper from the Supervisor (for Master’s and Doctoral levels):",
-        type:"file",
-        id:"paperFromSupervisor",
-        color:"rgb(28, 100, 188)",
-        icon:"i-heroicons-folder",
-        placeholder: "A Paper from the Supervisor (for Master’s and Doctoral levels):"
-      },
-      {
-        label:"Tuition Fees Statement (latest from university) :",
-        type:"file",
-        id:"tuitionFeesStatement",
-        color:"rgb(28, 100, 188)",
-        icon:"i-heroicons-folder",
-        placeholder: "Tuition Fees Statement (latest from university) :"
-      },
-      {
-        label:"Confirmation Letter from University (latest date) :",
-        type:"file",
-        id:"confirmationLetter",
-        color:"rgb(28, 100, 188)",
-        icon:"i-heroicons-folder",
-        placeholder: "Confirmation Letter from University (latest date) :"
-      },
-      {
-        label:"Offer Letter:",
-        type:"file",
-        id:"OfferLetterFile",
-        color:"rgb(28, 100, 188)",
-        icon:"i-heroicons-folder",
-        placeholder: "Offer Letter :"
-      },
-      {
-      label: "Other supporting document (1 MB max) :",
-      type:"file",
-      id:"OtherSupportingFile",
-      color:"rgb(28, 100, 188)",
-      icon:"i-heroicons-folder",
-      placeholder: "Other supporting document (1 MB max) :"
-    }
-    ],
   })
 
 const educationLevelSelected=ref("EL");
 
-const maritalStatus=["Marital Status","Single", "Married"]
-const selectedMaritalStatus=ref(maritalStatus[0])
 </script>
 <template>
   <div class="registrationForm">
@@ -363,9 +273,8 @@ const selectedMaritalStatus=ref(maritalStatus[0])
           <form @submit.prevent="handleSubmit">
             <div class="form-row">
               <div class="form-group " id="arabicName">
-                <label for="arabicName">Student's name in Arabic:</label>
+                <label for="arabicName">Student's name in Arabic</label>
                 <UInput
-                    type="text"
                     id="arabicName"
                     v-model="formData.arabicName"
                     color= rgb(28, 100, 188)
@@ -376,7 +285,7 @@ const selectedMaritalStatus=ref(maritalStatus[0])
                 />
               </div>
               <div class="form-group" id="englishName">
-                <label for="Englishname">Student's name in English:</label>
+                <label for="Englishname">Student's name in English</label>
                 <UInput
                     type="text"
                     id="englishName"
@@ -389,7 +298,7 @@ const selectedMaritalStatus=ref(maritalStatus[0])
                 />
               </div>
               <div class="form-group" id="passportNumber">
-                <label for="passportNumber">Passport Number in English:</label>
+                <label for="passportNumber">Passport Number in English</label>
                 <UInput
                     type="text"
                     id="passportNumber"
@@ -402,7 +311,7 @@ const selectedMaritalStatus=ref(maritalStatus[0])
                 />
               </div>
               <div class="form-group" id="emailAddress">
-                <label for="emailAddress">Student's email address:</label>
+                <label for="emailAddress">Student's email address</label>
                 <UInput
                     type="email"
                     id="emailAddress"
@@ -441,7 +350,7 @@ const selectedMaritalStatus=ref(maritalStatus[0])
                 />
               </div>
               <div class="form-group" id ="localNumber">
-                <label for="localNumber">Local Number :</label>
+                <label for="localNumber">Local Number </label>
                 <UInput
                     type="text"
                     id="localNumber"
@@ -454,7 +363,7 @@ const selectedMaritalStatus=ref(maritalStatus[0])
                 />
               </div>
               <div class="form-group" id ="whatsAppNumber">
-                <label for="whatsAppNumber">whatsApp Number :</label>
+                <label for="whatsAppNumber">whatsApp Number </label>
                 <UInput
                     type="text"
                     id="whatsAppNumber"
@@ -468,10 +377,9 @@ const selectedMaritalStatus=ref(maritalStatus[0])
               </div>
               <div class="form-group">
               <div class="form-group" id ="maritalStatus">
-                <label for="maritalStatus ">Marital Status :</label>
-                <USelect
+                <label for="maritalStatus ">Marital Status </label>
+                <UInput
                     id="maritalStatus"
-                    :option="maritalStatus"
                     color= rgb(28, 100, 188)
                     variant="outline"
                     icon="solar-user-id-linear"
@@ -483,7 +391,7 @@ const selectedMaritalStatus=ref(maritalStatus[0])
               </div>
             </div>
               <div class="form-group" id ="gender">
-                <label for="gender">Gender :</label>
+                <label for="gender">Gender </label>
                 <UInput
                     type="text"
                     id="gender"
@@ -496,7 +404,7 @@ const selectedMaritalStatus=ref(maritalStatus[0])
                 />
               </div>
               <div class="form-group-file" id="educationLevelDiv">
-                <label for="conformationFile">Education Level :</label>
+                <label for="conformationFile">Education Level </label>
                 <USelect
                     id="educationLevel"
                     :options="educationLevel"

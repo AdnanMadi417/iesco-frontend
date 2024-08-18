@@ -1,5 +1,114 @@
 <script setup lang="ts">
-
+const columns = [
+    {
+      key: 'passport',
+      label: 'Passport Number'
+    },
+    {
+      key: 'educationLevel',
+      label: 'Education Level',
+      sortable: true
+      },
+    {
+    key: 'gender',
+    label: 'Gender',
+    sortable: true
+    },
+    {
+      key: 'email',
+      label: 'Email',
+      sortable: true,
+      direction: 'desc' as const
+    },
+    {
+      key: 'whatsAppNumber',
+      label: 'WhatsApp Number'
+    },
+    {
+    key: 'uniName',
+    label: 'University'
+  }
+]
+const studentDetails = [
+  {
+    passport: "87698983",
+    name: 'Tom Cook',
+    educationLevel: 'Director of Product',
+    email: 'tom.cook@example.com',
+    nationality: 'Palestinian',
+    whatsAppNumber:"d34567897",
+    gender: 'Male',
+    uniName:"AIU",
+  },
+  {
+    passport: "87698983",
+    name: 'Tom Cook',
+    educationLevel: 'Director of Product',
+    email: 'tom.cook@example.com',
+    nationality: 'Palestinian',
+    whatsAppNumber:"d34567897",
+    gender: 'Male',
+    uniName:"AIU",
+  },
+  {
+    passport: "87698983",
+    name: 'Tom Cook',
+    educationLevel: 'Director of Product',
+    email: 'tom.cook@example.com',
+    nationality: 'Palestinian',
+    whatsAppNumber:"d34567897",
+    gender: 'Male',
+    uniName:"AIU",
+  },
+  {
+    passport: "87698983",
+    name: 'Tom Cook',
+    educationLevel: 'Director of Product',
+    email: 'tom.cook@example.com',
+    nationality: 'Palestinian',
+    whatsAppNumber:"d34567897",
+    gender: 'Male',
+    uniName:"AIU",
+  },
+  {
+    passport: "87698983",
+    name: 'Tom Cook',
+    educationLevel: 'Director of Product',
+    email: 'tom.cook@example.com',
+    nationality: 'Palestinian',
+    whatsAppNumber:"d34567897",
+    gender: 'Male',
+    uniName:"AIU",
+  }
+]
+const adminInfo=[
+  {
+    key :"adminName",
+    label:"Admin Name"
+  },
+  {
+    key :"adminEmail",
+    label:"Admin Email"
+  },
+  {
+    key :"adminphoneNumber",
+    name:"admin phone Number"
+  }
+]
+const adminsInfo=[
+  {
+    adminName:"mohammed 1",
+    adminEmail:"admin@email.com",
+  },
+  {
+    adminName:"mohammed 1",
+    adminEmail:"admin@email.com",
+  },
+  {
+    adminName:"mohammed 1",
+    adminEmail:"admin@email.com",
+  },
+]
 </script>
 
 <template>
@@ -10,48 +119,71 @@
         <h2>Admin Setting </h2>
         <div class="adminSettingDetails">
           <div class="adminInfo">
-            <img src="../public/images/adminphoto.png" alt="">
             <div class="info">
-              <h4><span>Admin Name:</span> Mohammed</h4>
-              <h4><span>Email:</span> Mohammed</h4>
-              <h4><span>Phone Number:</span> Mohammed</h4>
-            </div>
-          </div>
-          <div class="adminInfo">
-            <img src="../public/images/adminphoto.png" alt="">
-            <div class="info">
-              <h4><span>Admin Name:</span> Mohammed</h4>
-              <h4><span>Email:</span> Mohammed</h4>
-              <h4><span>Phone Number:</span> Mohammed</h4>
-            </div>
-          </div>
-          <div class="adminInfo">
-            <img src="../public/images/adminphoto.png" alt="">
-            <div class="info">
-              <h4><span>Admin Name:</span> Mohammed</h4>
-              <h4><span>Email:</span> Mohammed</h4>
-              <h4><span>Phone Number:</span> Mohammed</h4>
+              <UTable
+                  :columns="adminInfo"
+                  :rows="adminsInfo"
+              />
             </div>
           </div>
         </div>
       </div>
       <div class="DashboardDiv">
-        <div class="dashboardContainer">
-          <div class="adminPhoto">
-            <img src="../public/images/adminphoto.png" alt="">
+        <div class="headerAdminPage">
+          <div>
+            <UInput
+              color="rgb(28, 100, 188)"
+              variant="outline"
+              icon="iconoir-doc-search"
+              placeholder="Search..."
+          />
           </div>
-          <div class="adminDetails">
-            <h2> Welcome back to Iesco ScholarShip Admin Page</h2>
+          <div class="projectName">
+            <h2>Welcome back to IESCO Scholarship System</h2>
           </div>
         </div>
-        <hr class="border-b-cyan-950">
-        <div class="dashboardDetails">
+        <div class="dashboardContainer">
           <div>
-            <h2>Admin Setting </h2>
+            <div>
+              <span>12312</span>
+              <span>+</span>
+            </div>
+            <h5>Total Students</h5>
           </div>
           <div>
-            <h2> Students </h2>
+            <div>
+              <span>12312</span>
+              <span>+</span>
+            </div>
+            <h5>Current Students</h5>
           </div>
+          <div>
+            <div>
+              <span>12312</span>
+              <span>+</span>
+            </div>
+            <h5>Countries</h5>
+          </div>
+          <div>
+            <div>
+              <span>12312</span>
+              <span>+</span>
+            </div>
+            <h5>Appending Students</h5>
+          </div>
+          <div>
+            <div>
+              <span>12312</span>
+              <span>+</span>
+            </div>
+            <h5>Current Students</h5>
+          </div>
+        </div>
+        <div class="studentDetailsTable">
+          <UTable
+              :columns="columns"
+              :rows="studentDetails"
+          />
         </div>
       </div>
     </div>
@@ -74,28 +206,71 @@
   flex-direction: row;
 }
 .container .adminSettingDiv{
-  flex: 35%;
+  flex: 30%;
   background-color: var(--main-color);
 }
 .container .DashboardDiv{
-  flex: 65%;
+  flex: 70%;
   background-color: #eeeeee;
+}
+.headerAdminPage{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30px;
+  padding: 20px 0 10px 0;
+}
+@media (max-width: 600px){
+  .headerAdminPage{
+    display: block;
+  }
+  .headerAdminPage .projectName{
+    display: none;
+  }
+}
+.headerAdminPage div h2{
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--main-color);
 }
 .dashboardContainer {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  justify-content: space-around;
 }
-.dashboardContainer .adminPhoto{
-  flex: 30%;
+@media (max-width: 800px) {
+  .dashboardContainer{
+    display: block;
+  }
+}
+.dashboardContainer{
   margin: 20px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 1px 5px;
+  border-radius: 20px;
+}
+.dashboardContainer > div{
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: normal;
+  color: var(--main-color);
+  text-transform: capitalize;
+  border-radius: 10px;
+}
+.dashboardContainer div > div {
+  padding: 10px;
+  text-align: center;
+}
+.dashboardContainer div > div span{
+  font-size: 25px;
+  font-weight: bold;
+  color: var(--main-color);
+}
+.dashboardContainer{
+  padding: 10px;
 }
 .dashboardContainer .adminPhoto > img{
   border: 2px solid  var(--main-color);
   border-radius: 30px 0;
-}
-.dashboardContainer .adminDetails{
-  flex: 60%;
 }
 .container .DashboardDiv .dashboardContainer  h2{
   text-align: center;
@@ -117,22 +292,9 @@
   .dashboardContainer {
     flex-direction: column;
   }
-  .dashboardContainer .adminPhoto{
-    flex: 100%;
-    margin: 0;
-  }
-  .dashboardContainer .adminDetails{
-    flex: 100%;
-  }
   .container .DashboardDiv .dashboardContainer  h2{
     font-size: 18px;
   }
-}
-.dashboardDetails{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  text-align: center;
 }
 .adminSettingDiv > img{
   position: relative;
@@ -151,8 +313,7 @@
   font-weight: bold;
 }
 .adminSettingDiv .adminInfo{
-  display: flex;
-  justify-content: space-around;
+  display: block;
   background-color: #eeeeee;
   margin: 20px;
   box-shadow: rgba(0, 0, 0, 0.25) 0 5px 15px;
@@ -163,22 +324,17 @@
   .adminSettingDiv .adminInfo{
     display: block;
   }
-  .adminSettingDiv > img{
-    text-align: center;
-  }
 }
 .adminSettingDiv .adminInfo img{
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 1.5px solid var(--main-color);
+  border: 2px solid var(--main-color);
 }
-.adminSettingDiv .adminInfo .info{
-  margin-left: 15px;
+.adminSettingDiv .adminInfo {
   display: block;
   justify-items: start;
   text-align: start;
 }
-.dashboardContainer {
-}
+
 </style>
