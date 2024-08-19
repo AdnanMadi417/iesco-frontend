@@ -131,9 +131,14 @@ onMounted(async () => {
 
 <template>
   <div class="main-container">
+    <dashboard-analysts/>
+
     <div class="container">
       <div class="DashboardDiv">
         <div class="headerAdminPage">
+          <div class="projectName">
+            <h2>Welcome back to IESCO Scholarship System</h2>
+          </div>
           <div>
             <UInput
                 color="rgb(28, 100, 188)"
@@ -141,9 +146,6 @@ onMounted(async () => {
                 icon="iconoir-doc-search"
                 placeholder="Search..."
             />
-          </div>
-          <div class="projectName">
-            <h2>Welcome back to IESCO Scholarship System</h2>
           </div>
         </div>
         <div class="studentDetailsTable">
