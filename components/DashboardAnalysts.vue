@@ -61,7 +61,7 @@
   flex: 25%;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
   .dashbordAnastsContainer {
     flex-direction: column;
   }
@@ -92,7 +92,7 @@
   }
 }
 
-.d
+
 .dashbordAnastsContainer .divOne div:first-child,
 .dashbordAnastsContainer .divTwo div:first-child,
 .dashbordAnastsContainer .divThree div:first-child,

@@ -53,6 +53,7 @@ const detailsToShow = [
   "whatsAppNumber",
   "gender",
   "uniName",
+  "allStudentInfo"
 ]
 
 
@@ -66,6 +67,7 @@ const studentDetails = [
     whatsAppNumber: "d34567897",
     gender: 'Male',
     uniName: "AIU",
+    botton: "Extend"
   },
   {
     passport: "87698983",
@@ -131,9 +133,8 @@ onMounted(async () => {
 
 <template>
   <div class="main-container">
-    <dashboard-analysts/>
-
-    <div class="container">
+    <div class="interContainer">
+      <dashboard-analysts/>
       <div class="DashboardDiv">
         <div class="headerAdminPage">
           <div class="projectName">
@@ -150,6 +151,7 @@ onMounted(async () => {
         </div>
         <div class="studentDetailsTable">
           <UTable
+              class="table"
               :columns="columns"
               :rows="studentDetails"
           />
@@ -171,13 +173,7 @@ onMounted(async () => {
   }
 }
 
-.main-container .container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
-.container .DashboardDiv {
+.interContainer .DashboardDiv {
   flex: 70%;
   background-color: #eeeeee;
 }
@@ -239,11 +235,6 @@ onMounted(async () => {
   padding: 30px 0;
 }
 
-@media (max-width: 600px) {
-  .main-container .container {
-    flex-direction: column;
-  }
-
   .container .DashboardDiv {
     flex: 100%;
   }
@@ -251,7 +242,6 @@ onMounted(async () => {
   .container .DashboardDiv .dashboardContainer h2 {
     font-size: 18px;
   }
-}
 
 .adminSettingDiv > img {
   position: relative;
@@ -279,4 +269,9 @@ onMounted(async () => {
   border: 2px solid var(--main-color);
 }
 
+.DashboardDiv .studentDetailsTable .table {
+  display: block;
+  width: calc(100% - 100px);
+  overflow-x: auto;
+}
 </style>

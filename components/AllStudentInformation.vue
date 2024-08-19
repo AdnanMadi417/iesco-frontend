@@ -4,133 +4,63 @@ import {ref} from "vue";
 let levelsQuestions = ref([
   {
     label: "University Name",
-    id: "universityName",
-    color: "rgb(28, 100, 188)",
-    icon: "fa-solid-university",
-    placeholder: "Enter your University Name",
-  },
-  {
-    label: "Number of Semesters Remaining Until Graduation",
-    type: "text",
-    id: "NumSemToGraduation",
-    color: "rgb(28, 100, 188)",
-    icon: "system-uicons:book",
-    placeholder: "Number ",
-  },
-  {
-    label: "Fees per Semester",
-    id: "FeesperSemester",
-    color: "rgb(28, 100, 188)",
-    icon: "solar-money-bag-broken",
-    placeholder: "Fees per Semester",
-  },
-  {
-    label: "Passport  1st page",
-    id: "passportFile",
-    color: "rgb(28, 100, 188)",
-    icon: "i-heroicons-folder",
-    placeholder: "Passport 1st page"
-  },
-  {
-    label: "High School Academic Certificate ",
-    id: "highSchoolFile",
-    color: "rgb(28, 100, 188)",
-    icon: "i-heroicons-folder",
-    placeholder: "High School Academic Certificate"
-  },
-  {
-    label: "English Proficiency Qualification ",
-    id: "EnglishQualificationFile",
-    color: "rgb(28, 100, 188)",
-    icon: "i-heroicons-folder",
-    placeholder: "(MUET, TOEFL, IELTS, or Equivalent)",
-  },
-  {
-    label: "Other supporting document",
-    id: "OtherSupportingFile",
-    color: "rgb(28, 100, 188)",
-    icon: "i-heroicons-folder",
-    placeholder: "Other supporting document"
   },
   {
     label: "University Name",
-    id: "universityName",
-    color: "rgb(28, 100, 188)",
-    icon: "fa-solid-university",
-    placeholder: "Enter your University Name",
   },
   {
-    label: "Number of Semesters Remaining Until Graduation",
-    type: "text",
-    id: "NumSemToGraduation",
-    color: "rgb(28, 100, 188)",
-    icon: "system-uicons:book",
-    placeholder: "Number ",
+    label: "University Name",
   },
   {
-    label: "Fees per Semester",
-    id: "FeesperSemester",
-    color: "rgb(28, 100, 188)",
-    icon: "solar-money-bag-broken",
-    placeholder: "Fees per Semester",
+    label: "University Name",
   },
   {
-    label: "Passport  1st page",
-    id: "passportFile",
-    color: "rgb(28, 100, 188)",
-    icon: "i-heroicons-folder",
-    placeholder: "Passport 1st page"
+    label: "University Name",
   },
   {
-    label: "High School Academic Certificate ",
-    id: "highSchoolFile",
-    color: "rgb(28, 100, 188)",
-    icon: "i-heroicons-folder",
-    placeholder: "High School Academic Certificate"
+    label: "University Name",
   },
   {
-    label: "English Proficiency Qualification ",
-    id: "EnglishQualificationFile",
-    color: "rgb(28, 100, 188)",
-    icon: "i-heroicons-folder",
-    placeholder: "(MUET, TOEFL, IELTS, or Equivalent)",
+    label: "University Name",
   },
   {
-    label: "Candidate Progress Report (for postgraduate students)",
-    id: "candidateProgressReport",
-    color: "rgb(28, 100, 188)",
-    icon: "i-heroicons-folder",
+    label: "University Name",
   },
   {
-    label: "Other supporting document",
-    id: "OtherSupportingFile",
-    color: "rgb(28, 100, 188)",
-    icon: "i-heroicons-folder",
-    placeholder: "Other supporting document"
-  }
+    label: "University Name",
+  },
+  {
+    label: "University Name",
+  },
+  {
+    label: "University Name",
+  },
+  {
+    label: "mohammed  Name",
+  },
 ])
-
-const educationLevelSelected = ref("EL");
 
 </script>
 
 <template>
   <div>
-    <div class="box">
-      <a class="button" href="#popup1">Extend</a>
+    <div   class="popupButtonExted">
+      <a class="button" href="#allStudentInfo">Extend</a>
     </div>
 
-    <div id="popup1" class="StudentInfo">
+    <div id="allStudentInfo" class="popupStudentInfo">
       <div class="StudentInfoContainer">
         <div>
-          <h2>Welcome to {{}}</h2>
+          <h2>Welcome back</h2>
           <h2><a class="close" href="#">&times;</a></h2>
           <hr class="borderHR">
         </div>
         <div class="content" v-for="question in levelsQuestions">
           <div class="info">
-            <label>{{ question.lable }}</label>
-            <label>{{ question.placeholder }}</label>
+            <label>{{ question.label }}</label>
+          </div>
+          <div class="info">
+            <span>this is adnan</span>
           </div>
           <hr>
         </div>
@@ -141,17 +71,6 @@ const educationLevelSelected = ref("EL");
 
 
 <style scoped>
-
-.box {
-  width: 40%;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 35px;
-  border: 2px solid #fff;
-  border-radius: 20px/50px;
-  background-clip: padding-box;
-  text-align: center;
-}
 
 .button {
   font-size: 1em;
@@ -169,19 +88,19 @@ const educationLevelSelected = ref("EL");
   color: #eeeeee;
 }
 
-.StudentInfo {
+.popupStudentInfo {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   transition: opacity 500ms;
   visibility: hidden;
   opacity: 0;
 }
 
-.StudentInfo:target {
+.popupStudentInfo:target {
   visibility: visible;
   opacity: 1;
 }
@@ -190,15 +109,23 @@ const educationLevelSelected = ref("EL");
   margin: 70px auto;
   padding: 20px;
   background: #fff;
-  border-radius: 5px;
-  width: 40%;
+  border-radius: 10px;
+  width: 70%;
+  height:calc(100% - 140px );
+  overflow-y: auto;
   position: relative;
   transition: all 5s ease-in-out;
 }
 
+@media (max-width: 800px) {
+  .StudentInfoContainer {
+    width: 90%;
+  }
+}
+
 .StudentInfoContainer div .close {
   position: absolute;
-  top: 10px;
+  top: 0;
   right: 30px;
   transition: all 200ms;
   font-size: 30px;
@@ -208,28 +135,43 @@ const educationLevelSelected = ref("EL");
 }
 
 .StudentInfoContainer .StudentInfoContainer:hover {
-  color:#eeeeee;
+  color: #eeeeee;
 }
 
 .StudentInfoContainer .content {
-  max-height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   overflow: auto;
 }
 
+.StudentInfoContainer .content div:first-child {
+  flex: 70%;
+}
+
+.StudentInfoContainer .content div:last-child {
+  flex: 30%;
+}
+
+.StudentInfoContainer .content .info span {
+  padding: 10px 10px;
+  background-color: var(--main-color);
+  border-radius: 5px;
+  color: #eeeeee;
+  text-transform: capitalize;
+}
+
 @media screen and (max-width: 700px) {
-  .box {
-    width: 70%;
-  }
-
-  .popup {
+  .StudentInfoContainer {
     width: 70%;
   }
 }
 
-.StudentInfoContainer .content .info{
-  padding: 20px 0;
+.StudentInfoContainer .content .info {
+  padding: 15px 0;
 }
+
 .borderHR {
-  border: 1px solid var(--main-color);
+  border-bottom: 1px solid var(--main-color);
 }
 </style>
