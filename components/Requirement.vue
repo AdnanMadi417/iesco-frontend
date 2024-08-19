@@ -40,7 +40,7 @@ const items = [{
 </script>
 
 <template>
-  <div class="container">
+  <div class="requirement-container">
     <div></div>
     <div class="requirement">
       <h1>HOW DO NEW STUDENTS APPLY FOR ISM ?</h1>
@@ -52,40 +52,40 @@ const items = [{
 </template>
 
 <style  scoped>
-.container h1{
+.requirement-container h1{
   text-align: center;
   padding: 30px 0;
   font-size: 26px;
   font-weight: bold;
   color: var(--main-color);
 }
-.container h5{
+.requirement-container h5{
   padding: 0 0 20px ;
   font-size: 16px;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.54);
 }
-.container {
+.requirement-container {
   display: flex;
   justify-content: center;
   padding: 50px;
 }
 
-.container div {
+.requirement-container div {
   flex: 20%;
 }
-.container .requirement{
+.requirement-container .requirement{
   flex: 60%;
 }
 @media (max-width: 800px) {
-  .container {
+  .requirement-container {
   flex-direction: column;
     padding: 10px;
 };
-  .container div {
+  .requirement-container div {
     flex: 0;
   }
-  .container .requirement{
+  .requirement-container .requirement{
     flex: 100%;
   }
 }

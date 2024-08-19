@@ -44,16 +44,16 @@ const columns = [
   }
 ]
 
-// const detailsToShow = [
-//   "passport",
-//   "name",
-//   "educationLevel",
-//   "email",
-//   "nationality",
-//   "whatsAppNumber",
-//   "gender",
-//   "uniName",
-// ]
+const detailsToShow = [
+  "passport",
+  "name",
+  "educationLevel",
+  "email",
+  "nationality",
+  "whatsAppNumber",
+  "gender",
+  "uniName",
+]
 
 
 const studentDetails = [
@@ -111,10 +111,21 @@ const studentDetails = [
 
 
 onMounted(async () => {
-  const response = await axios.get("https://66c21796f83fffcb587b22a8.mockapi.io/api/v1/:endpoint")
-  console.log(response.data[0])
-})
+  const response = await axios.get("https://66c21796f83fffcb587b22a8.mockapi.io/api/v1/students ")
+  console.log(response.data)
 
+  for (let i = 0; i < response.data.length; i++) {
+    const studentDetails = response.data[i]
+    for (let j = 0; j < detailsToShow.length; j++) {
+      const keyStudentDetails = detailsToShow[j]
+      if (keyStudentDetails in studentDetails) {
+        console.log(response.data[i]);
+      } else {
+        continue;
+      }
+    }
+  }
+})
 
 </script>
 
