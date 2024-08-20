@@ -21,6 +21,18 @@
           <form>
             <div class="control-input">
               <div class="input-group">
+                <label for="email">Your name</label>
+                <UInput
+                    color="rgb(28, 100, 188)"
+                    variant="outline"
+                    id="Admminemail"
+                    placeholder="Enter your name"
+                    required
+                    size="md"
+                    icon="line-md-person"
+                />
+              </div>
+              <div class="input-group">
                 <label for="email">Your email</label>
                 <UInput
                     color="rgb(28, 100, 188)"
@@ -54,26 +66,17 @@
                       </label>
                     </div>
                     <div>
-                      <a href="#">
-                        <UIcon
-                            name="ri-device-recover-line"
-                            class="w-5 h-5"
-                        />
-                        Recover password
-                      </a>
-                    </div>
-                    <div>
                       <a href="#" >
                         <UIcon
-                            name="material-symbols-tv-signin-outline-sharp"
+                            name="solar-login-2-broken"
                             class="w-5 h-5"
                         />
-                        Sign Up
+                        Login
                       </a>
                     </div>
                   </div>
-                </div>
-                <button type="submit">SIGN IN</button>
+                  </div>
+                <button type="submit">SIGN UP</button>
               </div>
             </div>
           </form>
@@ -168,6 +171,10 @@ body {
   font-weight: normal;
 }
 
+.login-page .main-container .control-input .options > div{
+  display: block;
+}
+
 @media (max-width: 600px) {
   .dic-color-two .info-container .h2-one {
     font-size: 30px;
@@ -196,7 +203,7 @@ body {
   display: block;
   text-align: start;
   align-items: center;
-  margin: 40px auto;
+  margin: 0 auto;
 }
 
 .login-page .main-container .control-input {
@@ -207,7 +214,7 @@ body {
 
 @media (max-width: 600px) {
   .login-page .main-container .controlForm {
-    margin: 50px auto;
+    margin: 0 auto;
     padding: 0 20px;
   }
 
