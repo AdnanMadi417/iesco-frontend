@@ -1,9 +1,8 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
-  <div class="login-page">
+  <div class="registration-page" id="registration" >
     <div class="main-container">
       <div class="dic-color-one">
         <div class="info"><img src="../public/images/isco-logo.png" alt="">
@@ -20,6 +19,18 @@
         <div class="controlForm">
           <form>
             <div class="control-input">
+              <div class="input-group">
+                <label for="email">Your name</label>
+                <UInput
+                    color="rgb(28, 100, 188)"
+                    variant="outline"
+                    id="Admminemail"
+                    placeholder="Enter your name"
+                    required
+                    size="md"
+                    icon="line-md-person"
+                />
+              </div>
               <div class="input-group">
                 <label for="email">Your email</label>
                 <UInput
@@ -54,26 +65,17 @@
                       </label>
                     </div>
                     <div>
-                      <a href="#">
+                      <NuxtLink id="/login">
                         <UIcon
-                            name="ri-device-recover-line"
+                            name="solar-login-2-broken"
                             class="w-5 h-5"
                         />
-                        Recover password
-                      </a>
-                    </div>
-                    <div>
-                      <a href="#" >
-                        <UIcon
-                            name="material-symbols-tv-signin-outline-sharp"
-                            class="w-5 h-5"
-                        />
-                        Sign Up
-                      </a>
+                        Login
+                      </NuxtLink>
                     </div>
                   </div>
                 </div>
-                <button type="submit">SIGN IN</button>
+                <button type="submit">SIGN UP</button>
               </div>
             </div>
           </form>
@@ -88,51 +90,58 @@ body {
   height: 1000px;
 }
 
-.login-page .main-container {
+.registration-page .main-container {
   display: flex;
   flex-direction: row;
   width: 70%;
   margin: 5% 15%;
   box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 15px 12px;
 }
+@media (min-device-width: 768px) and (max-device-width: 1024px){
+  .registration-page .main-container {
+    display: block;
+    margin: 15px 10%;
+    width: 80%;
+  }
+}
 
 @media (max-width: 600px) {
-  .login-page .main-container {
+  .registration-page .main-container {
     display: block;
     margin: 0;
     width: 100%;
   }
 }
 
-.login-page .main-container .dic-color-one {
+.registration-page .main-container .dic-color-one {
   background-color: var(--main-color);
   flex: 30%;
 }
 
-.login-page .main-container .info {
+.registration-page .main-container .info {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
 }
 
-.login-page .main-container .info img {
+.registration-page .main-container .info img {
   width: 200px;
   height: 120px;
   margin: 50px auto;
 }
 
-.login-page .main-container .info h2 {
+.registration-page .main-container .info h2 {
   font-size: 24px;
   font-weight: normal;
   color: #eeeeee;
 }
 
-.login-page .main-container .info .educationIcon {
+.registration-page .main-container .info .educationIcon {
   font-size: 15rem;
 }
 
-.login-page .main-container .dic-color-two {
+.registration-page .main-container .dic-color-two {
   background-color: #eeeeee;
   flex: 40%;
   height: 600px;
@@ -147,7 +156,7 @@ body {
 }
 
 .dic-color-two .info-container .h2-one {
-  font-size: 5rem;
+  font-size: 3rem;
   color: var(--main-color);
   margin-left: 2rem;
   font-weight: lighter;
@@ -166,6 +175,10 @@ body {
   margin-top: -2.5rem;
   margin-left: 0;
   font-weight: normal;
+}
+
+.registration-page .main-container .control-input .options > div {
+  display: block;
 }
 
 @media (max-width: 600px) {
@@ -192,44 +205,44 @@ body {
 
 }
 
-.login-page .main-container .controlForm {
+.registration-page .main-container .controlForm {
   display: block;
   text-align: start;
   align-items: center;
-  margin: 40px auto;
+  margin: 0 auto;
 }
 
-.login-page .main-container .control-input {
+.registration-page .main-container .control-input {
   width: 70%;
   align-items: center;
   margin: 5% auto 0;
 }
 
 @media (max-width: 600px) {
-  .login-page .main-container .controlForm {
-    margin: 50px auto;
+  .registration-page .main-container .controlForm {
+    margin: 0 auto;
     padding: 0 20px;
   }
 
-  .login-page .main-container .control-input {
+  .registration-page .main-container .control-input {
     width: 80%;
   }
 }
 
-.login-page .main-container .input-group .options {
+.registration-page .main-container .input-group .options {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
 
-.login-page label,
-.login-page a {
+.registration-page label,
+.registration-page a {
   font-size: 18px;
   font-weight: normal;
   color: var(--main-color);
 }
 
-.login-page button {
+.registration-page button {
   padding: 7px;
   font-weight: normal;
   border-radius: 15px;
@@ -238,7 +251,7 @@ body {
   color: var(--main-color);
 }
 
-.login-page button:hover {
+.registration-page button:hover {
   background-color: var(--main-color);
   color: #eeeeee;
 }

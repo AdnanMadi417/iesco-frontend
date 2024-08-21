@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="login-page">
+  <div class="login-page" id="login">
     <div class="main-container">
       <div class="dic-color-one">
         <div class="info"><img src="../public/images/isco-logo.png" alt="">
@@ -20,18 +20,6 @@
         <div class="controlForm">
           <form>
             <div class="control-input">
-              <div class="input-group">
-                <label for="email">Your name</label>
-                <UInput
-                    color="rgb(28, 100, 188)"
-                    variant="outline"
-                    id="Admminemail"
-                    placeholder="Enter your name"
-                    required
-                    size="md"
-                    icon="line-md-person"
-                />
-              </div>
               <div class="input-group">
                 <label for="email">Your email</label>
                 <UInput
@@ -66,17 +54,26 @@
                       </label>
                     </div>
                     <div>
-                      <a href="#" >
+                      <a href="#">
                         <UIcon
-                            name="solar-login-2-broken"
+                            name="ri-device-recover-line"
                             class="w-5 h-5"
                         />
-                        Login
+                        Recover password
                       </a>
                     </div>
+                    <div>
+                      <NuxtLink to="/registeration">
+                        <UIcon
+                            name="material-symbols-tv-signin-outline-sharp"
+                            class="w-5 h-5"
+                        />
+                        Sign Up
+                      </NuxtLink>
+                    </div>
                   </div>
-                  </div>
-                <button type="submit">SIGN UP</button>
+                </div>
+                <button type="submit">SIGN IN</button>
               </div>
             </div>
           </form>
@@ -95,8 +92,16 @@ body {
   display: flex;
   flex-direction: row;
   width: 70%;
-  margin: 5% 15%;
+  margin: 3% 15%;
   box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 15px 12px;
+}
+
+@media (min-device-width: 768px) and (max-device-width: 1024px) {
+  .login-page .main-container {
+    display: block;
+    margin: 15px 10%;
+    width: 80%;
+  }
 }
 
 @media (max-width: 600px) {
@@ -150,16 +155,16 @@ body {
 }
 
 .dic-color-two .info-container .h2-one {
-  font-size: 5rem;
+  font-size: 4rem;
   color: var(--main-color);
   margin-left: 2rem;
   font-weight: lighter;
 }
 
 .dic-color-two .info-container .h2-two {
-  font-size: 5rem;
+  font-size: 4rem;
   color: var(--main-color);
-  margin-top: -3.5rem;
+  margin-top: -3rem;
   margin-left: 3rem;
 }
 
@@ -169,10 +174,6 @@ body {
   margin-top: -2.5rem;
   margin-left: 0;
   font-weight: normal;
-}
-
-.login-page .main-container .control-input .options > div{
-  display: block;
 }
 
 @media (max-width: 600px) {
@@ -203,7 +204,7 @@ body {
   display: block;
   text-align: start;
   align-items: center;
-  margin: 0 auto;
+  margin: 40px auto;
 }
 
 .login-page .main-container .control-input {
@@ -214,7 +215,7 @@ body {
 
 @media (max-width: 600px) {
   .login-page .main-container .controlForm {
-    margin: 0 auto;
+    margin: 50px auto;
     padding: 0 20px;
   }
 

@@ -1,37 +1,7 @@
 <script setup lang="ts">
-import {ref} from "vue";
+
 
 let levelsQuestions = ref([
-  {
-    label: "University Name",
-  },
-  {
-    label: "University Name",
-  },
-  {
-    label: "University Name",
-  },
-  {
-    label: "University Name",
-  },
-  {
-    label: "University Name",
-  },
-  {
-    label: "University Name",
-  },
-  {
-    label: "University Name",
-  },
-  {
-    label: "University Name",
-  },
-  {
-    label: "University Name",
-  },
-  {
-    label: "University Name",
-  },
   {
     label: "University Name",
   },
@@ -40,19 +10,27 @@ let levelsQuestions = ref([
   },
 ])
 
+import { ref } from 'vue';
+
+const isVisible = ref(true);
+
+function hidePopup() {
+  isVisible.value = false;
+}
+
+
 </script>
 
 <template>
-  <div>
-    <div   class="popupButtonExted">
-      <a class="button" href="#allStudentInfo">Extend</a>
+  <div  :class="['popup', { hidden: !isVisible }]" @click="hidePopup">
+    <div>
+      <button class="button">Extend</button>
     </div>
-
     <div id="allStudentInfo" class="popupStudentInfo">
       <div class="StudentInfoContainer">
         <div>
           <h2>Welcome back</h2>
-          <h2><a class="close" href="#">&times;</a></h2>
+          <h2><a class="close-btn close" @click="hidePopup" id="closeBtn" href="#">&times;</a></h2>
           <hr class="borderHR">
         </div>
         <div class="content" v-for="question in levelsQuestions">
@@ -71,6 +49,11 @@ let levelsQuestions = ref([
 
 
 <style scoped>
+
+.popup {
+  position: relative;
+  z-index: 1000;
+}
 
 .button {
   font-size: 1em;
@@ -100,9 +83,14 @@ let levelsQuestions = ref([
   opacity: 0;
 }
 
-.popupStudentInfo:target {
+.popupStudentInfo {
   visibility: visible;
   opacity: 1;
+}
+
+.popup .hidden{
+  opacity: 0;
+  visibility: hidden;
 }
 
 .StudentInfoContainer {
@@ -111,7 +99,7 @@ let levelsQuestions = ref([
   background: #fff;
   border-radius: 10px;
   width: 70%;
-  height:calc(100% - 140px );
+  height: calc(100% - 140px);
   overflow-y: auto;
   position: relative;
   transition: all 5s ease-in-out;

@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import axios from "axios";
-
+import { ref, computed, onMounted } from 'vue';
 const columns = [
   {
     key: "id",
     label: "ID",
+  },
+  {
+    key:"name",
+    label: "Name",
+    sortable: true
   },
   {
     key: 'passport',
@@ -32,17 +37,28 @@ const columns = [
   },
   {
     key: 'uniName',
-    label: 'University'
+    label: 'University',
+    sortable: true
   },
   {
     key: "state",
     label: "State",
+    sortable: true
   },
   {
-    key: "allStudentInfo",
-    label: "Student Info"
+    label: "Extend",
+    key: "extend"
   }
 ]
+
+const studentDetails = ref([])
+
+const showDetailsPopup = ref(false)
+
+const showStudentDetails = (row) => {
+  showDetailsPopup.value = true
+}
+// Pat Swift
 
 const detailsToShow = [
   "passport",
@@ -56,77 +72,20 @@ const detailsToShow = [
   "allStudentInfo"
 ]
 
+const q = ref('');
 
-const studentDetails = [
-  {
-    passport: "87698983",
-    name: 'Tom Cook',
-    educationLevel: 'Director of Product',
-    email: 'tom.cook@example.com',
-    nationality: 'Palestinian',
-    whatsAppNumber: "d34567897",
-    gender: 'Male',
-    uniName: "AIU",
-    botton: "Extend"
-  },
-  {
-    passport: "87698983",
-    name: 'Tom Cook',
-    educationLevel: 'Director of Product',
-    email: 'tom.cook@example.com',
-    nationality: 'Palestinian',
-    whatsAppNumber: "d34567897",
-    gender: 'Male',
-    uniName: "AIU",
-  },
-  {
-    passport: "87698983",
-    name: 'Tom Cook',
-    educationLevel: 'Director of Product',
-    email: 'tom.cook@example.com',
-    nationality: 'Palestinian',
-    whatsAppNumber: "d34567897",
-    gender: 'Male',
-    uniName: "AIU",
-  },
-  {
-    passport: "87698983",
-    name: 'Tom Cook',
-    educationLevel: 'Director of Product',
-    email: 'tom.cook@example.com',
-    nationality: 'Palestinian',
-    whatsAppNumber: "d34567897",
-    gender: 'Male',
-    uniName: "AIU",
-  },
-  {
-    passport: "87698983",
-    name: 'Tom Cook',
-    educationLevel: 'Director of Product',
-    email: 'tom.cook@example.com',
-    nationality: 'Palestinian',
-    whatsAppNumber: "d34567897",
-    gender: 'Male',
-    uniName: "AIU",
-  }
-]
-
+const filteredStudentDetails = computed(() => {
+  if (!q.value) return studentDetails.value;
+  return studentDetails.value.filter(student => {
+    return Object.keys(student).some(key =>
+        String(student[key]).toLowerCase().includes(q.value.toLowerCase())
+    );
+  });
+});
 
 onMounted(async () => {
   const response = await axios.get("https://66c21796f83fffcb587b22a8.mockapi.io/api/v1/students ")
-  console.log(response.data)
-
-  for (let i = 0; i < response.data.length; i++) {
-    const studentDetails = response.data[i]
-    for (let j = 0; j < detailsToShow.length; j++) {
-      const keyStudentDetails = detailsToShow[j]
-      if (keyStudentDetails in studentDetails) {
-        console.log(response.data[i]);
-      } else {
-        continue;
-      }
-    }
-  }
+  studentDetails.value = response.data;
 })
 
 </script>
@@ -134,6 +93,7 @@ onMounted(async () => {
 <template>
   <div class="main-container">
     <div class="interContainer">
+      <AllStudentInformation v-if="showDetailsPopup"/>
       <dashboard-analysts/>
       <div class="DashboardDiv">
         <div class="headerAdminPage">
@@ -145,6 +105,7 @@ onMounted(async () => {
                 color="rgb(28, 100, 188)"
                 variant="outline"
                 icon="iconoir-doc-search"
+                v-model="q"
                 placeholder="Search..."
             />
           </div>
@@ -153,8 +114,14 @@ onMounted(async () => {
           <UTable
               class="table"
               :columns="columns"
-              :rows="studentDetails"
-          />
+              :rows="filteredStudentDetails"
+          >
+            <template #extend-data="{ row }">
+              <div class="popupButtonExted">
+                <a class="button" @click="showStudentDetails(row)">Extend</a>
+              </div>
+            </template>
+          </UTable>
         </div>
       </div>
     </div>
@@ -162,6 +129,22 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+.button {
+  font-size: 1em;
+  padding: 5px;
+  color: var(--main-color);
+  border: 2px solid var(--main-color);
+  border-radius: 20px/50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.button:hover {
+  background: var(--main-color);
+  color: #eeeeee;
+}
+
 .main-container {
   margin: 50px;
 }
@@ -235,13 +218,13 @@ onMounted(async () => {
   padding: 30px 0;
 }
 
-  .container .DashboardDiv {
-    flex: 100%;
-  }
+.container .DashboardDiv {
+  flex: 100%;
+}
 
-  .container .DashboardDiv .dashboardContainer h2 {
-    font-size: 18px;
-  }
+.container .DashboardDiv .dashboardContainer h2 {
+  font-size: 18px;
+}
 
 .adminSettingDiv > img {
   position: relative;
