@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import axios from "axios";
-import { ref, computed, onMounted } from 'vue';
+import {computed, onMounted, ref} from 'vue';
+
 const columns = [
   {
     key: "id",
     label: "ID",
   },
   {
-    key:"name",
+    key: "name",
     label: "Name",
     sortable: true
   },
@@ -20,11 +21,7 @@ const columns = [
     label: 'Education Level',
     sortable: true
   },
-  {
-    key: 'gender',
-    label: 'Gender',
-    sortable: true
-  },
+
   {
     key: 'email',
     label: 'Email',
@@ -118,7 +115,7 @@ onMounted(async () => {
           >
             <template #extend-data="{ row }">
               <div class="popupButtonExted">
-                <a class="button" @click="showStudentDetails(row)">Extend</a>
+                <a class="button" @click="extendDetails(student.id)">Extend</a>
               </div>
             </template>
           </UTable>

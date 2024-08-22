@@ -1,30 +1,40 @@
 <script setup lang="ts">
+import {computed, onMounted, ref} from 'vue';
+import axios from 'axios';
 
+const levelsQuestions = ref([
+  {label: 'Passport Number', key: 'passport'},
+  {label: 'Name', key: 'name'},
+  {label: 'Age', key: 'age'},
+  {label: 'Email', key: 'email'},
+]);
 
-let levelsQuestions = ref([
-  {
-    label: "University Name",
-  },
-  {
-    label: "mohammed  Name",
-  },
-])
+const studentDetails = ref([]);
+const selectedStudentId = ref<number | null>(null);
+const isVisible = ref(false);
 
-import { ref } from 'vue';
-
-const isVisible = ref(true);
+onMounted(async () => {
+  const response = await axios.get("https://66c21796f83fffcb587b22a8.mockapi.io/api/v1/students");
+  studentDetails.value = response.data;
+});
 
 function hidePopup() {
   isVisible.value = false;
 }
 
-
+function extendDetails(studentId: number) {
+  selectedStudentId.value = studentId;
+  isVisible.value = true;
+}
+computed(() => {
+  return studentDetails.value.find(student => student.id === selectedStudentId.value);
+});
 </script>
 
 <template>
-  <div  :class="['popup', { hidden: !isVisible }]" @click="hidePopup">
-    <div>
-      <button class="button">Extend</button>
+  <div :class="['popup', { hidden: !isVisible }]" @click="hidePopup">
+    <div v-for="student in studentDetails">
+      <button @click="extendDetails()" class="button">Extend</button>
     </div>
     <div id="allStudentInfo" class="popupStudentInfo">
       <div class="StudentInfoContainer">
@@ -38,7 +48,7 @@ function hidePopup() {
             <label>{{ question.label }}</label>
           </div>
           <div class="info">
-            <span>this is adnan</span>
+            <span v-if="studentDetails.length > 0">: {{ studentDetails[0][question.key] }}</span>
           </div>
           <hr>
         </div>
@@ -88,7 +98,7 @@ function hidePopup() {
   opacity: 1;
 }
 
-.popup .hidden{
+.popup .hidden {
   opacity: 0;
   visibility: hidden;
 }
