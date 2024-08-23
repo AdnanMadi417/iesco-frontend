@@ -47,9 +47,9 @@ const educationLevel = [
 let levelsQuestions = ref({
   HS: [
     {
-      label: "University Name or School Name",
+      label: "school Name University Name",
       type: "text",
-      id: "localNumber",
+      id: "schoolName",
       color: "rgb(28, 100, 188)",
       icon: "fa-solid-university",
       placeholder: "Enter your University Name",
@@ -73,7 +73,7 @@ let levelsQuestions = ref({
     {
       label: "Certified Original Copy of English Proficiency Qualification (MUET, TOEFL, IELTS, or Equivalent, if available)",
       type: "file",
-      id: "EnglishQualificationFile",
+      id: "englishQualificationFile",
       color: "rgb(28, 100, 188)",
       icon: "i-heroicons-folder",
       placeholder: "(MUET, TOEFL, IELTS, or Equivalent, if available):",
@@ -92,7 +92,7 @@ let levelsQuestions = ref({
     {
       label: "Current University Name",
       type: "text",
-      id: "CurrentUniversityName",
+      id: "currentUniversityName",
       color: "rgb(28, 100, 188)",
       icon: "fa-solid-university",
       placeholder: "Enter your Current University Name",
@@ -100,7 +100,7 @@ let levelsQuestions = ref({
     {
       label: "Number of Semesters Remaining Until Graduation",
       type: "text",
-      id: "NumSemToGraduation",
+      id: "numSemToGraduation",
       color: "rgb(28, 100, 188)",
       icon: "system-uicons:book",
       placeholder: "Number of Semesters Remaining Until Graduation",
@@ -108,7 +108,7 @@ let levelsQuestions = ref({
     {
       label: "Fees per Semester",
       type: "text",
-      id: "FeesperSemester",
+      id: "feesPerSemester",
       color: "rgb(28, 100, 188)",
       icon: "solar-money-bag-broken",
       placeholder: "Fees per Semester",
@@ -134,7 +134,6 @@ let levelsQuestions = ref({
       id: "tuitionFeesStatement",
       color: "rgb(28, 100, 188)",
       icon: "i-heroicons-folder",
-      placeholder: "Tuition Fees Statement (latest from university) :"
     },
     {
       label: "Confirmation Letter from University (latest date)",
@@ -142,7 +141,6 @@ let levelsQuestions = ref({
       id: "confirmationLetter",
       color: "rgb(28, 100, 188)",
       icon: "i-heroicons-folder",
-      placeholder: "Confirmation Letter from University (latest date)"
     },
     {
       label: "Offer Letter",
@@ -150,7 +148,6 @@ let levelsQuestions = ref({
       id: "OfferLetterFile",
       color: "rgb(28, 100, 188)",
       icon: "i-heroicons-folder",
-      placeholder: "Offer Letter "
     },
     {
       label: "Other supporting document ",
@@ -173,10 +170,9 @@ let levelsQuestions = ref({
     {
       label: "Name of Graduate University",
       type: "text",
-      id: "NameGraduateUniversity",
+      id: "nameGraduateUniversity",
       color: "rgb(28, 100, 188)",
       icon: "fa-solid-university",
-      placeholder: "Name of Graduate University",
     },
     {
       label: "Academic Specialization",
@@ -189,7 +185,7 @@ let levelsQuestions = ref({
     {
       label: "Fees per Semester",
       type: "text",
-      id: "FeesperSemester",
+      id: "feesperSemester",
       color: "rgb(28, 100, 188)",
       icon: "solar-money-bag-broken",
       placeholder: "Fees per Semester",
@@ -200,7 +196,6 @@ let levelsQuestions = ref({
       id: "passportFile",
       color: "rgb(28, 100, 188)",
       icon: "i-heroicons-folder",
-      placeholder: "Passport 1st page "
     },
     {
       label: "A Paper from the Supervisor (for Master’s and Doctoral levels)",
@@ -233,7 +228,7 @@ let levelsQuestions = ref({
     {
       label: "Other supporting document",
       type: "file",
-      id: "OtherSupportingFile",
+      id: "otherSupportingFile",
       color: "rgb(28, 100, 188)",
       icon: "i-heroicons-folder",
     }
@@ -273,7 +268,7 @@ const educationLevelSelected = ref("EL");
         <div class="container">
           <form @submit.prevent="handleSubmit">
             <div class="form-row">
-              <div class="form-group " id="arabicName">
+              <div class="form-group ">
                 <label for="arabicName">Student's name in Arabic</label>
                 <UInput
                     id="arabicName"
@@ -285,7 +280,7 @@ const educationLevelSelected = ref("EL");
                     placeholder="Enter your Arabic name"
                 />
               </div>
-              <div class="form-group" id="englishName">
+              <div class="form-group">
                 <label for="Englishname">Student's name in English</label>
                 <UInput
                     type="text"
@@ -298,7 +293,7 @@ const educationLevelSelected = ref("EL");
                     placeholder="Enter your English name"
                 />
               </div>
-              <div class="form-group" id="passportNumber">
+              <div class="form-group" >
                 <label for="passportNumber">Passport Number in English</label>
                 <UInput
                     type="text"
@@ -311,7 +306,7 @@ const educationLevelSelected = ref("EL");
                     placeholder="67710323"
                 />
               </div>
-              <div class="form-group" id="emailAddress">
+              <div class="form-group">
                 <label for="emailAddress">Student's email address</label>
                 <UInput
                     type="email"
@@ -324,7 +319,7 @@ const educationLevelSelected = ref("EL");
                     placeholder="emailAddress@gmail.com"
                 />
               </div>
-              <div class="form-group" id="malaysiainAddress">
+              <div class="form-group">
                 <label for="malaysiainAddress">Address in Malaysia</label>
                 <UInput
                     type="address"
@@ -337,7 +332,7 @@ const educationLevelSelected = ref("EL");
                     placeholder="Kuala Lapmur Ampang"
                 />
               </div>
-              <div class="form-group" id="nationality">
+              <div class="form-group" >
                 <label for="nationality">Your Nationality:</label>
                 <UInputMenu
                     id="nationality "
@@ -350,7 +345,7 @@ const educationLevelSelected = ref("EL");
                     placeholder="Palestinian"
                 />
               </div>
-              <div class="form-group" id="localNumber">
+              <div class="form-group">
                 <label for="localNumber">Local Number </label>
                 <UInput
                     type="text"
@@ -363,7 +358,7 @@ const educationLevelSelected = ref("EL");
                     placeholder="Enter your local Number"
                 />
               </div>
-              <div class="form-group" id="whatsAppNumber">
+              <div class="form-group">
                 <label for="whatsAppNumber">whatsApp Number </label>
                 <UInput
                     type="text"

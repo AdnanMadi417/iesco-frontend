@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import axios from "axios";
 import {computed, onMounted, ref} from 'vue';
+import PopupContent from "~/components/PopupContent.vue";
 
 const columns = [
   {
@@ -51,23 +52,12 @@ const columns = [
 const studentDetails = ref([])
 
 const showDetailsPopup = ref(false)
+const currentStudentToShow = ref()
 
 const showStudentDetails = (row) => {
+  currentStudentToShow.value = row;
   showDetailsPopup.value = true
 }
-// Pat Swift
-
-const detailsToShow = [
-  "passport",
-  "name",
-  "educationLevel",
-  "email",
-  "nationality",
-  "whatsAppNumber",
-  "gender",
-  "uniName",
-  "allStudentInfo"
-]
 
 const q = ref('');
 
@@ -85,12 +75,39 @@ onMounted(async () => {
   studentDetails.value = response.data;
 })
 
+const isOpen = ref(false)
+
 </script>
 
 <template>
   <div class="main-container">
     <div class="interContainer">
-      <AllStudentInformation v-if="showDetailsPopup"/>
+      <UModal v-model="showDetailsPopup">
+        <UCard :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
+          <template #header>
+            <div class="popupHedaer h-8" >
+              <h2>
+                Welcome to the IESCO Scholarship.
+              </h2>
+            </div>
+          </template>
+
+          <Placeholder class="h-32" >
+            <PopupContent :student-info="currentStudentToShow"/>
+          </Placeholder>
+
+          <template #footer>
+            <div class="popupFooter h-8 " >
+              <h2>
+                Thank you
+                <span>
+                  <UIcon name="circum-face-smile" width="1.2em" height="1.2em" />
+                </span>
+              </h2>
+            </div>
+          </template>
+        </UCard>
+      </UModal>
       <dashboard-analysts/>
       <div class="DashboardDiv">
         <div class="headerAdminPage">
@@ -115,7 +132,7 @@ onMounted(async () => {
           >
             <template #extend-data="{ row }">
               <div class="popupButtonExted">
-                <a class="button" @click="extendDetails(student.id)">Extend</a>
+                <a class="button" @click="showStudentDetails(row)">Extend</a>
               </div>
             </template>
           </UTable>
@@ -253,5 +270,26 @@ onMounted(async () => {
   display: block;
   width: calc(100% - 100px);
   overflow-x: auto;
+}
+
+.popupFooter {
+  font-size: 20px ;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: var(--main-color);
+  text-align: center;
+}
+
+.popupHedaer {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  color: var(--main-color);
+}
+
+
+.popupFooter  span{
+  width: 1.5rem;
+  height: 1.5rem;
 }
 </style>

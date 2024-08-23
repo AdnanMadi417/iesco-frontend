@@ -10,7 +10,6 @@
         <Header/>
         <ProjectDetails/>
         <FooterAdminPage/>
-        <AllStudentInformation/>
       </div>
     </div>
   </div>
