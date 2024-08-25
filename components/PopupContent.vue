@@ -10,27 +10,31 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="mdi-user-outline" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="mdi-user-outline"/>
+          </span>
           Student ID
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.id}}
+          {{ studentInfo.id }}
         </label>
       </div>
     </div>
-      <!-- student Id    -->
+    <!-- student Id    -->
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="mdi-user-outline" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="mdi-user-outline"/>
+          </span>
           Arabic Name
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.ArabicName}}
+          {{ studentInfo.ArabicName }}
         </label>
       </div>
     </div>
@@ -38,13 +42,15 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="mdi-user-outline" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="mdi-user-outline"/>
+          </span>
           Eglish Name
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.englishName}}
+          {{ studentInfo.englishName }}
         </label>
       </div>
     </div>
@@ -52,13 +58,15 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="mdi-passport" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="mdi-passport"/>
+          </span>
           Passport Number
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.passportNumber}}
+          {{ studentInfo.passportNumber }}
         </label>
       </div>
     </div>
@@ -66,13 +74,15 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="mdi-email" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="mdi-email"/>
+          </span>
           Email Address
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.emailAddress}}
+          {{ studentInfo.emailAddress }}
         </label>
       </div>
     </div>
@@ -80,13 +90,15 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="basil-location-outline" class="w-5 h-5" />
+          <span>
+            <UIcon name="basil-location-outline"/>
+          </span>
           Address In Malaysia
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.malaysiainAddress}}
+          {{ studentInfo.malaysiainAddress }}
         </label>
       </div>
     </div>
@@ -94,13 +106,15 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="mdi-world" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="mdi-world"/>
+          </span>
           Nationality
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.nationality}}
+          {{ studentInfo.nationality }}
         </label>
       </div>
     </div>
@@ -108,41 +122,47 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="ic-outline-phone" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="ic-outline-phone"/>
+          </span>
           Local Number
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.localNumber}}
+          {{ studentInfo.localNumber }}
         </label>
       </div>
     </div>
     <!-- student  localNumber   -->
     <div class="controlPopupContent">
-    <div >
-      <label>
-        <UIcon name="ic-outline-phone" class="w-5 h-5" />
-        WhatsApp Number
-      </label>
+      <div>
+        <label>
+        <span class="icons">
+          <UIcon name="ic-outline-phone"/>
+        </span>
+          WhatsApp Number
+        </label>
+      </div>
+      <div>
+        <label>
+          {{ studentInfo.whatsAppNumber }}
+        </label>
+      </div>
     </div>
-    <div>
-      <label>
-        {{studentInfo.whatsAppNumber}}
-      </label>
-    </div>
-  </div>
     <!-- student  whatsappNumber   -->
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="teenyicons-id-outline" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="teenyicons-id-outline"/>
+          </span>
           Marital Status
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.maritalStatus}}
+          {{ studentInfo.maritalStatus }}
         </label>
       </div>
     </div>
@@ -150,13 +170,15 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="mdi-user-outline" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="mdi-user-outline" class="w-5 h-5"/>
+          </span>
           Gender
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.gender}}
+          {{ studentInfo.gender }}
         </label>
       </div>
     </div>
@@ -164,13 +186,15 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="uil-university" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="uil-university"/>
+          </span>
           <span class="importantInfo"> Education Level</span>
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.educationLevel}}
+          {{ studentInfo.educationLevel }}
         </label>
       </div>
     </div>
@@ -178,13 +202,15 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="uil-university" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="uil-university"/>
+          </span>
           School Name
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.schoolName}}
+          {{ studentInfo.schoolName }}
         </label>
       </div>
     </div>
@@ -192,13 +218,15 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="uil-university" class="w-5 h-5" />
+          <span>
+            <UIcon name="uil-university"/>
+          </span>
           <span class="importantInfo">Current University Name</span>
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.currentUniversityName}}
+          {{ studentInfo.currentUniversityName }}
         </label>
       </div>
     </div>
@@ -206,13 +234,15 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="uil-university" class="w-5 h-5" />
+          <span>
+            <UIcon name="uil-university"/>
+          </span>
           Name of Graduate University
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.nameofGraduateUniversity}}
+          {{ studentInfo.nameofGraduateUniversity }}
         </label>
       </div>
     </div>
@@ -220,13 +250,15 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="uil-university" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="uil-university"/>
+          </span>
           Semesters Remaining Until Graduation
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.numSemToGraduation}}
+          {{ studentInfo.numSemToGraduation }}
         </label>
       </div>
     </div>
@@ -234,13 +266,15 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="uil-university" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="uil-university"/>
+          </span>
           Fees Per Semester
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.feesPerSemester}}
+          {{ studentInfo.feesPerSemester }}
         </label>
       </div>
     </div>
@@ -248,13 +282,15 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="uil-university" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="uil-university"/>
+          </span>
           Tuition Fees Statement
         </label>
       </div>
       <div>
         <label>
-          {{studentInfo.tuitionFeesStatement}}
+          {{ studentInfo.tuitionFeesStatement }}
         </label>
       </div>
     </div>
@@ -263,16 +299,18 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="i-heroicons-folder"/>
+          </span>
           Passport File
         </label>
       </div>
       <div>
         <label>
           <span>
-            <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+            <UIcon name="i-heroicons-folder" class="w-5 h-5"/>
           </span>
-          {{studentInfo.passportFile}}
+          {{ studentInfo.passportFile }}
         </label>
       </div>
     </div>
@@ -280,16 +318,18 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="i-heroicons-folder"/>
+          </span>
           High School Academic Certificate
         </label>
       </div>
       <div>
         <label>
           <span>
-            <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+            <UIcon name="i-heroicons-folder" class="w-5 h-5"/>
           </span>
-          {{studentInfo.highSchoolFile}}
+          {{ studentInfo.highSchoolFile }}
         </label>
       </div>
     </div>
@@ -297,16 +337,18 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="i-heroicons-folder" class="w-5 h-5" />
-          English Qualification  File
+          <span class="icons">
+            <UIcon name="i-heroicons-folder"/>
+          </span>
+          English Qualification File
         </label>
       </div>
       <div>
         <label>
           <span>
-            <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+            <UIcon name="i-heroicons-folder" class="w-5 h-5"/>
           </span>
-          {{studentInfo.englishQualificationFile}}
+          {{ studentInfo.englishQualificationFile }}
         </label>
       </div>
     </div>
@@ -314,16 +356,18 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="i-heroicons-folder"/>
+          </span>
           Candidate Progress Report
         </label>
       </div>
       <div>
         <label>
           <span>
-            <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+            <UIcon name="i-heroicons-folder" class="w-5 h-5"/>
           </span>
-          {{studentInfo.candidateProgressReport}}
+          {{ studentInfo.candidateProgressReport }}
         </label>
       </div>
     </div>
@@ -331,16 +375,18 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="i-heroicons-folder"/>
+          </span>
           Confirmation Letter from University
         </label>
       </div>
       <div>
         <label>
           <span>
-            <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+            <UIcon name="i-heroicons-folder" class="w-5 h-5"/>
           </span>
-          {{studentInfo.confirmationLetter}}
+          {{ studentInfo.confirmationLetter }}
         </label>
       </div>
     </div>
@@ -348,16 +394,18 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="i-heroicons-folder"/>
+          </span>
           Offer Letter File
         </label>
       </div>
       <div>
         <label>
           <span>
-            <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+            <UIcon name="i-heroicons-folder" class="w-5 h-5"/>
           </span>
-          {{studentInfo.OfferLetterFile}}
+          {{ studentInfo.OfferLetterFile }}
         </label>
       </div>
     </div>
@@ -365,16 +413,18 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="i-heroicons-folder"/>
+          </span>
           Academic Specialization File
         </label>
       </div>
       <div>
         <label>
           <span>
-            <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+            <UIcon name="i-heroicons-folder" class="w-5 h-5"/>
           </span>
-          {{studentInfo.academicSpecializationFile}}
+          {{ studentInfo.academicSpecializationFile }}
         </label>
       </div>
     </div>
@@ -382,16 +432,18 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+          <UIcon name="i-heroicons-folder" class="w-5 h-5"/>
           A Paper from the Supervisor File
         </label>
       </div>
       <div>
         <label>
           <span>
-            <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+            <span class="icons">
+            <UIcon name="i-heroicons-folder"/>
           </span>
-          {{studentInfo.paperFromSupervisor}}
+          </span>
+          {{ studentInfo.paperFromSupervisor }}
         </label>
       </div>
     </div>
@@ -399,16 +451,18 @@ console.log(props)
     <div class="controlPopupContent">
       <div>
         <label>
-          <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+          <span class="icons">
+            <UIcon name="i-heroicons-folder"/>
+          </span>
           Other supporting document Files
         </label>
       </div>
       <div>
         <label>
           <span>
-            <UIcon name="i-heroicons-folder" class="w-5 h-5" />
+            <UIcon name="i-heroicons-folder" class="w-5 h-5"/>
           </span>
-          {{studentInfo.otherSupportingFile}}
+          {{ studentInfo.otherSupportingFile }}
         </label>
       </div>
     </div>
@@ -421,6 +475,13 @@ console.log(props)
   display: block;
 }
 
+div label > span {
+  color: var(--main-color);
+  font-size: 20px;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
 .controlPopupContent {
   display: flex;
   flex-direction: row;
@@ -428,25 +489,31 @@ console.log(props)
   font-size: 16px;
 }
 
-.controlPopup .controlPopupContent > div:first-child{
+.controlPopup .controlPopupContent > div:first-child {
   flex: 50%;
-  padding: 10px ;
-}
-.controlPopup .controlPopupContent > div:last-child{
-  flex: 20%;
-  padding: 10px ;
+  padding: 10px;
 }
 
-.controlPopup .controlPopupContent > div label{
+.controlPopup .controlPopupContent > div:last-child {
+  flex: 20%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.controlPopup .controlPopupContent > div:last-child:hover {
+  background-color: #eeeeee;
+}
+
+.controlPopup .controlPopupContent > div label {
   padding: 10px 0;
-  font-size: 1em;
+  font-size: 15px;
   font-weight: normal;
   margin: 0 15px;
 }
 
 .importantInfo {
-  font-weight:bold;
-  color:red ;
+  font-weight: normal;
+  color: var(--main-color);
 }
 
 .controlPopup .controlPopupContent > div:first-child {

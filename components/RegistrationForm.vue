@@ -2,23 +2,39 @@
 import {ref} from 'vue';
 
 const formData = ref({
-  arabicName: '',
-  englishName: '',
-  passportNumber: '',
-  email: '',
-  phone: '',
+  arabicName: '', englishName: '', passportNumber: '', emailAddress: '',
+  malaysiainAddress: '', nationality: '', localNumber: '', gender: '', selectedMaritalStatus: '', whatsAppNumber: '',
 });
 
 const handleSubmit = () => {
-  alert(`arabicName: ${formData.value.arabicName}, Name: ${formData.value.englishName},
-  passport Number: ${formData.value.passportNumber}`);
+  console.log(formData.value);
+
+};
+const userNationalityInput = ref('');
+const selectedNationality = ref('');
+
+const nationality = [
+  'Algerian', 'Egyptian', 'Libyan', 'Moroccan', 'Sudanese', 'Tunisian', 'Mauritanian', 'Bahraini',
+  'Kuwaiti', 'Omani', 'Qatari', 'Saudi Arabian', 'Emirati', 'Yemeni', 'Jordanian', 'Lebanese',
+  'Palestinian', 'Syrian', 'Somali', 'Djiboutian', 'Comorian'
+];
+
+const filteredNationalities = computed(() => {
+  if (!userNationalityInput.value) {
+    return nationality;
+  }
+  return nationality.filter(n => n.toLowerCase().startsWith(userNationalityInput.value.toLowerCase()));
+});
+
+const selectFirstMatch = () => {
+  const firstMatch = filteredNationalities.value[0];
+  if (firstMatch) {
+    selectedNationality.value = firstMatch;
+    userNationalityInput.value = firstMatch;
+  }
 };
 
-const nationality = ["Algerian", "Egyptian", "Libyan", "Moroccan", "Sudanese", "Tunisian", "Mauritanian", "Bahraini",
-  "Kuwaiti", "Omani", "Qatari", "Saudi Arabian", "Emirati", "Yemeni", "Jordanian", "Lebanese", "Palestinian", "Syrian", "Somali",
-  "Djiboutian", "Comorian"];
 
-const selected = ref(nationality[0])
 
 const educationLevel = [
   {
@@ -293,7 +309,7 @@ const educationLevelSelected = ref("EL");
                     placeholder="Enter your English name"
                 />
               </div>
-              <div class="form-group" >
+              <div class="form-group">
                 <label for="passportNumber">Passport Number in English</label>
                 <UInput
                     type="text"
@@ -332,23 +348,23 @@ const educationLevelSelected = ref("EL");
                     placeholder="Kuala Lapmur Ampang"
                 />
               </div>
-              <div class="form-group" >
+              <div class="form-group">
                 <label for="nationality">Your Nationality:</label>
                 <UInputMenu
-                    id="nationality "
-                    :options="nationality"
-                    v-model="selected"
+                    id="nationality"
+                    :options="filteredNationalities"
+                    v-model="userNationalityInput"
                     color=rgb(28, 100, 188)
                     variant="outline"
                     icon="tabler-world"
                     required
-                    placeholder="Palestinian"
+                    placeholder="Select Nationality"
+                    @keydown.enter.prevent="selectFirstMatch"
                 />
               </div>
               <div class="form-group">
                 <label for="localNumber">Local Number </label>
                 <UInput
-                    type="text"
                     id="localNumber"
                     v-model="formData.localNumber"
                     variant="outline"
@@ -381,7 +397,7 @@ const educationLevelSelected = ref("EL");
                       icon="solar-user-id-linear"
                       size="sm"
                       required
-                      v-model="selectedMaritalStatus"
+                      v-model="formData.selectedMaritalStatus"
                       placeholder="Marital Status"
                   />
                 </div>
@@ -399,34 +415,34 @@ const educationLevelSelected = ref("EL");
                     placeholder="Male or Female "
                 />
               </div>
-              <div class="form-group-file" id="educationLevelDiv">
-                <label for="conformationFile">Education Level </label>
-                <USelect
-                    id="educationLevel"
-                    :options="educationLevel"
-                    option-attribute="name"
-                    size="md"
-                    color=rgb(28, 100, 188)
-                    variant="outline"
-                    icon="fa-solid-university"
-                    required
-                    v-model="educationLevelSelected"
-                />
-                <div class="form-group-file">
-                  <div class="form-group-file" v-for="question in levelsQuestions[educationLevelSelected]">
-                    <label for="conformationFile">{{ question.label }}</label>
-                    <UInput
-                        :type="question.type"
-                        size="md"
-                        :color="question.color"
-                        variant="outline"
-                        :icon="question.icon"
-                        :placeholder="question.placeholder"
-                        required
-                    />
-                  </div>
-                </div>
-              </div>
+              <!--              <div class="form-group-file" id="educationLevelDiv">-->
+              <!--                <label for="conformationFile">Education Level </label>-->
+              <!--                <USelect-->
+              <!--                    id="educationLevel"-->
+              <!--                    :options="educationLevel"-->
+              <!--                    option-attribute="name"-->
+              <!--                    size="md"-->
+              <!--                    color=rgb(28, 100, 188)-->
+              <!--                    variant="outline"-->
+              <!--                    icon="fa-solid-university"-->
+              <!--                    required-->
+              <!--                    v-model="educationLevelSelected"-->
+              <!--                />-->
+              <!--                <div class="form-group-file">-->
+              <!--                  <div class="form-group-file" v-for="question in levelsQuestions[educationLevelSelected]">-->
+              <!--                    <label for="conformationFile">{{ question.label }}</label>-->
+              <!--                    <UInput-->
+              <!--                        :type="question.type"-->
+              <!--                        size="md"-->
+              <!--                        :color="question.color"-->
+              <!--                        variant="outline"-->
+              <!--                        :icon="question.icon"-->
+              <!--                        :placeholder="question.placeholder"-->
+              <!--                        required-->
+              <!--                    />-->
+              <!--                  </div>-->
+              <!--                </div>-->
+              <!--              </div>-->
             </div>
             <button class="subBotton" type="submit">Submit</button>
           </form>

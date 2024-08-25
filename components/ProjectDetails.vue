@@ -82,62 +82,57 @@ const isOpen = ref(false)
 <template>
   <div class="main-container">
     <div class="interContainer">
-      <UModal v-model="showDetailsPopup">
-        <UCard :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
-          <template #header>
-            <div class="popupHedaer h-8" >
-              <h2>
-                Welcome to the IESCO Scholarship.
-              </h2>
-            </div>
-          </template>
-
-          <Placeholder class="h-32" >
-            <PopupContent :student-info="currentStudentToShow"/>
-          </Placeholder>
-
-          <template #footer>
-            <div class="popupFooter h-8 " >
-              <h2>
-                Thank you
-                <span>
-                  <UIcon name="circum-face-smile" width="1.2em" height="1.2em" />
-                </span>
-              </h2>
-            </div>
-          </template>
-        </UCard>
-      </UModal>
-      <dashboard-analysts/>
-      <div class="DashboardDiv">
-        <div class="headerAdminPage">
-          <div class="projectName">
-            <h2>Welcome back to IESCO Scholarship System</h2>
-          </div>
-          <div>
-            <UInput
-                color="rgb(28, 100, 188)"
-                variant="outline"
-                icon="iconoir-doc-search"
-                v-model="q"
-                placeholder="Search..."
-            />
-          </div>
-        </div>
-        <div class="studentDetailsTable">
-          <UTable
-              class="table"
-              :columns="columns"
-              :rows="filteredStudentDetails"
-          >
-            <template #extend-data="{ row }">
-              <div class="popupButtonExted">
-                <a class="button" @click="showStudentDetails(row)">Extend</a>
+        <UModal v-model="showDetailsPopup" :ui="{ width: 'w-full sm:max-w-3xl'}">
+          <UCard :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
+            <template #header>
+              <div class="popupHedaer h-8">
+                <h2>
+                  Welcome to the IESCO Scholarship
+                </h2>
               </div>
             </template>
-          </UTable>
+
+            <Placeholder class="h-32">
+              <PopupContent :student-info="currentStudentToShow"/>
+            </Placeholder>
+
+            <template #footer>
+              <div class="popupFooter h-8 ">
+                <h2>Thank you</h2>
+              </div>
+            </template>
+          </UCard>
+        </UModal>
+        <dashboard-analysts/>
+        <div class="DashboardDiv">
+          <div class="headerAdminPage">
+            <div class="projectName">
+              <h2>Welcome back to IESCO Scholarship System</h2>
+            </div>
+            <div>
+              <UInput
+                  color="rgb(28, 100, 188)"
+                  variant="outline"
+                  icon="iconoir-doc-search"
+                  v-model="q"
+                  placeholder="Search..."
+              />
+            </div>
+          </div>
+          <div class="studentDetailsTable">
+            <UTable
+                class="table"
+                :columns="columns"
+                :rows="filteredStudentDetails"
+            >
+              <template #extend-data="{ row }">
+                <div class="popupButtonExted">
+                  <a class="button" @click="showStudentDetails(row)">Extend</a>
+                </div>
+              </template>
+            </UTable>
+          </div>
         </div>
-      </div>
     </div>
   </div>
 </template>
@@ -168,6 +163,11 @@ const isOpen = ref(false)
     margin: 10px;
     justify-items: center;
   }
+}
+
+.main-container .classPopup {
+  width: 70% !important;
+  height: 300px !important;
 }
 
 .interContainer .DashboardDiv {
@@ -273,7 +273,7 @@ const isOpen = ref(false)
 }
 
 .popupFooter {
-  font-size: 20px ;
+  font-size: 20px;
   font-weight: bold;
   text-transform: capitalize;
   color: var(--main-color);
@@ -288,7 +288,7 @@ const isOpen = ref(false)
 }
 
 
-.popupFooter  span{
+.popupFooter span {
   width: 1.5rem;
   height: 1.5rem;
 }
