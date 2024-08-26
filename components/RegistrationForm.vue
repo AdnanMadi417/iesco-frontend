@@ -34,8 +34,6 @@ const selectFirstMatch = () => {
   }
 };
 
-
-
 const educationLevel = [
   {
     name: "Education level",
@@ -253,202 +251,218 @@ let levelsQuestions = ref({
 
 const educationLevelSelected = ref("EL");
 
+const showSunmiition = ref(true);
+const notificationPrpup = ref(false);
+
+const showStudentDetails = (row) => {
+  showSunmiition.value = false;
+  notificationPrpup.value = true;
+}
 
 </script>
 <template>
-  <div class="registrationForm">
-    <div class="container">
-      <div class="description">
-        <img src="../public/images/isco-logo.png" alt="">
-        <h2>Registration</h2>
-        <p>IESCO Scholarship in Malaysia (ISM) is an initiative by
-          International Educational Scientific and Cultural Organization
-          (IESCO) to attract students from less fortunate places to pursue
-          advanced academic studies in Malaysia. International students are
-          welcomed to apply for this scholarship and further their studies in
-          the selected Malaysian universities.</p>
-        <ul class="">
-          <li class="">
-            <UIcon name="bxs-down-arrow" class="w-5 h-5" style="color: white"/>
-            ISM Scholarship covers bachelor’s, master’s, and PhD programmes.
-          </li>
-          <li class="">
-            <UIcon name="bxs-down-arrow" class="w-5 h-5" style="color: white"/>
-            ISM Scholarship is for students who come from conflict zones;
-            namely: Palestine, Yemen, Lebanon, Syria and Rohingya
-          </li>
-        </ul>
-      </div>
-      <div class="registerationQuestions">
-        <h1>IESCO Online Application System</h1>
+  <div>
+    <div v-if="showSunmiition">
+      <Requirement/>
+      <div class="registrationForm">
         <div class="container">
-          <form @submit.prevent="handleSubmit">
-            <div class="form-row">
-              <div class="form-group ">
-                <label for="arabicName">Student's name in Arabic</label>
-                <UInput
-                    id="arabicName"
-                    v-model="formData.arabicName"
-                    color=rgb(28, 100, 188)
-                    variant="outline"
-                    icon="ph-user"
-                    required
-                    placeholder="Enter your Arabic name"
-                />
-              </div>
-              <div class="form-group">
-                <label for="Englishname">Student's name in English</label>
-                <UInput
-                    type="text"
-                    id="englishName"
-                    v-model="formData.englishName"
-                    color=rgb(28, 100, 188)
-                    variant="outline"
-                    icon="ph-user"
-                    required
-                    placeholder="Enter your English name"
-                />
-              </div>
-              <div class="form-group">
-                <label for="passportNumber">Passport Number in English</label>
-                <UInput
-                    type="text"
-                    id="passportNumber"
-                    v-model="formData.passportNumber"
-                    color=rgb(28, 100, 188)
-                    variant="outline"
-                    icon="mdi-passport"
-                    required
-                    placeholder="67710323"
-                />
-              </div>
-              <div class="form-group">
-                <label for="emailAddress">Student's email address</label>
-                <UInput
-                    type="email"
-                    id="emailAddress"
-                    v-model="formData.emailAddress"
-                    color=rgb(28, 100, 188)
-                    variant="outline"
-                    icon="ic-outline-email"
-                    required
-                    placeholder="emailAddress@gmail.com"
-                />
-              </div>
-              <div class="form-group">
-                <label for="malaysiainAddress">Address in Malaysia</label>
-                <UInput
-                    type="address"
-                    id="malaysiainAddress"
-                    v-model="formData.malaysiainAddress"
-                    color=rgb(28, 100, 188)
-                    variant="outline"
-                    icon="tabler-world"
-                    required
-                    placeholder="Kuala Lapmur Ampang"
-                />
-              </div>
-              <div class="form-group">
-                <label for="nationality">Your Nationality:</label>
-                <UInputMenu
-                    id="nationality"
-                    :options="filteredNationalities"
-                    v-model="userNationalityInput"
-                    color=rgb(28, 100, 188)
-                    variant="outline"
-                    icon="tabler-world"
-                    required
-                    placeholder="Select Nationality"
-                    @keydown.enter.prevent="selectFirstMatch"
-                />
-              </div>
-              <div class="form-group">
-                <label for="localNumber">Local Number </label>
-                <UInput
-                    id="localNumber"
-                    v-model="formData.localNumber"
-                    variant="outline"
-                    color=rgb(28, 100, 188)
-                    icon="ic-outline-phone"
-                    required
-                    placeholder="Enter your local Number"
-                />
-              </div>
-              <div class="form-group">
-                <label for="whatsAppNumber">whatsApp Number </label>
-                <UInput
-                    type="text"
-                    id="whatsAppNumber"
-                    v-model="formData.whatsAppNumber"
-                    color=rgb(28, 100, 188)
-                    variant="outline"
-                    icon="ic-outline-phone"
-                    required
-                    placeholder="Enter your whatsApp Number"
-                />
-              </div>
-              <div class="form-group">
-                <div class="form-group" id="maritalStatus">
-                  <label for="maritalStatus ">Marital Status </label>
-                  <UInput
-                      id="maritalStatus"
-                      color=rgb(28, 100, 188)
-                      variant="outline"
-                      icon="solar-user-id-linear"
-                      size="sm"
-                      required
-                      v-model="formData.selectedMaritalStatus"
-                      placeholder="Marital Status"
-                  />
+          <div class="description">
+            <img src="../public/images/isco-logo.png" alt="">
+            <h2>Registration</h2>
+            <p>IESCO Scholarship in Malaysia (ISM) is an initiative by
+              International Educational Scientific and Cultural Organization
+              (IESCO) to attract students from less fortunate places to pursue
+              advanced academic studies in Malaysia. International students are
+              welcomed to apply for this scholarship and further their studies in
+              the selected Malaysian universities.</p>
+            <ul class="">
+              <li class="">
+                <UIcon name="bxs-down-arrow" class="w-5 h-5" style="color: white"/>
+                ISM Scholarship covers bachelor’s, master’s, and PhD programmes.
+              </li>
+              <li class="">
+                <UIcon name="bxs-down-arrow" class="w-5 h-5" style="color: white"/>
+                ISM Scholarship is for students who come from conflict zones;
+                namely: Palestine, Yemen, Lebanon, Syria and Rohingya
+              </li>
+            </ul>
+          </div>
+          <div class="registerationQuestions">
+            <h1>IESCO Online Application System</h1>
+            <div class="container">
+              <form @submit.prevent="handleSubmit" @click="showStudentDetails">
+                <div class="form-row">
+                  <div class="form-group ">
+                    <label for="arabicName">Student's name in Arabic</label>
+                    <UInput
+                        id="arabicName"
+                        v-model="formData.arabicName"
+                        color=rgb(28, 100, 188)
+                        variant="outline"
+                        icon="ph-user"
+                        required
+                        placeholder="Enter your Arabic name"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="Englishname">Student's name in English</label>
+                    <UInput
+                        type="text"
+                        id="englishName"
+                        v-model="formData.englishName"
+                        color=rgb(28, 100, 188)
+                        variant="outline"
+                        icon="ph-user"
+                        required
+                        placeholder="Enter your English name"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="passportNumber">Passport Number in English</label>
+                    <UInput
+                        type="text"
+                        id="passportNumber"
+                        v-model="formData.passportNumber"
+                        color=rgb(28, 100, 188)
+                        variant="outline"
+                        icon="mdi-passport"
+                        required
+                        placeholder="67710323"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="emailAddress">Student's email address</label>
+                    <UInput
+                        type="email"
+                        id="emailAddress"
+                        v-model="formData.emailAddress"
+                        color=rgb(28, 100, 188)
+                        variant="outline"
+                        icon="ic-outline-email"
+                        required
+                        placeholder="emailAddress@gmail.com"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="malaysiainAddress">Address in Malaysia</label>
+                    <UInput
+                        type="address"
+                        id="malaysiainAddress"
+                        v-model="formData.malaysiainAddress"
+                        color=rgb(28, 100, 188)
+                        variant="outline"
+                        icon="tabler-world"
+                        required
+                        placeholder="Kuala Lapmur Ampang"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="nationality">Your Nationality:</label>
+                    <UInputMenu
+                        id="nationality"
+                        :options="filteredNationalities"
+                        v-model="userNationalityInput"
+                        color=rgb(28, 100, 188)
+                        variant="outline"
+                        icon="tabler-world"
+                        required
+                        placeholder="Select Nationality"
+                        @keydown.enter.prevent="selectFirstMatch"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="localNumber">Local Number </label>
+                    <UInput
+                        id="localNumber"
+                        v-model="formData.localNumber"
+                        variant="outline"
+                        color=rgb(28, 100, 188)
+                        icon="ic-outline-phone"
+                        required
+                        placeholder="Enter your local Number"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="whatsAppNumber">whatsApp Number </label>
+                    <UInput
+                        type="text"
+                        id="whatsAppNumber"
+                        v-model="formData.whatsAppNumber"
+                        color=rgb(28, 100, 188)
+                        variant="outline"
+                        icon="ic-outline-phone"
+                        required
+                        placeholder="Enter your whatsApp Number"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <div class="form-group" id="maritalStatus">
+                      <label for="maritalStatus ">Marital Status </label>
+                      <UInput
+                          id="maritalStatus"
+                          color=rgb(28, 100, 188)
+                          variant="outline"
+                          icon="solar-user-id-linear"
+                          size="sm"
+                          required
+                          v-model="formData.selectedMaritalStatus"
+                          placeholder="Marital Status"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group" id="gender">
+                    <label for="gender">Gender </label>
+                    <UInput
+                        type="text"
+                        id="gender"
+                        v-model="formData.gender"
+                        color=rgb(28, 100, 188)
+                        variant="outline"
+                        icon="solar-user-id-linear"
+                        required
+                        placeholder="Male or Female "
+                    />
+                  </div>
+                  <!--              <div class="form-group-file" id="educationLevelDiv">-->
+                  <!--                <label for="conformationFile">Education Level </label>-->
+                  <!--                <USelect-->
+                  <!--                    id="educationLevel"-->
+                  <!--                    :options="educationLevel"-->
+                  <!--                    option-attribute="name"-->
+                  <!--                    size="md"-->
+                  <!--                    color=rgb(28, 100, 188)-->
+                  <!--                    variant="outline"-->
+                  <!--                    icon="fa-solid-university"-->
+                  <!--                    required-->
+                  <!--                    v-model="educationLevelSelected"-->
+                  <!--                />-->
+                  <!--                <div class="form-group-file">-->
+                  <!--                  <div class="form-group-file" v-for="question in levelsQuestions[educationLevelSelected]">-->
+                  <!--                    <label for="conformationFile">{{ question.label }}</label>-->
+                  <!--                    <UInput-->
+                  <!--                        :type="question.type"-->
+                  <!--                        size="md"-->
+                  <!--                        :color="question.color"-->
+                  <!--                        variant="outline"-->
+                  <!--                        :icon="question.icon"-->
+                  <!--                        :placeholder="question.placeholder"-->
+                  <!--                        required-->
+                  <!--                    />-->
+                  <!--                  </div>-->
+                  <!--                </div>-->
+                  <!--              </div>-->
                 </div>
-              </div>
-              <div class="form-group" id="gender">
-                <label for="gender">Gender </label>
-                <UInput
-                    type="text"
-                    id="gender"
-                    v-model="formData.gender"
-                    color=rgb(28, 100, 188)
-                    variant="outline"
-                    icon="solar-user-id-linear"
-                    required
-                    placeholder="Male or Female "
-                />
-              </div>
-              <!--              <div class="form-group-file" id="educationLevelDiv">-->
-              <!--                <label for="conformationFile">Education Level </label>-->
-              <!--                <USelect-->
-              <!--                    id="educationLevel"-->
-              <!--                    :options="educationLevel"-->
-              <!--                    option-attribute="name"-->
-              <!--                    size="md"-->
-              <!--                    color=rgb(28, 100, 188)-->
-              <!--                    variant="outline"-->
-              <!--                    icon="fa-solid-university"-->
-              <!--                    required-->
-              <!--                    v-model="educationLevelSelected"-->
-              <!--                />-->
-              <!--                <div class="form-group-file">-->
-              <!--                  <div class="form-group-file" v-for="question in levelsQuestions[educationLevelSelected]">-->
-              <!--                    <label for="conformationFile">{{ question.label }}</label>-->
-              <!--                    <UInput-->
-              <!--                        :type="question.type"-->
-              <!--                        size="md"-->
-              <!--                        :color="question.color"-->
-              <!--                        variant="outline"-->
-              <!--                        :icon="question.icon"-->
-              <!--                        :placeholder="question.placeholder"-->
-              <!--                        required-->
-              <!--                    />-->
-              <!--                  </div>-->
-              <!--                </div>-->
-              <!--              </div>-->
+                <button class="subBotton" type="submit">Submit</button>
+              </form>
             </div>
-            <button class="subBotton" type="submit">Submit</button>
-          </form>
+          </div>
         </div>
       </div>
+      <FooterView/>
     </div>
+  </div>
+  <div v-if="notificationPrpup">
+    <Notifications/>
   </div>
 </template>
 
