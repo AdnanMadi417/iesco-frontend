@@ -1,5 +1,33 @@
 <script setup lang="ts">
+import {type InferType, object, string} from 'yup'
+import type {FormSubmitEvent} from '#ui/types'
+import {z} from "zod";
 
+const schema = z.object({
+  email:
+      z.string()
+      .email('Invalid email')
+      .regex(/^[a-zA-Z0-9._%+-]+@iesco\.my$/, 'Must be a @iesco.my'),
+  password:
+      z.string()
+          .min(8, 'Password must be at least 8 characters long')
+          .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
+          .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
+          .regex(/[0-9]/, 'Password must contain at least one number')
+          .regex(/[\W_]/, 'Password must contain at least one special character')
+          .nonempty('Password is required'),
+})
+
+type Schema = InferType<typeof schema>
+
+const state = reactive({
+  email: undefined,
+  password: undefined
+})
+
+async function onSubmit(event: FormSubmitEvent<Schema>) {
+  console.log(event.data)
+}
 </script>
 
 <template>
@@ -18,23 +46,29 @@
           <h2 class="h2-three">Scholarship system</h2>
         </div>
         <div class="controlForm">
-          <form>
+          <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
+
             <div class="control-input">
-              <div class="input-group">
-                <label for="email">Your email</label>
+              <UFormGroup label="Email" name="email">
                 <UInput
+                    v-model="state.email"
                     color="rgb(28, 100, 188)"
                     variant="outline"
-                    id="Admminemail"
+                    id="emailAdmin"
                     placeholder="Enter your email"
-                    required
                     size="md"
+                    required
                     icon="mdi-email"
                 />
-              </div>
-              <div class="input-group">
-                <label for="password">Password</label>
+              </UFormGroup>
+            </div>
+            <div class="control-input">
+              <UFormGroup
+                  label="Password"
+                  name="password"
+              >
                 <UInput
+                    v-model="state.password"
                     type="password"
                     color="rgb(28, 100, 188)"
                     variant="outline"
@@ -44,39 +78,19 @@
                     required
                     icon="mdi-password"
                 />
-              </div>
-              <div class="input-group">
-                <div class="options">
-                  <div>
-                    <div>
-                      <label>
-                        <input type="checkbox"> Remember me
-                      </label>
-                    </div>
-                    <div>
-                      <a href="#">
-                        <UIcon
-                            name="ri-device-recover-line"
-                            class="w-5 h-5"
-                        />
-                        Recover password
-                      </a>
-                    </div>
-                    <div>
-                      <NuxtLink to="/registeration">
-                        <UIcon
-                            name="material-symbols-tv-signin-outline-sharp"
-                            class="w-5 h-5"
-                        />
-                        Sign Up
-                      </NuxtLink>
-                    </div>
-                  </div>
-                </div>
-                <button type="submit">SIGN IN</button>
-              </div>
+              </UFormGroup>
+
             </div>
-          </form>
+            <div class="control-input">
+              <UButton
+                  class="btnSign"
+                  type="submit"
+                  style="background-color:rgb(28, 100, 188)"
+              >
+                SIGN IN
+              </UButton>
+            </div>
+          </UForm>
         </div>
       </div>
     </div>
@@ -224,30 +238,12 @@ body {
   }
 }
 
-.login-page .main-container .input-group .options {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
 
-.login-page label,
-.login-page a {
+.login-page label{
   font-size: 18px;
   font-weight: normal;
   color: var(--main-color);
 }
 
-.login-page button {
-  padding: 7px;
-  font-weight: normal;
-  border-radius: 15px;
-  margin-top: 30px;
-  border: 2px solid var(--main-color);
-  color: var(--main-color);
-}
 
-.login-page button:hover {
-  background-color: var(--main-color);
-  color: #eeeeee;
-}
 </style>

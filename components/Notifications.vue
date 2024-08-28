@@ -16,6 +16,7 @@ function onCallback () {
         <div class="content">
           <h1>congratulations</h1>
           <h2>Application Submitted Successfully!</h2>
+          <hr class="m-2">
           <p>Thank you for submitting your application! We have received your information, and our team will review it shortly.
             You will receive a confirmation email soon.
             If you have any questions or need further assistance,
@@ -34,7 +35,14 @@ function onCallback () {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+}
+
+@media (max-width: 800px) {
+  .notification{
+    display: block;
+    width: 90%;
+  }
 }
 
 .main-container {
@@ -45,29 +53,30 @@ function onCallback () {
   text-align: center;
   justify-content: center;
   align-items: center;
-  background-color: #fffdfd;
+  background-color: #eeeeee;
 }
 
 .main-container .container .icon{
-  font-size: 12rem;
+  font-size: 10rem;
   color: var(--main-color);
 }
 
 .main-container .container h2,
 .main-container .container h1{
   text-transform: capitalize;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--main-color);
 }
 
 .main-container .container p {
   font-size: 1rem;
   color: var(--main-color);
-  text-align: center;
+  text-align: justify;
   margin: 0;
   padding: 30px 0;
   line-height: 20px;
   margin:0 40px ;
 }
+
 
 </style>

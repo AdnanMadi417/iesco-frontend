@@ -6,7 +6,6 @@
   <div class="home-container">
     <div class="steps-container">
       <div class="step">
-        <Header/>
         <RegistrationForm/>
       </div>
     </div>

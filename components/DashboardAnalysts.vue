@@ -1,16 +1,17 @@
 <script setup lang="ts">
-
+const props = defineProps(['studentInfo'])
+console.log(props);
 </script>
 
 <template>
-  <div class="dashbordAnastsContainer">
+  <div class="dashbordAnastsContainer" v-for="student in studentInfo"> />
     <div class="divOne">
       <div class="icon">
         <UIcon name="clarity-users-line" class="icon-Dashboard"/>
       </div>
       <div>
         <h2>total applied students.</h2>
-        <h1>100</h1>
+        <h1>"studentInfo length"</h1>
       </div>
     </div>
     <div class="divTwo">
