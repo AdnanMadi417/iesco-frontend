@@ -11,8 +11,6 @@ const showStudentDetails = (row) => {
   notificationPrpup.value = true;
 }
 
-const userNationalityInput = ref('');
-const selectedNationality = ref('');
 
 </script>
 <template>
@@ -33,11 +31,11 @@ const selectedNationality = ref('');
               the selected Malaysian universities.</p>
             <ul class="">
               <li class="">
-                <UIcon name="bxs-down-arrow" class="w-5 h-5" style="color: white"/>
+                <UIcon name="line-md-check-all" class="w-5 h-5" style="color: white"/>
                 ISM Scholarship covers bachelor’s, master’s, and PhD programmes.
               </li>
               <li class="">
-                <UIcon name="bxs-down-arrow" class="w-5 h-5" style="color: white"/>
+                <UIcon name="line-md-check-all"  class="w-5 h-5" style="color: white"/>
                 ISM Scholarship is for students who come from conflict zones;
                 namely: Palestine, Yemen, Lebanon, Syria and Rohingya
               </li>
@@ -45,7 +43,7 @@ const selectedNationality = ref('');
           </div>
           <div class="registerationQuestions">
             <h1>IESCO Online Application System</h1>
-            <New/>
+            <RegistrationFromValidation/>
           </div>
         </div>
       </div>

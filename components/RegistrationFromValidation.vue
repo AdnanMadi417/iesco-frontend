@@ -2,6 +2,7 @@
 import {z} from "zod";
 import {reactive, ref} from "vue";
 import type {FormSubmitEvent} from '#ui/types';
+import {nationalities} from "~/utils/nationalties";
 
 const schema = z.object({
   arabicName: z.string()
@@ -10,14 +11,26 @@ const schema = z.object({
   englishName: z.string()
       .regex(/^[a-zA-Z\s]+$/, 'Must contain only English characters')
       .min(8, 'Must be at least 8 characters'),
-  passportNumber: z.string().regex(/^\d{8,}$/, "Must be at least 8 numbers"),
+  passportNumber: z.string(),
   emailAddress: z.string().email('Invalid email'),
   localNumber: z.string().regex(/^\d{8,}$/, "Must be at least 8 numbers"),
   whatsAppNumber: z.string().regex(/^\d{8,}$/, "Must be at least 8 numbers"),
   malaysiainAddress: z.string().min(12, 'Must be at least 8 characters'),
-  maritalStatus: z.string().min(4, 'Must be at least 4 characters'),
-  gender: z.string().min(4, 'Must be at least 4 characters'),
+  dateOfBirth: z.string().refine(val => {
+    const date = new Date(val);
+    return !isNaN(date.getTime());
+  }, {
+    message: 'Invalid date format'
+  }),
+});
 
+const userNationalityInput = ref('');
+
+const filteredNationalities = computed(() => {
+  if (!userNationalityInput.value) {
+    return nationalities;
+  }
+  return nationalities.filter(n => n.toLowerCase().startsWith(userNationalityInput.value.toLowerCase()));
 });
 
 type Schema = z.output<typeof schema>;
@@ -86,22 +99,40 @@ let previousLevelsQuestions = [
     color: "rgb(28, 100, 188)",
     icon: "tabler-world",
     placeholder: "Kuala Lapmur Ampang",
+  }
+]
+
+let previousSelectQuestions = [
+  {
+    label: "Gender",
+    type: "select",
+    id: "gender",
+    color: "rgb(28, 100, 188)",
+    icon: "ph-user",
+    placeholder: "Male Or Female",
+    options: [
+      "Male", "Female"
+    ]
   },
   {
     label: "Marital Status ",
-    type: "text",
+    type: "select",
     id: "maritalStatus ",
     color: "rgb(28, 100, 188)",
-    icon: "solar-user-id-linear",
-    placeholder: "Marital Status",
+    icon: "ph-user",
+    options: [
+      "Single", "Married", "Widower", "Divorced"
+    ],
+    placeholder: "Marital Status ",
   },
   {
-    label: "Gender",
-    type: "text",
-    id: "gender",
+    label: "Your Nationality",
+    type: "select",
+    id: "maritalStatus ",
     color: "rgb(28, 100, 188)",
-    icon: "solar-user-id-linear",
-    placeholder: "Male or Female",
+    icon: "tabler-world",
+    options: filteredNationalities.value,
+    placeholder: "Select Nationality"
   }
 ]
 
@@ -276,6 +307,7 @@ let levelsQuestions = ref({
       id: "nameGraduateUniversity",
       color: "rgb(28, 100, 188)",
       icon: "fa-solid-university",
+      placeholder:"Name of Graduate University"
     },
     {
       label: "Academic Specialization",
@@ -342,36 +374,13 @@ const educationLevelSelected = ref("EL");
 
 const showSunmiition = ref(true);
 
-const notificationPrpup = ref(false);
+const notificationPopup = ref(false);
 
 const showStudentDetails = (row) => {
   showSunmiition.value = false;
-  notificationPrpup.value = true;
+
+  notificationPopup.value = true;
 }
-
-const userNationalityInput = ref('');
-const selectedNationality = ref('');
-
-const nationality = [
-  'Algerian', 'Egyptian', 'Libyan', 'Moroccan', 'Sudanese', 'Tunisian', 'Mauritanian', 'Bahraini',
-  'Kuwaiti', 'Omani', 'Qatari', 'Saudi Arabian', 'Emirati', 'Yemeni', 'Jordanian', 'Lebanese',
-  'Palestinian', 'Syrian', 'Somali', 'Djiboutian', 'Comorian'
-];
-
-const filteredNationalities = computed(() => {
-  if (!userNationalityInput.value) {
-    return nationality;
-  }
-  return nationality.filter(n => n.toLowerCase().startsWith(userNationalityInput.value.toLowerCase()));
-});
-
-const selectFirstMatch = () => {
-  const firstMatch = filteredNationalities.value[0];
-  if (firstMatch) {
-    selectedNationality.value = firstMatch;
-    userNationalityInput.value = firstMatch;
-  }
-};
 
 </script>
 
@@ -394,19 +403,20 @@ const selectFirstMatch = () => {
               />
             </UFormGroup>
           </div>
-          <div class="form-group-file">
-            <label for="nationality">Your Nationality:</label>
-            <UInputMenu
-                id="nationality"
-                :options="filteredNationalities"
-                v-model="userNationalityInput"
-                color=rgb(28, 100, 188)
-                variant="outline"
-                icon="tabler-world"
-                required
-                placeholder="Select Nationality"
-                @keydown.enter.prevent="selectFirstMatch"
-            />
+          <div v-for="student in previousSelectQuestions" :key="student.id">
+            <UFormGroup class="form-group" :label="student.label" :name="student.id">
+              <USelect
+                  :type="student.type"
+                  size="md"
+                  :color="student.color"
+                  variant="outline"
+                  :icon="student.icon"
+                  :placeholder="student.placeholder"
+                  v-model="state[student.id]"
+                  :options="student.options"
+                  required
+              />
+            </UFormGroup>
           </div>
           <div class="form-group-file" id="educationLevelDiv">
             <label for="conformationFile">Education Level </label>
@@ -458,13 +468,13 @@ const selectFirstMatch = () => {
   min-width: 370px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .control-container .form-group {
     flex: 1 1 100%;
   }
 }
 
-.form-group-file{
+.form-group-file {
   flex: 1 1 100%;
 }
 

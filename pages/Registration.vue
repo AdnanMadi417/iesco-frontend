@@ -4,7 +4,7 @@ import type {FormSubmitEvent} from '#ui/types'
 import {z} from "zod";
 
 const schema = z.object({
-  name: z.string()
+  englishName: z.string()
       .regex(/^[a-zA-Z\s]+$/, 'Name must contain only letters and spaces')
       .min(2, 'Name must be at least 2 characters long')
       .max(50, 'Name must be at most 50 characters long')
@@ -26,7 +26,7 @@ const schema = z.object({
 type Schema = InferType<typeof schema>
 
 const state = reactive({
-  name: undefined,
+  englishName: undefined,
   email: undefined,
   password: undefined
 })
@@ -58,7 +58,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
               <div class="control-input">
                 <UFormGroup label="Your Name" name="name">
                   <UInput
-                      v-model="state.email"
+                      v-model="state.englishName"
                       color="rgb(28, 100, 188)"
                       variant="outline"
                       placeholder="Enter your email"
@@ -134,7 +134,7 @@ body {
 @media (min-device-width: 768px) and (max-device-width: 1024px) {
   .registration-page .main-container {
     display: block;
-    margin: 15px 10%;
+    margin: 10% 10%;
     width: 80%;
   }
 }

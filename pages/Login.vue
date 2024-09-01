@@ -113,7 +113,7 @@ body {
 @media (min-device-width: 768px) and (max-device-width: 1024px) {
   .login-page .main-container {
     display: block;
-    margin: 15px 10%;
+    margin: 10% 10%;
     width: 80%;
   }
 }
