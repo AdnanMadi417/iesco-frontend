@@ -39,32 +39,28 @@ let previousLevelsQuestions = [
   {
     label: "Student's name in Arabic",
     type: "text",
-    id: "arabicName",
-    color: "rgb(28, 100, 188)",
+    id: "arabic_name",
     icon: "ph-user",
     placeholder: "Enter your Arabic name",
   },
   {
     label: "Student's name in English",
     type: "text",
-    id: "englishName",
-    color: "rgb(28, 100, 188)",
+    id: "english_name",
     icon: "ph-user",
     placeholder: "Enter your English name",
   },
   {
     label: "Passport Number in English",
     type: "text",
-    id: "passportNumber",
-    color: "rgb(28, 100, 188)",
+    id: "passport_number",
     icon: "mdi-passport",
     placeholder: "23432125",
   },
   {
-    label: "Passport Number in English",
+    label: "date Of Birth",
     type: "date",
-    id: "dateOfBirth",
-    color: "rgb(28, 100, 188)",
+    id: "date_of_birth",
     icon: "uiw-date",
     placeholder: "MM/dd/yyyy",
   },
@@ -72,31 +68,27 @@ let previousLevelsQuestions = [
     label: "Student's Email address ",
     type: "email",
     id: "email",
-    color: "rgb(28, 100, 188)",
     icon: "ic-outline-email",
     placeholder: "emailAddress@gmail.com",
   },
   {
     label: "Local Number",
     type: "text",
-    id: "localNumber",
-    color: "rgb(28, 100, 188)",
+    id: "local_number",
     icon: "ph-phone",
     placeholder: "Enter your local Number",
   },
   {
     label: "WhatsApp Number",
     type: "text",
-    id: "whatsAppNumber ",
-    color: "rgb(28, 100, 188)",
+    id: "whats_app_number",
     icon: "ph-phone",
     placeholder: "Enter your whatsApp Number",
   },
   {
     label: "Address in Malaysia",
     type: "address",
-    id: "malaysiainAddress",
-    color: "rgb(28, 100, 188)",
+    id: "malaysian_address",
     icon: "tabler-world",
     placeholder: "Kuala Lapmur Ampang",
   }
@@ -107,7 +99,6 @@ let previousSelectQuestions = [
     label: "Gender",
     type: "select",
     id: "gender",
-    color: "rgb(28, 100, 188)",
     icon: "ph-user",
     placeholder: "Male Or Female",
     options: [
@@ -117,8 +108,7 @@ let previousSelectQuestions = [
   {
     label: "Marital Status ",
     type: "select",
-    id: "maritalStatus ",
-    color: "rgb(28, 100, 188)",
+    id: "marital_status",
     icon: "ph-user",
     options: [
       "Single", "Married", "Widower", "Divorced"
@@ -128,31 +118,39 @@ let previousSelectQuestions = [
   {
     label: "Your Nationality",
     type: "select",
-    id: "maritalStatus ",
-    color: "rgb(28, 100, 188)",
+    id: "nationality",
     icon: "tabler-world",
     options: filteredNationalities.value,
     placeholder: "Select Nationality"
   }
 ]
 
-
-const state = reactive({
-  email: undefined,
-  password: undefined,
-  arabicName: undefined,
-  englishName: undefined,
-  passportNumber: undefined,
-  localNumber: undefined,
-  whatsAppNumber: undefined,
-  malaysiainAddress: undefined,
-  maritalStatus: undefined,
-  gender: undefined,
+const state = reactive<{ [key: string]: any }>({
+  arabic_name: '',
+  english_name: '',
+  passport_number: '',
+  date_of_birth: '',
+  email: '',
+  local_number: '',
+  whats_app_number: '',
+  malaysian_address: '',
+  gender: '',
+  marital_status: '',
+  nationality: '',
+  school_name: null,
+  current_university_name: null,
+  num_sem_graduation: null,
+  passport_file: null,
+  high_school_file: null,
+  english_qualification_file: null,
+  other_supporting_file: null,
+  candidate_progress_report: null,
+  tuition_fees_statement_file: null,
+  confirmation_letter: null,
+  offer_letter_file: null,
+  academic_specialization_file: null,
+  paper_from_supervisor_file: null,
 });
-
-async function onSubmit(event: FormSubmitEvent<Schema>) {
-  console.log(event.data);
-}
 
 const educationLevel = [
   {
@@ -181,34 +179,30 @@ const educationLevel = [
 let levelsQuestions = ref({
   HS: [
     {
-      label: "school Name University Name",
+      label: "University Name",
       type: "text",
-      id: "schoolName",
-      color: "rgb(28, 100, 188)",
+      id: "school_name",
       icon: "fa-solid-university",
       placeholder: "Enter your University Name",
     },
     {
       label: "Passport 1st page",
       type: "file",
-      id: "passportFile",
-      color: "rgb(28, 100, 188)",
+      id: "passport_file",
       icon: "i-heroicons-folder",
       placeholder: "Passport 1st page (1 MB max) :"
     },
     {
       label: "Certified Original Copy of High School Academic Certificate ",
       type: "file",
-      id: "highSchoolFile",
-      color: "rgb(28, 100, 188)",
+      id: "high_school_file",
       icon: "i-heroicons-folder",
       placeholder: "Certified Original Copy of High School Academic Certificate :"
     },
     {
       label: "Certified Original Copy of English Proficiency Qualification (MUET, TOEFL, IELTS, or Equivalent, if available)",
       type: "file",
-      id: "englishQualificationFile",
-      color: "rgb(28, 100, 188)",
+      id: "english_qualification_file",
       icon: "i-heroicons-folder",
       placeholder: "(MUET, TOEFL, IELTS, or Equivalent, if available):",
       required: false,
@@ -216,8 +210,7 @@ let levelsQuestions = ref({
     {
       label: "Other supporting document",
       type: "file",
-      id: "OtherSupportingFile",
-      color: "rgb(28, 100, 188)",
+      id: "other_supporting_file",
       icon: "i-heroicons-folder",
       placeholder: "Other supporting document"
     }
@@ -226,16 +219,14 @@ let levelsQuestions = ref({
     {
       label: "Current University Name",
       type: "text",
-      id: "currentUniversityName",
-      color: "rgb(28, 100, 188)",
+      id: "current_university_name",
       icon: "fa-solid-university",
       placeholder: "Enter your Current University Name",
     },
     {
       label: "Number of Semesters Remaining Until Graduation",
       type: "text",
-      id: "numSemToGraduation",
-      color: "rgb(28, 100, 188)",
+      id: "num_sem_graduation",
       icon: "system-uicons:book",
       placeholder: "Number of Semesters Remaining Until Graduation",
     },
@@ -243,51 +234,44 @@ let levelsQuestions = ref({
       label: "Fees per Semester",
       type: "text",
       id: "feesPerSemester",
-      color: "rgb(28, 100, 188)",
       icon: "solar-money-bag-broken",
       placeholder: "Fees per Semester",
     },
     {
       label: "Passport 1st page",
       type: "file",
-      id: "passportFile",
-      color: "rgb(28, 100, 188)",
+      id: "passport_file",
       icon: "i-heroicons-folder",
       placeholder: "Passport 1st page (1 MB max) :"
     },
     {
       label: "Candidate Progress Report (for postgraduate students)",
       type: "file",
-      id: "candidateProgressReport",
-      color: "rgb(28, 100, 188)",
+      id: "candidate_progress_report",
       icon: "i-heroicons-folder",
     },
     {
       label: "Tuition Fees Statement (latest from university) :",
       type: "file",
-      id: "tuitionFeesStatement",
-      color: "rgb(28, 100, 188)",
+      id: "tuition_fees_statement_file",
       icon: "i-heroicons-folder",
     },
     {
       label: "Confirmation Letter from University (latest date)",
       type: "file",
-      id: "confirmationLetter",
-      color: "rgb(28, 100, 188)",
+      id: "confirmation_letter",
       icon: "i-heroicons-folder",
     },
     {
       label: "Offer Letter",
       type: "file",
-      id: "OfferLetterFile",
-      color: "rgb(28, 100, 188)",
+      id: "offer_letter_file",
       icon: "i-heroicons-folder",
     },
     {
       label: "Other supporting document ",
       type: "file",
-      id: "OtherSupportingFile",
-      color: "rgb(28, 100, 188)",
+      id: "other_supporting_file",
       icon: "i-heroicons-folder",
       placeholder: "Other supporting document"
     }
@@ -296,75 +280,58 @@ let levelsQuestions = ref({
     {
       label: "Current University Name",
       type: "text",
-      id: "CurrentUniversityName",
-      color: "rgb(28, 100, 188)",
+      id: "current_university_name",
       icon: "fa-solid-university",
       placeholder: "Enter your Current University Name",
     },
     {
       label: "Name of Graduate University",
       type: "text",
-      id: "nameGraduateUniversity",
-      color: "rgb(28, 100, 188)",
+      id: "num_sem_graduation",
       icon: "fa-solid-university",
-      placeholder:"Name of Graduate University"
+      placeholder: "Name of Graduate University"
     },
     {
       label: "Academic Specialization",
       type: "text",
-      id: "academicSpecializationFile",
-      color: "rgb(28, 100, 188)",
+      id: "academic_specialization_file",
       icon: "system-uicons:book",
       placeholder: "Academic Specialization",
     },
     {
-      label: "Fees per Semester",
-      type: "text",
-      id: "feesperSemester",
-      color: "rgb(28, 100, 188)",
-      icon: "solar-money-bag-broken",
-      placeholder: "Fees per Semester",
-    },
-    {
       label: "Passport 1st page",
       type: "file",
-      id: "passportFile",
-      color: "rgb(28, 100, 188)",
+      id: "passport_file",
       icon: "i-heroicons-folder",
     },
     {
       label: "A Paper from the Supervisor (for Master’s and Doctoral levels)",
       type: "file",
-      id: "paperFromSupervisor",
-      color: "rgb(28, 100, 188)",
+      id: "paper_from_supervisor_file",
       icon: "i-heroicons-folder",
     },
     {
       label: "Tuition Fees Statement (latest from university) ",
       type: "file",
-      id: "tuitionFeesStatement",
-      color: "rgb(28, 100, 188)",
+      id: "tuition_fees_statement_file",
       icon: "i-heroicons-folder",
     },
     {
       label: "Confirmation Letter from University (latest date)",
       type: "file",
-      id: "confirmationLetter",
-      color: "rgb(28, 100, 188)",
+      id: "confirmation_letter",
       icon: "i-heroicons-folder",
     },
     {
       label: "Offer Letter",
       type: "file",
-      id: "OfferLetterFile",
-      color: "rgb(28, 100, 188)",
+      id: "offer_letter_file",
       icon: "i-heroicons-folder",
     },
     {
       label: "Other supporting document",
       type: "file",
-      id: "otherSupportingFile",
-      color: "rgb(28, 100, 188)",
+      id: "other_supporting_file",
       icon: "i-heroicons-folder",
     }
   ],
@@ -378,8 +345,11 @@ const notificationPopup = ref(false);
 
 const showStudentDetails = (row) => {
   showSunmiition.value = false;
-
   notificationPopup.value = true;
+}
+
+async function onSubmit(event: FormSubmitEvent<Schema>) {
+  console.log(state);
 }
 
 </script>
@@ -387,18 +357,18 @@ const showStudentDetails = (row) => {
 <template>
   <div>
     <div class="registrationForm">
-      <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
+      <UForm :schema="schema" :state="state" class="space-y-4" @submit.prevent="onSubmit">
         <div class="control-container">
           <div v-for="student in previousLevelsQuestions" :key="student.id">
             <UFormGroup class="form-group" :label="student.label" :name="student.id">
               <UInput
                   :type="student.type"
                   size="md"
-                  :color="student.color"
                   variant="outline"
                   :icon="student.icon"
                   :placeholder="student.placeholder"
                   v-model="state[student.id]"
+                  color="blue"
                   required
               />
             </UFormGroup>
@@ -408,12 +378,12 @@ const showStudentDetails = (row) => {
               <USelect
                   :type="student.type"
                   size="md"
-                  :color="student.color"
                   variant="outline"
                   :icon="student.icon"
                   :placeholder="student.placeholder"
-                  v-model="state[student.id]"
+                  v-model=state[student.id]
                   :options="student.options"
+                  color=blue
                   required
               />
             </UFormGroup>
@@ -425,7 +395,7 @@ const showStudentDetails = (row) => {
                 :options="educationLevel"
                 option-attribute="name"
                 size="md"
-                color=rgb(28, 100, 188)
+                color=blue
                 variant="outline"
                 icon="fa-solid-university"
                 required
@@ -441,13 +411,12 @@ const showStudentDetails = (row) => {
                     variant="outline"
                     :icon="question.icon"
                     :placeholder="question.placeholder"
-                    required
                 />
               </div>
             </div>
           </div>
         </div>
-        <UButton type="submit">
+        <UButton style="background-color: rgb(28, 100, 188)" type="submit">
           Submit
         </UButton>
       </UForm>
