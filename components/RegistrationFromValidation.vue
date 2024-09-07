@@ -1,7 +1,10 @@
 <script setup lang="ts">
+const emit = defineEmits(['showSuccess'])
+
 import {z} from "zod";
 import {reactive, ref} from "vue";
 import {nationalities} from "~/utils/nationalties";
+import axios from "axios";
 
 const schema = z.object({
   arabic_name: z.string()
@@ -99,7 +102,14 @@ let previousSelectQuestions = [
     icon: "ph-user",
     placeholder: "Male Or Female",
     options: [
-      "Male", "Female"
+      {
+        name: "Male",
+        value: "male",
+      },
+      {
+        name: "Female",
+        value: "female",
+      },
     ]
   },
   {
@@ -108,7 +118,22 @@ let previousSelectQuestions = [
     id: "marital_status",
     icon: "ph-user",
     options: [
-      "Single", "Married", "Widower", "Divorced"
+      {
+        name: "Single",
+        value: "single",
+      },
+      {
+        name: "Married",
+        value: "married",
+      },
+      {
+        name: "Widower",
+        value: "widower",
+      },
+      {
+        name: "Divorced",
+        value: "divorced",
+      },
     ],
     placeholder: "Marital Status ",
   },
@@ -337,18 +362,30 @@ let levelsQuestions = ref<{ [key: string]: any }>({
 
 const educationLevelSelected = ref("EL");
 
-const showSunmiition = ref(true);
-
-const notificationPopup = ref(false);
-
-const showStudentDetails = () => {
-  showSunmiition.value = false;
-  notificationPopup.value = true;
-}
-
 async function onSubmit() {
-  console.log(state);
-  showStudentDetails();
+  const formData = new FormData();
+
+  for (const key in state) {
+    const value = state[key];
+
+    if (value === null || value === undefined) {
+      continue;
+    }
+
+    formData.append(key, value);
+  }
+
+  try {
+    await axios.post("http://127.0.0.1:8000/applications/", formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+
+    emit('showSuccess')
+  } catch (error) {
+    console.error('Error submitting the form:', error);
+  }
 }
 
 const handleFileInput = (inputValue: any, question: any) => {
@@ -392,6 +429,7 @@ const handleFileInput = (inputValue: any, question: any) => {
                   v-model=state[student.id]
                   :options="student.options"
                   color=blue
+                  option-attribute="name"
                   required
               />
             </UFormGroup>

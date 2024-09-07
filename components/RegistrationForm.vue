@@ -1,15 +1,12 @@
 <script setup lang="ts">
 import {ref} from 'vue';
 
-
-const showSunmiition = ref(true);
-
-const notificationPrpup = ref(false);
+const showPopup = ref(false);
 
 </script>
 <template>
-  <div>
-    <div v-if="showSunmiition">
+  <div v-if="!showPopup">
+    <div>
       <Header/>
       <Requirement/>
       <div class="registrationForm">
@@ -37,14 +34,14 @@ const notificationPrpup = ref(false);
           </div>
           <div class="registerationQuestions">
             <h1>IESCO Online Application System</h1>
-            <RegistrationFromValidation/>
+            <RegistrationFromValidation @show-success="showPopup=true"/>
           </div>
         </div>
       </div>
       <FooterView/>
     </div>
   </div>
-  <div v-if="notificationPrpup">
+  <div v-if="showPopup">
     <Notifications/>
   </div>
 </template>
