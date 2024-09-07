@@ -1,6 +1,12 @@
+<script setup lang="ts">
+
+onBeforeMount(() => {
+  document.documentElement.classList.remove('dark')
+})
+</script>
 <template>
   <div>
-    <nuxt-page />
+    <nuxt-page/>
   </div>
 </template>
 <style>

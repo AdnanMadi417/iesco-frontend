@@ -351,6 +351,15 @@ async function onSubmit() {
   showStudentDetails();
 }
 
+const handleFileInput = (inputValue: any, question: any) => {
+  if (question.type == 'file') {
+    state[question.id] = inputValue[0]
+    return;
+  }
+
+  state[question.id] = inputValue
+}
+
 </script>
 
 <template>
@@ -405,12 +414,12 @@ async function onSubmit() {
                 <label for="conformationFile">{{ question.label }}</label>
                 <UInput
                     :type="question.type"
+                    @change="(inputValue) => handleFileInput(inputValue, question)"
                     size="md"
                     variant="outline"
                     :icon="question.icon"
                     :placeholder="question.placeholder"
                     color="blue"
-                    v-model="question.id"
                 />
               </div>
             </div>
