@@ -16,8 +16,8 @@
   padding: 30px 0;
   font-size: 28px;
   color: #eeeeee;
-  position: absolute;
-  width: 100%;
-  bottom: 0;
+  //position: absolute;
+  //width: 100%;
+  //bottom: 0;
 }
 </style>
