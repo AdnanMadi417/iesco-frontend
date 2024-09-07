@@ -1,17 +1,10 @@
 <script setup lang="ts">
 import {ref} from 'vue';
-import Design from "~/components/Design.vue";
 
 
 const showSunmiition = ref(true);
 
-const notificationPopup = ref(false);
-
-const showStudentDetails = () => {
-  showSunmiition.value = false;
-  notificationPopup.value = true;
-}
-
+const notificationPrpup = ref(false);
 
 </script>
 <template>
@@ -19,7 +12,6 @@ const showStudentDetails = () => {
     <div v-if="showSunmiition">
       <Header/>
       <Requirement/>
-      <Design/>
       <div class="registrationForm">
         <div class="container">
           <div class="description">
@@ -37,7 +29,7 @@ const showStudentDetails = () => {
                 ISM Scholarship covers bachelor’s, master’s, and PhD programmes.
               </li>
               <li class="">
-                <UIcon name="line-md-check-all"  class="w-5 h-5" style="color: white"/>
+                <UIcon name="line-md-check-all" class="w-5 h-5" style="color: white"/>
                 ISM Scholarship is for students who come from conflict zones;
                 namely: Palestine, Yemen, Lebanon, Syria and Rohingya
               </li>
@@ -51,6 +43,9 @@ const showStudentDetails = () => {
       </div>
       <FooterView/>
     </div>
+  </div>
+  <div v-if="notificationPrpup">
+    <Notifications/>
   </div>
 </template>
 

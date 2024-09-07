@@ -31,6 +31,7 @@ const filteredNationalities = computed(() => {
   }
   return nationalities.filter(n => n.toLowerCase().startsWith(userNationalityInput.value.toLowerCase()));
 });
+
 let previousLevelsQuestions = [
   {
     label: "Student's name in Arabic",
@@ -173,7 +174,7 @@ const educationLevel = [
   }
 ]
 
-let levelsQuestions = ref({
+let levelsQuestions = ref<{ [key: string]: any }>({
   HS: [
     {
       label: "University Name",
@@ -340,11 +341,14 @@ const showSunmiition = ref(true);
 
 const notificationPopup = ref(false);
 
-async function onSubmit() {
-  console.log(state);
+const showStudentDetails = () => {
   showSunmiition.value = false;
   notificationPopup.value = true;
-  console.log("welcome");
+}
+
+async function onSubmit() {
+  console.log(state);
+  showStudentDetails();
 }
 
 </script>
