@@ -9,20 +9,19 @@ const columns = [
     label: "ID",
   },
   {
-    key: "name",
+    key: "english_name",
     label: "Name",
     sortable: true
   },
   {
-    key: 'passport',
+    key: 'passport_number',
     label: 'Passport Number'
   },
-  {
-    key: 'educationLevel',
-    label: 'Education Level',
-    sortable: true
-  },
-
+  // {
+  //   key: 'educationLevel',
+  //   label: 'Education Level',
+  //   sortable: true
+  // },
   {
     key: 'email',
     label: 'Email',
@@ -30,16 +29,16 @@ const columns = [
     direction: 'desc' as const
   },
   {
-    key: 'whatsAppNumber',
+    key: 'whats_app_number',
     label: 'WhatsApp Number'
   },
   {
-    key: 'uniName',
+    key: 'school_name',
     label: 'University',
     sortable: true
   },
   {
-    key: "state",
+    key: "application_status",
     label: "State",
     sortable: true
   },
@@ -71,7 +70,8 @@ const filteredStudentDetails = computed(() => {
 });
 
 onMounted(async () => {
-  const response = await axios.get("https://66c21796f83fffcb587b22a8.mockapi.io/api/v1/students ")
+  const response = await axios.get("http://127.0.0.1:8000/applications/")
+  console.log(response)
   studentDetails.value = response.data;
 })
 
@@ -82,57 +82,57 @@ const isOpen = ref(false)
 <template>
   <div class="main-container">
     <div class="interContainer">
-        <UModal v-model="showDetailsPopup" :ui="{ width: 'w-full sm:max-w-3xl'}">
-          <UCard :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
-            <template #header>
-              <div class="popupHedaer h-8">
-                <h2>
-                  Welcome to the IESCO Scholarship
-                </h2>
-              </div>
-            </template>
-
-            <Placeholder class="h-32">
-              <PopupContent :student-info="currentStudentToShow"/>
-            </Placeholder>
-
-            <template #footer>
-              <div class="popupFooter h-8 ">
-                <h2>Thank you</h2>
-              </div>
-            </template>
-          </UCard>
-        </UModal>
-        <dashboard-analysts/>
-        <div class="DashboardDiv">
-          <div class="headerAdminPage">
-            <div class="projectName">
-              <h2>Welcome back to IESCO Scholarship System</h2>
+      <UModal v-model="showDetailsPopup" :ui="{ width: 'w-full sm:max-w-3xl'}">
+        <UCard :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
+          <template #header>
+            <div class="popupHedaer h-8">
+              <h2>
+                Welcome to the IESCO Scholarship
+              </h2>
             </div>
-            <div>
-              <UInput
-                  color="rgb(28, 100, 188)"
-                  variant="outline"
-                  icon="iconoir-doc-search"
-                  v-model="q"
-                  placeholder="Search..."
-              />
+          </template>
+
+          <Placeholder class="h-32">
+            <PopupContent :student-info="currentStudentToShow"/>
+          </Placeholder>
+
+          <template #footer>
+            <div class="popupFooter h-8 ">
+              <h2>Thank you</h2>
             </div>
+          </template>
+        </UCard>
+      </UModal>
+      <dashboard-analysts/>
+      <div class="DashboardDiv">
+        <div class="headerAdminPage">
+          <div class="projectName">
+            <h2>Welcome back to IESCO Scholarship System</h2>
           </div>
-          <div class="studentDetailsTable">
-            <UTable
-                class="table"
-                :columns="columns"
-                :rows="filteredStudentDetails"
-            >
-              <template #extend-data="{ row }">
-                <div class="popupButtonExted">
-                  <a class="button" @click="showStudentDetails(row)">Extend</a>
-                </div>
-              </template>
-            </UTable>
+          <div>
+            <UInput
+                color="rgb(28, 100, 188)"
+                variant="outline"
+                icon="iconoir-doc-search"
+                v-model="q"
+                placeholder="Search..."
+            />
           </div>
         </div>
+        <div class="studentDetailsTable">
+          <UTable
+              class="table"
+              :columns="columns"
+              :rows="filteredStudentDetails"
+          >
+            <template #extend-data="{ row }">
+              <div class="popupButtonExted">
+                <a class="button" @click="showStudentDetails(row)">Extend</a>
+              </div>
+            </template>
+          </UTable>
+        </div>
+      </div>
     </div>
   </div>
 </template>
