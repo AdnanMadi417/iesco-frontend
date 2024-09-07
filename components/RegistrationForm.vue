@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import {ref} from 'vue';
+import Design from "~/components/Design.vue";
 
 
 const showSunmiition = ref(true);
 
-const notificationPrpup = ref(false);
+const notificationPopup = ref(false);
 
-const showStudentDetails = (row) => {
+const showStudentDetails = () => {
   showSunmiition.value = false;
-  notificationPrpup.value = true;
+  notificationPopup.value = true;
 }
 
 
@@ -18,6 +19,7 @@ const showStudentDetails = (row) => {
     <div v-if="showSunmiition">
       <Header/>
       <Requirement/>
+      <Design/>
       <div class="registrationForm">
         <div class="container">
           <div class="description">
@@ -50,7 +52,7 @@ const showStudentDetails = (row) => {
       <FooterView/>
     </div>
   </div>
-  <div v-if="notificationPrpup">
+  <div v-if="notificationPopup">
     <Notifications/>
   </div>
 </template>

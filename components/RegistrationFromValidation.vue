@@ -57,7 +57,7 @@ let previousLevelsQuestions = [
     placeholder: "23432125",
   },
   {
-    label: "date Of Birth",
+    label: "Date Of Birth",
     type: "date",
     id: "date_of_birth",
     icon: "uiw-date",
@@ -359,6 +359,7 @@ const showStudentDetails = () => {
 }
 
 async function onSubmit() {
+  console.log("Welcome")
   console.log(state);
 }
 
