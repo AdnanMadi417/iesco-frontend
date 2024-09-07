@@ -14,17 +14,11 @@ console.log(studentInfo);
     <div class="control-popup" v-for="student in studentInfo">
       <div class="item-one">
         <label>
-          <span class="icons" style="color: #eeeeee">
-            <UIcon name="mdi-user-outline"/>
-          </span>
           {{ student[0] }}
         </label>
       </div>
       <div class="item-two">
         <label>
-          <span class="icons">
-            <UIcon name="bx-cloud-download"/>
-          </span>
           {{ student[1] }}
         </label>
       </div>
@@ -46,6 +40,7 @@ main-container {
   font-size: 16px;
   padding: 5px 0;
   text-transform: capitalize;
+  border-bottom:2px solid #eeeeee ;
 }
 
 .control-popup div {
@@ -54,7 +49,6 @@ main-container {
 
 .item-one {
   padding: 5px;
-  background-color: var(--main-color);
   width: 100%;
   border-radius: 5px;
   padding-left: 10px;
@@ -76,13 +70,6 @@ main-container {
 .item-two {
   padding-left: 20px;
   margin-right: 20px;
-}
-
-.icons {
-  font-size: 22px;
-  cursor: pointer;
-  color: var(--main-color);
-  margin-right: 5px;
 }
 
 
