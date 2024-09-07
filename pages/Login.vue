@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {type InferType, object, string} from 'yup'
 import type {FormSubmitEvent} from '#ui/types'
 import {z} from "zod";
 
@@ -15,10 +14,9 @@ const schema = z.object({
           .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
           .regex(/[0-9]/, 'Password must contain at least one number')
           .regex(/[\W_]/, 'Password must contain at least one special character')
-          .nonempty('Password is required'),
 })
 
-type Schema = InferType<typeof schema>
+type Schema = z.output<typeof schema>;
 
 const state = reactive({
   email: undefined,
@@ -52,7 +50,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
               <UFormGroup label="Email" name="email">
                 <UInput
                     v-model="state.email"
-                    color="rgb(28, 100, 188)"
+                    color=blue
                     variant="outline"
                     id="emailAdmin"
                     placeholder="Enter your email"
@@ -70,7 +68,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
                 <UInput
                     v-model="state.password"
                     type="password"
-                    color="rgb(28, 100, 188)"
+                    color="blue"
                     variant="outline"
                     id="Admminpassword"
                     placeholder="Enter your password"

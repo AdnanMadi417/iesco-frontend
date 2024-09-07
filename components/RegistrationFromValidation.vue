@@ -1,27 +1,26 @@
 <script setup lang="ts">
 import {z} from "zod";
 import {reactive, ref} from "vue";
-import type {FormSubmitEvent} from '#ui/types';
 import {nationalities} from "~/utils/nationalties";
 
 const schema = z.object({
-  arabicName: z.string()
+  arabic_name: z.string()
       .regex(/^[\u0600-\u06FF\s]+$/, 'Must contain only Arabic characters')
       .min(8, 'Must be at least 8 characters'),
-  englishName: z.string()
+  english_name: z.string()
       .regex(/^[a-zA-Z\s]+$/, 'Must contain only English characters')
       .min(8, 'Must be at least 8 characters'),
-  passportNumber: z.string(),
-  emailAddress: z.string().email('Invalid email'),
-  localNumber: z.string().regex(/^\d{8,}$/, "Must be at least 8 numbers"),
-  whatsAppNumber: z.string().regex(/^\d{8,}$/, "Must be at least 8 numbers"),
-  malaysiainAddress: z.string().min(12, 'Must be at least 8 characters'),
-  dateOfBirth: z.string().refine(val => {
-    const date = new Date(val);
-    return !isNaN(date.getTime());
-  }, {
-    message: 'Invalid date format'
-  }),
+  passport_number: z.string(),
+  email: z.string().email('Invalid email'),
+  local_number: z.string().regex(/^\d{8,}$/, "Must be at least 8 numbers"),
+  whats_app_number: z.string().regex(/^\d{8,}$/, "Must be at least 8 numbers"),
+  malaysian_address: z.string().min(12, 'Must be at least 8 characters'),
+  school_name: z.string()
+      .min(8, 'Must be at least 8 characters'),
+  current_university_name: z.string()
+      .min(8, 'Must be at least 8 characters'),
+  name_graduate_university: z.string()
+      .min(8, 'Must be at least 8 characters'),
 });
 
 const userNationalityInput = ref('');
@@ -140,6 +139,7 @@ const state = reactive<{ [key: string]: any }>({
   school_name: null,
   current_university_name: null,
   num_sem_graduation: null,
+  name_graduate_university: null,
   passport_file: null,
   high_school_file: null,
   english_qualification_file: null,
@@ -151,6 +151,16 @@ const state = reactive<{ [key: string]: any }>({
   academic_specialization_file: null,
   paper_from_supervisor_file: null,
 });
+
+type Question = {
+  label: string;
+  type: "text";
+  id: string;
+  icon: string;
+  placeholder: string;
+  required?: boolean;
+};
+
 
 const educationLevel = [
   {
@@ -287,7 +297,7 @@ let levelsQuestions = ref({
     {
       label: "Name of Graduate University",
       type: "text",
-      id: "num_sem_graduation",
+      id: "name_graduate_university",
       icon: "fa-solid-university",
       placeholder: "Name of Graduate University"
     },
@@ -343,12 +353,12 @@ const showSunmiition = ref(true);
 
 const notificationPopup = ref(false);
 
-const showStudentDetails = (row) => {
+const showStudentDetails = () => {
   showSunmiition.value = false;
   notificationPopup.value = true;
 }
 
-async function onSubmit(event: FormSubmitEvent<Schema>) {
+async function onSubmit() {
   console.log(state);
 }
 
@@ -357,7 +367,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 <template>
   <div>
     <div class="registrationForm">
-      <UForm :schema="schema" :state="state" class="space-y-4" @submit.prevent="onSubmit">
+      <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
         <div class="control-container">
           <div v-for="student in previousLevelsQuestions" :key="student.id">
             <UFormGroup class="form-group" :label="student.label" :name="student.id">
@@ -407,10 +417,10 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
                 <UInput
                     :type="question.type"
                     size="md"
-                    :color="question.color"
                     variant="outline"
                     :icon="question.icon"
                     :placeholder="question.placeholder"
+                    color="blue"
                 />
               </div>
             </div>

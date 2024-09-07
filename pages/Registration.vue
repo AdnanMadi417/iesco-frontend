@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import {type InferType} from 'yup'
 import type {FormSubmitEvent} from '#ui/types'
 import {z} from "zod";
 
 const schema = z.object({
-  englishName: z.string()
+  english_name: z.string()
       .regex(/^[a-zA-Z\s]+$/, 'Name must contain only letters and spaces')
       .min(2, 'Name must be at least 2 characters long')
-      .max(50, 'Name must be at most 50 characters long')
-      .nonempty('Name is required'),
+      .max(50, 'Name must be at most 50 characters long'),
   email:
       z.string()
           .email('Invalid email')
@@ -19,14 +17,13 @@ const schema = z.object({
           .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
           .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
           .regex(/[0-9]/, 'Password must contain at least one number')
-          .regex(/[\W_]/, 'Password must contain at least one special character')
-          .nonempty('Password is required'),
+          .regex(/[\W_]/, 'Password must contain at least one special character'),
 })
 
-type Schema = InferType<typeof schema>
+type Schema = z.output<typeof schema>;
 
 const state = reactive({
-  englishName: undefined,
+  english_name: undefined,
   email: undefined,
   password: undefined
 })
@@ -58,8 +55,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
               <div class="control-input">
                 <UFormGroup label="Your Name" name="name">
                   <UInput
-                      v-model="state.englishName"
-                      color="rgb(28, 100, 188)"
+                      v-model="state.english_name"
+                      color=blue
                       variant="outline"
                       placeholder="Enter your email"
                       size="md"
@@ -72,7 +69,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
                 <UFormGroup label="Email" name="email">
                   <UInput
                       v-model="state.email"
-                      color="rgb(28, 100, 188)"
+                      color=blue
                       variant="outline"
                       id="emailAdmin"
                       placeholder="Enter your email"
@@ -90,7 +87,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
                   <UInput
                       v-model="state.password"
                       type="password"
-                      color="rgb(28, 100, 188)"
+                      color=blue
                       variant="outline"
                       id="Admminpassword"
                       placeholder="Enter your password"
