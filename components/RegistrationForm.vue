@@ -52,9 +52,6 @@ const showStudentDetails = () => {
       <FooterView/>
     </div>
   </div>
-  <div v-if="notificationPopup">
-    <Notifications/>
-  </div>
 </template>
 
 <style scoped lang="scss">

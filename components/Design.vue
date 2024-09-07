@@ -21,7 +21,7 @@
   max-height:70px;
   aspect-ratio: 5/2;
   clip-path: polygon(0 0, 0 var(--s), 50% 100%, 100% var(--s), 100% 0, 50% calc(100% - var(--s)));
-  background: var(--main-color);
+  background: #39701d;
 }
 
 .chevronOne {
@@ -31,7 +31,7 @@
   max-height:70px;
   aspect-ratio: 5/2;
   clip-path: polygon(0 100%, 0 calc(100% - var(--s)), 50% 0, 100% calc(100% - var(--s)), 100% 100%, 50% var(--s));
-  background: var(--main-color);
+  background: #39701d;
 }
 
 </style>

@@ -31,9 +31,6 @@ const filteredNationalities = computed(() => {
   }
   return nationalities.filter(n => n.toLowerCase().startsWith(userNationalityInput.value.toLowerCase()));
 });
-
-type Schema = z.output<typeof schema>;
-
 let previousLevelsQuestions = [
   {
     label: "Student's name in Arabic",
@@ -57,7 +54,7 @@ let previousLevelsQuestions = [
     placeholder: "23432125",
   },
   {
-    label: "Date Of Birth",
+    label: "date Of Birth",
     type: "date",
     id: "date_of_birth",
     icon: "uiw-date",
@@ -151,16 +148,6 @@ const state = reactive<{ [key: string]: any }>({
   academic_specialization_file: null,
   paper_from_supervisor_file: null,
 });
-
-type Question = {
-  label: string;
-  type: "text";
-  id: string;
-  icon: string;
-  placeholder: string;
-  required?: boolean;
-};
-
 
 const educationLevel = [
   {
@@ -353,14 +340,11 @@ const showSunmiition = ref(true);
 
 const notificationPopup = ref(false);
 
-const showStudentDetails = () => {
+async function onSubmit() {
+  console.log(state);
   showSunmiition.value = false;
   notificationPopup.value = true;
-}
-
-async function onSubmit() {
-  console.log("Welcome")
-  console.log(state);
+  console.log("welcome");
 }
 
 </script>
@@ -427,7 +411,7 @@ async function onSubmit() {
             </div>
           </div>
         </div>
-        <UButton style="background-color: rgb(28, 100, 188)" type="submit">
+        <UButton style="background-color: rgb(28, 100, 188)" type="submit" @click="onSubmit">
           Submit
         </UButton>
       </UForm>
