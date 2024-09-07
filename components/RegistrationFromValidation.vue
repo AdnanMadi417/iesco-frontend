@@ -410,6 +410,7 @@ async function onSubmit() {
                     :icon="question.icon"
                     :placeholder="question.placeholder"
                     color="blue"
+                    v-model="question.id"
                 />
               </div>
             </div>
