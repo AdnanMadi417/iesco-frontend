@@ -38,9 +38,9 @@ main-container {
   flex-direction: row;
   text-align: start;
   font-size: 16px;
-  padding: 5px 0;
+  padding: 0 5px;
   text-transform: capitalize;
-  border-bottom:2px solid #eeeeee ;
+  border:2px solid #eeeeee ;
 }
 
 .control-popup div {
@@ -48,10 +48,9 @@ main-container {
 }
 
 .item-one {
-  padding: 5px;
   width: 100%;
-  border-radius: 5px;
-  padding-left: 10px;
+  padding: 5px 5px 5px 10px;
+  border-right: 2px solid #eeeeee;
 }
 
 @media (max-width: 800px) {
@@ -71,6 +70,5 @@ main-container {
   padding-left: 20px;
   margin-right: 20px;
 }
-
 
 </style>
