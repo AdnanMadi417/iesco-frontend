@@ -23,6 +23,10 @@ console.log(studentInfo);
         </label>
       </div>
     </div>
+    <div class="control-botton">
+      <button id ="rejected">Rejected</button>
+      <button id="accepted">Accepted</button>
+    </div>
   </div>
 </template>
 
@@ -40,7 +44,7 @@ main-container {
   font-size: 16px;
   padding: 0 5px;
   text-transform: capitalize;
-  border:2px solid #eeeeee ;
+  border-bottom: 2px solid #eeeeee;
 }
 
 .control-popup div {
@@ -50,7 +54,6 @@ main-container {
 .item-one {
   width: 100%;
   padding: 5px 5px 5px 10px;
-  border-right: 2px solid #eeeeee;
 }
 
 @media (max-width: 800px) {
@@ -69,6 +72,28 @@ main-container {
 .item-two {
   padding-left: 20px;
   margin-right: 20px;
+}
+
+.control-botton {
+  width: 100%;
+  padding: 5px 5px 5px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.control-botton button {
+  width: fit-content;
+  padding: 5px 10px;
+  margin: 5px;
+  color: white;
+  border-radius: 10px 0;
+  background-color: var(--main-color);
+}
+
+.control-botton button:hover {
+  color: var(--main-color);
+  background-color: #d5d5d5;
+  transition: .3s;
 }
 
 </style>

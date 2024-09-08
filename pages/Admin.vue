@@ -1,19 +1,28 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
-  <div class="home-container">
-    <div class="steps-container">
-      <div class="step">
-        <div class="title"></div>
-        <Header/>
-        <ProjectDetails/>
-        <FooterAdminPage/>
-      </div>
+  <div class="page-wrapper">
+    <Header/>
+    <div class="content-container">
+      <ProjectDetails/>
     </div>
+    <FooterAdminPage/>
   </div>
 </template>
 
 <style scoped>
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-container {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}
 </style>

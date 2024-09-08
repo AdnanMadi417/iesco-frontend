@@ -77,8 +77,6 @@ onMounted(async () => {
   studentDetails.value = response.data;
 })
 
-const isOpen = ref(false)
-
 </script>
 
 <template>
@@ -95,7 +93,7 @@ const isOpen = ref(false)
           </template>
 
           <Placeholder class="h-32">
-            <PopupContent :student-info="currentStudentToShow"/>
+            <PopupContent style="margin-top: -10px" :student-info="currentStudentToShow"/>
           </Placeholder>
 
           <template #footer>
@@ -113,7 +111,7 @@ const isOpen = ref(false)
           </div>
           <div>
             <UInput
-                color="rgb(28, 100, 188)"
+                color="blue"
                 variant="outline"
                 icon="iconoir-doc-search"
                 v-model="q"
