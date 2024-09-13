@@ -39,9 +39,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       </div>
       <div class="dic-color-two">
         <div class="info-container">
-          <h2 class="h2-one">Welcome</h2>
-          <h2 class="h2-two">IESCO</h2>
-          <h2 class="h2-three">Scholarship system</h2>
+          <h2>Welcome <span>IESCO</span> Scholarship system</h2>
         </div>
         <div class="controlForm">
           <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
@@ -60,7 +58,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
                 />
               </UFormGroup>
             </div>
-            <div class="control-input">
+            <div style="margin-top: 5px" class="control-input">
               <UFormGroup
                   label="Password"
                   name="password"
@@ -166,51 +164,19 @@ body {
   margin-left: 30px;
 }
 
-.dic-color-two .info-container .h2-one {
-  font-size: 4rem;
+.dic-color-two .info-container h2{
+  font-size: 1.5rem;
   color: var(--main-color);
-  margin-left: 2rem;
+  margin-left: 1rem;
+  margin-top: 20px;
   font-weight: lighter;
 }
 
-.dic-color-two .info-container .h2-two {
-  font-size: 4rem;
-  color: var(--main-color);
-  margin-top: -3rem;
-  margin-left: 3rem;
-}
-
-.dic-color-two .info-container .h2-three {
+.dic-color-two .info-container h2 span{
   font-size: 2rem;
-  color: var(--main-color);
-  margin-top: -2.5rem;
-  margin-left: 0;
-  font-weight: normal;
+  font-weight: bold;
 }
 
-@media (max-width: 600px) {
-  .dic-color-two .info-container .h2-one {
-    font-size: 30px;
-    color: var(--main-color);
-    margin-left: 30px;
-  }
-
-  .dic-color-two .info-container .h2-two {
-    font-size: 50px;
-    color: var(--main-color);
-    margin-top: -32px;
-    margin-left: 50px;
-  }
-
-  .dic-color-two .info-container .h2-three {
-    font-size: 30px;
-    color: var(--main-color);
-    margin-top: -25px;
-    margin-left: 0;
-    font-weight: normal;
-  }
-
-}
 
 .login-page .main-container .controlForm {
   display: block;

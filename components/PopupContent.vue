@@ -11,21 +11,23 @@ console.log(studentInfo);
 
 <template>
   <div class="main-container">
-    <div class="control-popup" v-for="student in studentInfo">
+    <div class="control-popup" v-for="(student, index) in studentInfo" :key="index">
       <div class="item-one">
         <label>
+          {{ index + 1 }}.
           {{ student[0] }}
         </label>
       </div>
       <div class="item-two">
         <label>
+
           {{ student[1] }}
         </label>
       </div>
     </div>
     <div class="control-botton">
-      <button id ="rejected">Rejected</button>
-      <button id="accepted">Accepted</button>
+      <a id="reject" style="background-color: red">Reject</a>
+      <a id="accept" style="background-color: #39701d">Accept</a>
     </div>
   </div>
 </template>
@@ -79,21 +81,17 @@ main-container {
   padding: 5px 5px 5px 10px;
   display: flex;
   justify-content: space-between;
+  margin: 20px 0;
 }
 
-.control-botton button {
+.control-botton a {
   width: fit-content;
   padding: 5px 10px;
   margin: 5px;
   color: white;
+  border: none;
   border-radius: 10px 0;
   background-color: var(--main-color);
-}
-
-.control-botton button:hover {
-  color: var(--main-color);
-  background-color: #d5d5d5;
-  transition: .3s;
 }
 
 </style>

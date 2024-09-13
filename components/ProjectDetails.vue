@@ -17,11 +17,11 @@ const columns = [
     key: 'passport_number',
     label: 'Passport Number'
   },
-  // {
-  //   key: 'educationLevel',
-  //   label: 'Education Level',
-  //   sortable: true
-  // },
+  {
+    key: 'educationLevel',
+    label: 'Education Level',
+    sortable: true
+  },
   {
     key: 'email',
     label: 'Email',
@@ -51,9 +51,10 @@ const columns = [
 const studentDetails = ref([])
 
 const showDetailsPopup = ref(false)
+
 const currentStudentToShow = ref()
 
-const showStudentDetails = (row) => {
+const showStudentDetails = (row: any) => {
   currentStudentToShow.value = row;
   showDetailsPopup.value = true
 }
@@ -85,17 +86,13 @@ onMounted(async () => {
       <UModal v-model="showDetailsPopup" :ui="{ width: 'w-full sm:max-w-3xl'}">
         <UCard :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
           <template #header>
-            <div class="popupHedaer h-8">
-              <h2>
-                Welcome to the IESCO Scholarship
-              </h2>
+            <div class="projectName text-center">
+              <h2>Welcome back to IESCO Scholarship System</h2>
             </div>
           </template>
-
           <Placeholder class="h-32">
             <PopupContent style="margin-top: -10px" :student-info="currentStudentToShow"/>
           </Placeholder>
-
           <template #footer>
             <div class="popupFooter h-8 ">
               <h2>Thank you</h2>
@@ -103,12 +100,11 @@ onMounted(async () => {
           </template>
         </UCard>
       </UModal>
-      <dashboard-analysts/>
+      <div class="projectName">
+        <h2 class="m-4">Welcome back !!</h2>
+      </div>
       <div class="DashboardDiv">
         <div class="headerAdminPage">
-          <div class="projectName">
-            <h2>Welcome back to IESCO Scholarship System</h2>
-          </div>
           <div>
             <UInput
                 color="blue"
@@ -119,7 +115,7 @@ onMounted(async () => {
             />
           </div>
         </div>
-        <div class="studentDetailsTable">
+        <div class="studentDetailsTable ">
           <UTable
               class="table"
               :columns="columns"
@@ -192,8 +188,9 @@ onMounted(async () => {
   }
 }
 
-.headerAdminPage div h2 {
+.projectName h2 {
   font-weight: bold;
+  text-transform: capitalize;
   font-size: 20px;
   color: var(--main-color);
 }
