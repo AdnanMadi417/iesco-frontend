@@ -18,11 +18,6 @@ const columns = [
     label: 'Passport Number'
   },
   {
-    key: 'educationLevel',
-    label: 'Education Level',
-    sortable: true
-  },
-  {
     key: 'email',
     label: 'Email',
     sortable: true,
