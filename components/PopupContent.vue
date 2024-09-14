@@ -29,14 +29,13 @@ const downloadFile = (fileUrl: string) => {
 }
 
 const changeApplicationStatus = async (status: string) => {
-  toast.add({title: `Application ${status}ed successfully.`})
-
   const payload = {
     application_status: status == 'accept' ? 'successful' : 'failed'
   }
 
   const response = await axios.patch(`http://127.0.0.1:8000/applications/${props.studentInfo.id}/`, payload)
   console.log(response)
+  toast.add({title: `Application ${status}ed successfully.`})
 }
 
 </script>

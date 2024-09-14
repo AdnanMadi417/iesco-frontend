@@ -2,29 +2,42 @@
 import type {FormSubmitEvent} from '#ui/types'
 import {z} from "zod";
 
+import axios from "axios";
+
+const toast = useToast()
+
 const schema = z.object({
-  email:
-      z.string()
-      .email('Invalid email')
-      .regex(/^[a-zA-Z0-9._%+-]+@iesco\.my$/, 'Must be a @iesco.my'),
+  username:
+      z.string().min(4, 'Username must be at least 8 characters long'),
   password:
-      z.string()
-          .min(8, 'Password must be at least 8 characters long')
-          .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
-          .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
-          .regex(/[0-9]/, 'Password must contain at least one number')
-          .regex(/[\W_]/, 'Password must contain at least one special character')
+      z.string().min(4, 'Password must be at least 8 characters long')
 })
 
 type Schema = z.output<typeof schema>;
 
 const state = reactive({
-  email: undefined,
+  username: undefined,
   password: undefined
 })
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  console.log(event.data)
+  const payload = event.data
+  const token = useCookie('token', {maxAge: 28800});
+
+  try {
+    const response = await axios.post('http://127.0.0.1:8000/login/', payload);
+
+    token.value = response.data.access;
+    toast.add({title: `Login successful! Redirecting to dashboard.`})
+
+    setTimeout(async () => {
+      await navigateTo('/admin')
+    }, 2000)
+
+  } catch (error) {
+    console.error('Login failed', error);
+    toast.add({title: `Login failed, please try again later!`})
+  }
 }
 </script>
 
@@ -45,13 +58,13 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
           <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
 
             <div class="control-input">
-              <UFormGroup label="Email" name="email">
+              <UFormGroup label="Username" name="username">
                 <UInput
-                    v-model="state.email"
+                    v-model="state.username"
                     color=blue
                     variant="outline"
-                    id="emailAdmin"
-                    placeholder="Enter your email"
+                    id="username"
+                    placeholder="Enter your username"
                     size="md"
                     required
                     icon="mdi-email"
@@ -68,7 +81,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
                     type="password"
                     color="blue"
                     variant="outline"
-                    id="Admminpassword"
+                    id="password"
                     placeholder="Enter your password"
                     size="md"
                     required
@@ -164,7 +177,7 @@ body {
   margin-left: 30px;
 }
 
-.dic-color-two .info-container h2{
+.dic-color-two .info-container h2 {
   font-size: 1.5rem;
   color: var(--main-color);
   margin-left: 1rem;
@@ -172,7 +185,7 @@ body {
   font-weight: lighter;
 }
 
-.dic-color-two .info-container h2 span{
+.dic-color-two .info-container h2 span {
   font-size: 2rem;
   font-weight: bold;
 }
@@ -203,7 +216,7 @@ body {
 }
 
 
-.login-page label{
+.login-page label {
   font-size: 18px;
   font-weight: normal;
   color: var(--main-color);
