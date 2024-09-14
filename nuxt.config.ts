@@ -9,5 +9,13 @@ export default defineNuxtConfig({
   },
   app: {
     baseURL: '/iesco-frontend/'
-  }
+  },
+  plugins: [
+    './plugins/axios.ts'
+  ],
+  runtimeConfig: {
+    public: {
+      isDev: process.env.NODE_ENV === 'development',
+    },
+  },
 })

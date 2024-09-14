@@ -1,6 +1,9 @@
 <script setup lang="ts">
 const emit = defineEmits(['showSuccess'])
 
+let {$axios} = useNuxtApp()
+const api = $axios()
+
 import {z} from "zod";
 import {reactive, ref} from "vue";
 import {nationalities} from "~/utils/nationalties";
@@ -376,7 +379,7 @@ async function onSubmit() {
   }
 
   try {
-    await axios.post("http://127.0.0.1:8000/applications/", formData, {
+    await api.post("/applications/", formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

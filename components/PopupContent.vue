@@ -1,9 +1,8 @@
 <script setup lang="ts">
-
-import axios from "axios";
-
 const toast = useToast()
 const props = defineProps(['studentInfo'])
+let {$axios} = useNuxtApp()
+const api = $axios()
 
 const studentInfo = Object.entries(props.studentInfo)
 
@@ -33,7 +32,7 @@ const changeApplicationStatus = async (status: string) => {
     application_status: status == 'accept' ? 'successful' : 'failed'
   }
 
-  const response = await axios.patch(`http://127.0.0.1:8000/applications/${props.studentInfo.id}/`, payload)
+  const response = await api.patch(`/applications/${props.studentInfo.id}/`, payload)
   console.log(response)
   toast.add({title: `Application ${status}ed successfully.`})
 }

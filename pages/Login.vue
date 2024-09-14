@@ -4,6 +4,8 @@ import {z} from "zod";
 
 import axios from "axios";
 
+let {$axios} = useNuxtApp()
+const api = $axios()
 const toast = useToast()
 
 const schema = z.object({
@@ -25,7 +27,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   const token = useCookie('token', {maxAge: 28800});
 
   try {
-    const response = await axios.post('http://127.0.0.1:8000/login/', payload);
+    const response = await api.post('/login/', payload);
 
     token.value = response.data.access;
     toast.add({title: `Login successful! Redirecting to dashboard.`})

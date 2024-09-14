@@ -3,6 +3,9 @@ import axios from "axios";
 import {computed, onMounted, ref} from 'vue';
 import PopupContent from "~/components/PopupContent.vue";
 
+let {$axios} = useNuxtApp()
+const api = $axios()
+
 const columns = [
   {
     key: "id",
@@ -68,7 +71,7 @@ const filteredStudentDetails = computed(() => {
 onMounted(async () => {
   // const response = await axios.get("https://66c21796f83fffcb587b22a8.mockapi.io/api/v1/students/")
 
-  const response = await axios.get("http://127.0.0.1:8000/applications/")
+  const response = await api.get("/applications/")
   studentDetails.value = response.data;
 })
 
