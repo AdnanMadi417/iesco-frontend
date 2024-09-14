@@ -1,11 +1,43 @@
 <script setup lang="ts">
 
+import axios from "axios";
+
+const toast = useToast()
 const props = defineProps(['studentInfo'])
-console.log(props)
 
 const studentInfo = Object.entries(props.studentInfo)
 
-console.log(studentInfo);
+const getFormattedValue = (val: string | unknown) => {
+  if (!val) {
+    return ['text', 'Undefined']
+  }
+
+  if (typeof val !== 'string' || !val.includes('http')) {
+    return ['text', val]
+  }
+
+  return ['file', val]
+}
+
+const downloadFile = (fileUrl: string) => {
+  const link = document.createElement('a');
+  link.href = fileUrl;
+  link.download = '';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+const changeApplicationStatus = async (status: string) => {
+  toast.add({title: `Application ${status}ed successfully.`})
+
+  const payload = {
+    application_status: status == 'accept' ? 'successful' : 'failed'
+  }
+
+  const response = await axios.patch(`http://127.0.0.1:8000/applications/${props.studentInfo.id}/`, payload)
+  console.log(response)
+}
 
 </script>
 
@@ -19,20 +51,21 @@ console.log(studentInfo);
         </label>
       </div>
       <div class="item-two">
-        <label>
-
-          {{ student[1] }}
-        </label>
+        <label v-if="getFormattedValue(student[1])[0] == 'text'">{{ getFormattedValue(student[1])[1] }}</label>
+        <div v-else class='file-download' @click="downloadFile(getFormattedValue(student[1])[1])">
+          <UIcon name="ri:mail-download-fill" class="educationIcon" styles="color: #F00;"/>
+          Download File
+        </div>
       </div>
     </div>
     <div class="control-botton">
-      <a id="reject" style="background-color: red">Reject</a>
-      <a id="accept" style="background-color: #39701d">Accept</a>
+      <a id="reject" style="background-color: red" @click="changeApplicationStatus('reject')">Reject</a>
+      <a id="accept" style="background-color: #39701d" @click="changeApplicationStatus('accept')">Accept</a>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 
 main-container {
   display: block;
@@ -74,6 +107,7 @@ main-container {
 .item-two {
   padding-left: 20px;
   margin-right: 20px;
+  padding-top: 5px;
 }
 
 .control-botton {
@@ -92,6 +126,22 @@ main-container {
   border: none;
   border-radius: 10px 0;
   background-color: var(--main-color);
+  cursor: pointer;
+}
+
+.file-download {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+
+  span {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    color: var(--main-color);
+  }
 }
 
 </style>

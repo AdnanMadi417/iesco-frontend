@@ -1,12 +1,9 @@
 <script setup lang="ts">
-
-onBeforeMount(() => {
-  document.documentElement.classList.remove('dark')
-})
 </script>
 <template>
   <div>
     <nuxt-page/>
+    <UNotifications/>
   </div>
 </template>
 <style>

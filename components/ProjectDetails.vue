@@ -71,10 +71,9 @@ const filteredStudentDetails = computed(() => {
 });
 
 onMounted(async () => {
-  const response = await axios.get("https://66c21796f83fffcb587b22a8.mockapi.io/api/v1/students/")
+  // const response = await axios.get("https://66c21796f83fffcb587b22a8.mockapi.io/api/v1/students/")
 
-  // const response = await axios.get("http://127.0.0.1:8000/applications/")
-  console.log(response)
+  const response = await axios.get("http://127.0.0.1:8000/applications/")
   studentDetails.value = response.data;
 })
 
