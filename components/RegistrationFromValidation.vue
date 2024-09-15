@@ -7,7 +7,6 @@ const api = $axios()
 import {z} from "zod";
 import {reactive, ref} from "vue";
 import {nationalities} from "~/utils/nationalties";
-import axios from "axios";
 
 const schema = z.object({
   arabic_name: z.string()
@@ -474,12 +473,20 @@ const handleFileInput = (inputValue: any, question: any) => {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+
+.registrationForm {
+  margin-top: 20px;
+}
 
 .control-container {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
+
+  > div {
+    width: 49%;
+  }
 }
 
 .control-container .form-group {
@@ -488,8 +495,15 @@ const handleFileInput = (inputValue: any, question: any) => {
 }
 
 @media (max-width: 600px) {
-  .control-container .form-group {
-    flex: 1 1 100%;
+  .control-container {
+    > div {
+      width: 100%;
+
+      .form-group {
+        width: 100%;
+        min-width: 100%;
+      }
+    }
   }
 }
 
