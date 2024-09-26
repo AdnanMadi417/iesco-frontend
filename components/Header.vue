@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+const {locale, setLocale} = useI18n()
 </script>
 
 <template>
@@ -7,12 +8,15 @@
     <div class="logo-container">
       <div>
         <a href="https://iesco.my/">
-          <img src="../public/images/isco-logo.png" alt="Logo" class="logo" />
+          <img src="../public/images/isco-logo.png" alt="Logo" class="logo"/>
         </a>
       </div>
     </div>
+    <button @click="setLocale('en')">en</button>
+    <button @click="setLocale('fr')">fr</button>
+    <button @click="setLocale('ar')">ar</button>
     <div class="project-name">
-      <span class="project-name">IESCO Scholarship in Malaysia (ISM)</span>
+      <span class="project-name">{{ $t('welcome') }} Iesco Scholarship in Malaysia (ISM)</span>
     </div>
   </header>
 </template>
@@ -28,7 +32,7 @@
 }
 
 @media (max-width: 600px) {
-  .project-name{
+  .project-name {
     display: none;
   }
 }
@@ -43,9 +47,10 @@
   width: 80px;
   margin-right: 10px;
 }
+
 .project-name {
-    font-size: 24px;
-    font-weight: normal;
-    color: #eee;
-  }
+  font-size: 24px;
+  font-weight: normal;
+  color: #eee;
+}
 </style>

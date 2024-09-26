@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const emit = defineEmits(['showSuccess'])
 
+const {locale, setLocale, t} = useI18n()
 let {$axios} = useNuxtApp()
 const api = $axios()
 
@@ -39,7 +40,7 @@ const filteredNationalities = computed(() => {
 
 let previousLevelsQuestions = [
   {
-    label: "Student's name in Arabic",
+    label: t('arabicStudentName'),
     type: "text",
     id: "arabic_name",
     icon: "ph-user",
