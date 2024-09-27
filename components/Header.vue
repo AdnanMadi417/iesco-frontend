@@ -8,7 +8,7 @@ const {locale, setLocale} = useI18n()
     <div class="logo-container">
       <div>
         <a href="https://iesco.my/">
-          <img src="../public/images/isco-logo.png" alt="Logo" class="logo"/>
+          <img src="../public/images/isco-logo.png" alt="Logoo" class="logo"/>
         </a>
       </div>
     </div>
