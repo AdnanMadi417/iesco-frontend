@@ -13,27 +13,21 @@ const showPopup = ref(false);
         <div class="container">
           <div class="description">
             <img src="../public/images/isco-logo.png" alt="">
-            <h2>Registration</h2>
-            <p>IESCO Scholarship in Malaysia (ISM) is an initiative by
-              International Educational Scientific and Cultural Organization
-              (IESCO) to attract students from less fortunate places to pursue
-              advanced academic studies in Malaysia. International students are
-              welcomed to apply for this scholarship and further their studies in
-              the selected Malaysian universities.</p>
+            <h2>{{ $t('registration') }}</h2>
+            <p>{{ $t('paragraph') }}</p>
             <ul class="">
               <li class="">
                 <UIcon name="line-md-check-all" class="w-5 h-5" style="color: white"/>
-                ISM Scholarship covers bachelor’s, master’s, and PhD programmes.
+                {{ $t('first_point') }}
               </li>
               <li class="">
                 <UIcon name="line-md-check-all" class="w-5 h-5" style="color: white"/>
-                ISM Scholarship is for students who come from conflict zones;
-                namely: Palestine, Yemen, Lebanon, Syria and Rohingya
+                <h1>{{ $t('online_system') }}</h1>
               </li>
             </ul>
           </div>
           <div class="registerationQuestions">
-            <h1>IESCO Online Application System</h1>
+            <h1>{{ $t('online_system') }}</h1>
             <RegistrationFromValidation @show-success="showPopup=true"/>
           </div>
         </div>

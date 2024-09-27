@@ -1,13 +1,12 @@
 <script setup lang="ts">
+import {z} from "zod";
+import {reactive, ref, computed} from "vue";
+import {nationalities} from "~/utils/nationalties";
 const emit = defineEmits(['showSuccess'])
-
-const {locale, setLocale, t} = useI18n()
+const {t} = useI18n()
+import { useI18n } from 'vue-i18n';
 let {$axios} = useNuxtApp()
 const api = $axios()
-
-import {z} from "zod";
-import {reactive, ref} from "vue";
-import {nationalities} from "~/utils/nationalties";
 
 const schema = z.object({
   arabic_name: z.string()
@@ -38,117 +37,117 @@ const filteredNationalities = computed(() => {
   return nationalities.filter(n => n.toLowerCase().startsWith(userNationalityInput.value.toLowerCase()));
 });
 
-let previousLevelsQuestions = [
+const previousLevelsQuestions = computed(() => [
   {
     label: t('arabicStudentName'),
     type: "text",
     id: "arabic_name",
     icon: "ph-user",
-    placeholder: "Enter your Arabic name",
+    placeholder: t('enterArabicName'),
   },
   {
-    label: "Student's name in English",
+    label: t("studentNameInEnglish"),
     type: "text",
     id: "english_name",
     icon: "ph-user",
-    placeholder: "Enter your English name",
+    placeholder: t("enterEnglishName"),
   },
   {
-    label: "Passport Number in English",
+    label: t("passportNumberInEnglish"),
     type: "text",
     id: "passport_number",
     icon: "mdi-passport",
-    placeholder: "23432125",
+    placeholder: t("passportNumberPlaceholder"),
   },
   {
-    label: "Date Of Birth",
+    label: t("dateOfBirth"),
     type: "date",
     id: "date_of_birth",
     icon: "uiw-date",
-    placeholder: "MM/dd/yyyy",
+    placeholder: t("dateOfBirthPlaceholder"),
   },
   {
-    label: "Student's Email address ",
+    label: t("studentEmailAddress"),
     type: "email",
     id: "email",
     icon: "ic-outline-email",
-    placeholder: "emailAddress@gmail.com",
+    placeholder: t("emailPlaceholder"),
   },
   {
-    label: "Local Number",
+    label: t("localNumber"),
     type: "text",
     id: "local_number",
     icon: "ph-phone",
-    placeholder: "Enter your local Number",
+    placeholder: t("enterLocalNumber"),
   },
   {
-    label: "WhatsApp Number",
+    label: t("whatsappNumber"),
     type: "text",
     id: "whats_app_number",
     icon: "ph-phone",
-    placeholder: "Enter your whatsApp Number",
+    placeholder: t("enterWhatsAppNumber"),
   },
   {
-    label: "Address in Malaysia",
+    label: t("addressInMalaysia"),
     type: "address",
     id: "malaysian_address",
     icon: "tabler-world",
-    placeholder: "Kuala Lapmur Ampang",
+    placeholder: t("addressPlaceholder"),
   }
-]
+]);
 
-let previousSelectQuestions = [
+const previousSelectQuestions = computed(() => [
   {
-    label: "Gender",
+    label: t("gender"),
     type: "select",
     id: "gender",
     icon: "ph-user",
-    placeholder: "Male Or Female",
+    placeholder: t("maleOrFemale"),
     options: [
       {
-        name: "Male",
+        name: t("male"),
         value: "male",
       },
       {
-        name: "Female",
+        name: t("female"),
         value: "female",
       },
-    ]
+    ],
   },
   {
-    label: "Marital Status ",
+    label: t("maritalStatus"), // Use translation key
     type: "select",
     id: "marital_status",
     icon: "ph-user",
     options: [
       {
-        name: "Single",
+        name: t("single"),
         value: "single",
       },
       {
-        name: "Married",
+        name: t("married"),
         value: "married",
       },
       {
-        name: "Widower",
+        name: t("widower"),
         value: "widower",
       },
       {
-        name: "Divorced",
+        name: t("divorced"),
         value: "divorced",
       },
     ],
-    placeholder: "Marital Status ",
+    placeholder: t("maritalStatusPlaceholder"),
   },
   {
-    label: "Your Nationality",
+    label: t("yourNationality"),
     type: "select",
     id: "nationality",
     icon: "tabler-world",
     options: filteredNationalities.value,
-    placeholder: "Select Nationality"
+    placeholder: t("selectNationality"),
   }
-]
+]);
 
 const state = reactive<{ [key: string]: any }>({
   arabic_name: '',
@@ -178,190 +177,190 @@ const state = reactive<{ [key: string]: any }>({
   paper_from_supervisor_file: null,
 });
 
-const educationLevel = [
+const educationLevel = computed(() => [
   {
-    name: "Education level",
+    name: t("educationLevelPlaceholder"),
     value: "EL",
     disabled: true,
   },
   {
-    name: "High School",
+    name: t("highSchool"),
     value: "HS",
   },
   {
-    name: "Bachelor",
+    name: t("bachelor"),
     value: "Ba",
   },
   {
-    name: "Master",
+    name: t("master"),
     value: "MaPHD",
   },
   {
-    name: "Doctorate ",
+    name: t("doctorate"),
     value: "MaPHD",
   }
-]
+]);
 
-let levelsQuestions = ref<{ [key: string]: any }>({
+const levelsQuestions = ref<{ [key: string]: any }>({
   HS: [
     {
-      label: "University Name",
+      label: t("universityName"),
       type: "text",
       id: "school_name",
       icon: "fa-solid-university",
-      placeholder: "Enter your University Name",
+      placeholder: t("universityName"),
     },
     {
-      label: "Passport 1st page",
+      label: t("passportFirstPage"),
       type: "file",
       id: "passport_file",
       icon: "i-heroicons-folder",
-      placeholder: "Passport 1st page (1 MB max) :"
+      placeholder: t("passportFirstPage") + " (1 MB max) :",
     },
     {
-      label: "Certified Original Copy of High School Academic Certificate ",
+      label: t("highSchoolCertificate"),
       type: "file",
       id: "high_school_file",
       icon: "i-heroicons-folder",
-      placeholder: "Certified Original Copy of High School Academic Certificate :"
+      placeholder: t("highSchoolCertificate") + " :",
     },
     {
-      label: "Certified Original Copy of English Proficiency Qualification (MUET, TOEFL, IELTS, or Equivalent, if available)",
+      label: t("englishProficiencyQualification"),
       type: "file",
       id: "english_qualification_file",
       icon: "i-heroicons-folder",
-      placeholder: "(MUET, TOEFL, IELTS, or Equivalent, if available):",
+      placeholder: t("englishProficiencyQualification") + " :",
       required: false,
     },
     {
-      label: "Other supporting document",
+      label: t("otherSupportingDocument"),
       type: "file",
       id: "other_supporting_file",
       icon: "i-heroicons-folder",
-      placeholder: "Other supporting document"
-    }
+      placeholder: t("otherSupportingDocument"),
+    },
   ],
   Ba: [
     {
-      label: "Current University Name",
+      label: t("currentUniversityName"),
       type: "text",
       id: "current_university_name",
       icon: "fa-solid-university",
-      placeholder: "Enter your Current University Name",
+      placeholder: t("currentUniversityName"),
     },
     {
-      label: "Number of Semesters Remaining Until Graduation",
+      label: t("numberOfSemesters"),
       type: "text",
       id: "num_sem_graduation",
       icon: "system-uicons:book",
-      placeholder: "Number of Semesters Remaining Until Graduation",
+      placeholder: t("numberOfSemesters"),
     },
     {
-      label: "Fees per Semester",
+      label: t("feesPerSemester"),
       type: "text",
       id: "feesPerSemester",
       icon: "solar-money-bag-broken",
-      placeholder: "Fees per Semester",
+      placeholder: t("feesPerSemester"),
     },
     {
-      label: "Passport 1st page",
+      label: t("passportFirstPage"),
       type: "file",
       id: "passport_file",
       icon: "i-heroicons-folder",
-      placeholder: "Passport 1st page (1 MB max) :"
+      placeholder: t("passportFirstPage") + " (1 MB max) :",
     },
     {
-      label: "Candidate Progress Report (for postgraduate students)",
+      label: t("candidateProgressReport"),
       type: "file",
       id: "candidate_progress_report",
       icon: "i-heroicons-folder",
     },
     {
-      label: "Tuition Fees Statement (latest from university) :",
+      label: t("tuitionFeesStatement"),
       type: "file",
       id: "tuition_fees_statement_file",
       icon: "i-heroicons-folder",
     },
     {
-      label: "Confirmation Letter from University (latest date)",
+      label: t("confirmationLetter"),
       type: "file",
       id: "confirmation_letter",
       icon: "i-heroicons-folder",
     },
     {
-      label: "Offer Letter",
+      label: t("offerLetter"),
       type: "file",
       id: "offer_letter_file",
       icon: "i-heroicons-folder",
     },
     {
-      label: "Other supporting document ",
+      label: t("otherSupportingDocument"),
       type: "file",
       id: "other_supporting_file",
       icon: "i-heroicons-folder",
-      placeholder: "Other supporting document"
-    }
+      placeholder: t("otherSupportingDocument"),
+    },
   ],
   MaPHD: [
     {
-      label: "Current University Name",
+      label: t("currentUniversityName"),
       type: "text",
       id: "current_university_name",
       icon: "fa-solid-university",
-      placeholder: "Enter your Current University Name",
+      placeholder: t("currentUniversityName"),
     },
     {
-      label: "Name of Graduate University",
+      label: t("nameGraduateUniversity"),
       type: "text",
       id: "name_graduate_university",
       icon: "fa-solid-university",
-      placeholder: "Name of Graduate University"
+      placeholder: t("nameGraduateUniversity"),
     },
     {
-      label: "Academic Specialization",
+      label: t("academicSpecialization"),
       type: "text",
       id: "academic_specialization_file",
       icon: "system-uicons:book",
-      placeholder: "Academic Specialization",
+      placeholder: t("academicSpecialization"),
     },
     {
-      label: "Passport 1st page",
+      label: t("passportFirstPage"),
       type: "file",
       id: "passport_file",
       icon: "i-heroicons-folder",
     },
     {
-      label: "A Paper from the Supervisor (for Master’s and Doctoral levels)",
+      label: t("paperFromSupervisor"),
       type: "file",
       id: "paper_from_supervisor_file",
       icon: "i-heroicons-folder",
     },
     {
-      label: "Tuition Fees Statement (latest from university) ",
+      label: t("tuitionFeesStatement"),
       type: "file",
       id: "tuition_fees_statement_file",
       icon: "i-heroicons-folder",
     },
     {
-      label: "Confirmation Letter from University (latest date)",
+      label: t("confirmationLetter"),
       type: "file",
       id: "confirmation_letter",
       icon: "i-heroicons-folder",
     },
     {
-      label: "Offer Letter",
+      label: t("offerLetter"),
       type: "file",
       id: "offer_letter_file",
       icon: "i-heroicons-folder",
     },
     {
-      label: "Other supporting document",
+      label: t("otherSupportingDocument"),
       type: "file",
       id: "other_supporting_file",
       icon: "i-heroicons-folder",
-    }
+    },
   ],
-})
+});
 
 const educationLevelSelected = ref("EL");
 
@@ -438,7 +437,7 @@ const handleFileInput = (inputValue: any, question: any) => {
             </UFormGroup>
           </div>
           <div class="form-group-file" id="educationLevelDiv">
-            <label for="conformationFile">Education Level </label>
+            <label for="conformationFile">{{ t('educationLevelLabel') }} </label>
             <USelect
                 id="educationLevel"
                 :options="educationLevel"

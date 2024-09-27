@@ -1,6 +1,12 @@
 <script setup lang="ts">
 
 const {locale, setLocale} = useI18n()
+const items = [
+  [{
+    label: 'Profile',
+
+  }]
+]
 </script>
 
 <template>
@@ -12,11 +18,12 @@ const {locale, setLocale} = useI18n()
         </a>
       </div>
     </div>
-    <button @click="setLocale('en')">en</button>
-    <button @click="setLocale('fr')">fr</button>
-    <button @click="setLocale('ar')">ar</button>
     <div class="project-name">
-      <span class="project-name">{{ $t('welcome') }} Iesco Scholarship in Malaysia (ISM)</span>
+      <span class="project-name">{{ $t('projectName') }}</span>
+      <span class="translate-verstion">
+        <button @click="setLocale('en')">English</button>
+        <button @click="setLocale('ar')">Arabic</button>
+      </span>
     </div>
   </header>
 </template>
@@ -53,4 +60,24 @@ const {locale, setLocale} = useI18n()
   font-weight: normal;
   color: #eee;
 }
+
+.translate-verstion{
+  margin: 0 20px;
+}
+
+.translate-verstion button {
+  margin-left:20px;
+  padding: 5px 10px;
+  border-radius: 20px 0;
+  background-color: white;
+  color: var(--main-color);
+}
+
+.translate-verstion button:hover{
+  background-color: var(--main-color);
+  color: white;
+  transition: .3s;
+}
+
+
 </style>

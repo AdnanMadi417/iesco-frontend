@@ -13,7 +13,7 @@
           </a>
         </div>
         <div class="cantact-detail">
-          <h2>Contact Us</h2>
+          <h2>{{ $t('contactUs') }}</h2>
           <div class="whatsappNum">
           <span>
             <UIcon name="ic-baseline-whatsapp" class="" />
@@ -34,21 +34,18 @@
           </div>
         </div>
         <div class="location-detail">
-          <h2>Location</h2>
+          <h2>{{ $t('location') }}</h2>
           <div>
             <a class="text-decoration-none"
                href="https://www.google.com/maps/place/IESCO+MALAYSIA/@3.2046512,101.7219557,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc381168cf8e6f:0xfd29cb7efe012fd4!8m2!3d3.2046512!4d101.7219557!16s%2Fg%2F11bzsgc_qv?entry=ttu"
             >
               <UIcon name="mdi-location" class="w-5 h-5" />
-              <span class=""
-              >E-3A-07, Pusat Komersial Setapak, Jln Taman Ibu Kota, Taman
-                Danau Kota, 53300 Kuala Lumpur, Malaysia</span
-              >
+              <span>{{ $t('address') }}</span>
             </a>
           </div>
         </div>
         <div class="scoial-media">
-          <h2>Follow Iesco</h2>
+          <h2>{{ $t('followIesco') }}</h2>
           <div class="container">
             <ul class="scoial-media-icon">
               <li>
@@ -73,7 +70,7 @@
       </div>
     </div>
     <div class="copyrights">
-      © 2024 – IESCO. All rights reserved.
+      {{ $t('copyright') }}
     </div>
   </footer>
 </template>
