@@ -2,6 +2,11 @@
 definePageMeta({
   middleware: ["auth"]
 });
+useHead({
+  meta: [
+    {name: 'robots', content: 'noindex'}
+  ]
+})
 
 </script>
 
