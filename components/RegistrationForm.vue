@@ -3,40 +3,41 @@ import {ref} from 'vue';
 
 const showPopup = ref(false);
 
+watchEffect(() => {
+  if (showPopup.value) {
+    navigateTo('/congrats')
+  }
+})
+
 </script>
 <template>
-  <div v-if="!showPopup">
-    <div>
-      <Header/>
-      <Requirement/>
-      <div class="registrationForm">
-        <div class="container">
-          <div class="description">
-            <img src="../public/images/isco-logo.png" alt="">
-            <h2>{{ $t('registration') }}</h2>
-            <p>{{ $t('paragraph') }}</p>
-            <ul class="">
-              <li class="">
-                <UIcon name="line-md-check-all" class="w-5 h-5" style="color: white"/>
-                {{ $t('first_point') }}
-              </li>
-              <li class="">
-                <UIcon name="line-md-check-all" class="w-5 h-5" style="color: white"/>
-                <h1>{{ $t('online_system') }}</h1>
-              </li>
-            </ul>
-          </div>
-          <div class="registerationQuestions">
-            <h1>{{ $t('online_system') }}</h1>
-            <RegistrationFromValidation @show-success="showPopup=true"/>
-          </div>
+  <div>
+    <Header/>
+    <Requirement/>
+    <div class="registrationForm">
+      <div class="container">
+        <div class="description">
+          <img src="../public/images/isco-logo.png" alt="">
+          <h2>{{ $t('registration') }}</h2>
+          <p>{{ $t('paragraph') }}</p>
+          <ul class="">
+            <li class="">
+              <UIcon name="line-md-check-all" class="w-5 h-5" style="color: white"/>
+              {{ $t('first_point') }}
+            </li>
+            <li class="">
+              <UIcon name="line-md-check-all" class="w-5 h-5" style="color: white"/>
+              <h1>{{ $t('online_system') }}</h1>
+            </li>
+          </ul>
+        </div>
+        <div class="registerationQuestions">
+          <h1>{{ $t('online_system') }}</h1>
+          <RegistrationFromValidation @show-success="showPopup=true"/>
         </div>
       </div>
-      <FooterView/>
     </div>
-  </div>
-  <div v-if="showPopup">
-    <Notifications/>
+    <FooterView/>
   </div>
 </template>
 
