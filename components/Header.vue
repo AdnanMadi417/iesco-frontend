@@ -7,6 +7,7 @@ const items = [
 
   }]
 ]
+
 </script>
 
 <template>
@@ -61,19 +62,19 @@ const items = [
   color: #eee;
 }
 
-.translate-verstion{
-  margin: 0 20px;
+.translate-verstion {
+  margin: 0 10px;
 }
 
 .translate-verstion button {
-  margin-left:20px;
-  padding: 5px 10px;
-  border-radius: 20px 0;
+  margin-left: 10px;
+  padding: 1px 5px;
+  border-radius: 10px 0;
   background-color: white;
   color: var(--main-color);
 }
 
-.translate-verstion button:hover{
+.translate-verstion button:hover {
   background-color: var(--main-color);
   color: white;
   transition: .3s;

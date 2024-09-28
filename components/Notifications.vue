@@ -14,13 +14,10 @@ function onCallback () {
           <UIcon name="ep-success-filled"/>
         </div>
         <div class="content">
-          <h1>congratulations</h1>
-          <h2>Application Submitted Successfully!</h2>
+          <h1>{{ $t('congratulations') }}</h1>
+          <h2>{{ $t('application_submitted') }}</h2>
           <hr class="m-2">
-          <p>Thank you for submitting your application! We have received your information, and our team will review it shortly.
-            You will receive a confirmation email soon.
-            If you have any questions or need further assistance,
-            please don't hesitate to contact us</p>
+          <p>{{ $t('submission_thank_you') }}</p>
         </div>
       </div>
     </div>

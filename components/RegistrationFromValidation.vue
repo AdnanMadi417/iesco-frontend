@@ -1,32 +1,35 @@
 <script setup lang="ts">
 import {z} from "zod";
-import {reactive, ref, computed} from "vue";
+import {ref,computed} from "vue";
 import {nationalities} from "~/utils/nationalties";
+import {useI18n} from 'vue-i18n';
+
 const emit = defineEmits(['showSuccess'])
 const {t} = useI18n()
-import { useI18n } from 'vue-i18n';
+
 let {$axios} = useNuxtApp()
 const api = $axios()
 
-const schema = z.object({
+const schema = computed(() => z.object({
   arabic_name: z.string()
-      .regex(/^[\u0600-\u06FF\s]+$/, 'Must contain only Arabic characters')
-      .min(8, 'Must be at least 8 characters'),
+      .regex(/^[\u0600-\u06FF\s]+$/, t('arabic_characters'))
+      .min(8, t('min_characters_8')),
   english_name: z.string()
-      .regex(/^[a-zA-Z\s]+$/, 'Must contain only English characters')
-      .min(8, 'Must be at least 8 characters'),
+      .regex(/^[a-zA-Z\s]+$/,  t('english_characters'))
+      .min(8,  t('min_characters_8')),
   passport_number: z.string(),
-  email: z.string().email('Invalid email'),
-  local_number: z.string().regex(/^\d{8,}$/, "Must be at least 8 numbers"),
-  whats_app_number: z.string().regex(/^\d{8,}$/, "Must be at least 8 numbers"),
-  malaysian_address: z.string().min(12, 'Must be at least 8 characters'),
+  email: z.string().email(t('invalid_email')),
+  local_number: z.string().regex(/^\d{8,}$/,  t('min_8_numbers')),
+  whats_app_number: z.string().regex(/^\d{8,}$/,  t('min_8_numbers')),
+  malaysian_address: z.string().min(12,  t('invalid_address')),
   school_name: z.string()
-      .min(8, 'Must be at least 8 characters'),
+      .min(8,  t('min_characters_8')),
   current_university_name: z.string()
-      .min(8, 'Must be at least 8 characters'),
+      .min(8, t('min_characters_8')),
   name_graduate_university: z.string()
-      .min(8, 'Must be at least 8 characters'),
-});
+      .min(8,  t('min_characters_8')),
+  })
+);
 
 const userNationalityInput = ref('');
 
