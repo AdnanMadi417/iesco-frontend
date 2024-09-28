@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type {Avatar} from '#ui/types'
-
+import UKFLAG from '../public/images/UKFLAG.png';
+import SAFLAG from '../public/images/SA.png';
 const {locale, setLocale} = useI18n()
 const items = [
   [{
@@ -13,12 +14,12 @@ const languages = [
   {
     id: 'en',
     label: 'English',
-    avatar: {src: 'https://avatars.githubusercontent.com/u/739984?v=4'}
+    avatar: { src: UKFLAG },
   },
   {
     id: 'ar',
     label: 'Arabic',
-    avatar: {src: 'https://avatars.githubusercontent.com/u/904724?v=4'}
+    avatar: { src: SAFLAG }
   }
 ]
 

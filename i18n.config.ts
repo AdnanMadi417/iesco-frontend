@@ -161,7 +161,7 @@ export default defineI18nConfig(() => ({
             contactUs: "اتصل بنا",
             location: "الموقع",
             followIesco: "تابع إيسكو",
-            address: "E-3A-07, Pusat Komersial Setapak, Jalan Taman Ibu Kota, Taman Danau Kota, 53300 كوالالمبور, ماليزيا",
+            address: "E-3A-07، بوسات كومرسيال سيتاباك، جون تامان إيبو كوتا، تامان داناو كوتا، 53300 كوالالمبور، ماليزيا",
             copyright: "© 2024 –  جميع الحقوق محفوظة ل إيسكو."
         }
     }
