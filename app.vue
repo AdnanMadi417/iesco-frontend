@@ -7,6 +7,11 @@
   </div>
 </template>
 <style>
+
+body{
+  font-family: 'Nunito', sans-serif;
+}
+
 :root {
   --main-color: rgb(28, 100, 188);
   --main-hovor-color: rgb(28, 100, 188, 1.2);
