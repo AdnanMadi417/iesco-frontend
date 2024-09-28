@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     preference: 'light'
   },
   app: {
-    baseURL: '/'
+    baseURL: '/iesco-frontend/'
   },
   plugins: [
     './plugins/axios.ts'
