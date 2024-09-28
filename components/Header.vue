@@ -1,12 +1,32 @@
 <script setup lang="ts">
+import type {Avatar} from '#ui/types'
 
 const {locale, setLocale} = useI18n()
 const items = [
   [{
     label: 'Profile',
-
   }]
 ]
+
+
+const languages = [
+  {
+    id: 'en',
+    label: 'English',
+    avatar: {src: 'https://avatars.githubusercontent.com/u/739984?v=4'}
+  },
+  {
+    id: 'ar',
+    label: 'Arabic',
+    avatar: {src: 'https://avatars.githubusercontent.com/u/904724?v=4'}
+  }
+]
+
+const selectedLanguage = ref(languages[0])
+
+watchEffect(() => {
+  setLocale(selectedLanguage.value.id)
+})
 
 </script>
 
@@ -21,9 +41,12 @@ const items = [
     </div>
     <div class="project-name">
       <span class="project-name">{{ $t('projectName') }}</span>
-      <span class="translate-verstion">
-        <button @click="setLocale('en')">English</button>
-        <button @click="setLocale('ar')">Arabic</button>
+      <span class="translate-version">
+        <USelectMenu v-model="selectedLanguage" :options="languages">
+          <template #leading>
+            <UAvatar v-bind="(selectedLanguage.avatar as Avatar)" size="2xs"/>
+          </template>
+        </USelectMenu>
       </span>
     </div>
   </header>
@@ -62,23 +85,9 @@ const items = [
   color: #eee;
 }
 
-.translate-verstion {
-  margin: 0 10px;
+.translate-version {
+  margin: 0 10px 0 30px;
+  display: inline-block;
+  width: 125px;
 }
-
-.translate-verstion button {
-  margin-left: 10px;
-  padding: 1px 5px;
-  border-radius: 10px 0;
-  background-color: white;
-  color: var(--main-color);
-}
-
-.translate-verstion button:hover {
-  background-color: var(--main-color);
-  color: white;
-  transition: .3s;
-}
-
-
 </style>
