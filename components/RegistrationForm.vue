@@ -23,11 +23,10 @@ watchEffect(() => {
           <ul class="">
             <li class="">
               <UIcon name="line-md-check-all" class="w-5 h-5" style="color: white"/>
-              {{ $t('first_point') }}
-            </li>
+              {{ $t('first_point') }}</li>
             <li class="">
               <UIcon name="line-md-check-all" class="w-5 h-5" style="color: white"/>
-              <h1>{{ $t('online_system') }}</h1>
+              {{ $t('online_system') }}
             </li>
           </ul>
         </div>

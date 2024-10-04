@@ -204,166 +204,168 @@ const educationLevel = computed(() => [
   }
 ]);
 
-const levelsQuestions = ref<{ [key: string]: any }>({
-  HS: [
-    {
-      label: t("universityName"),
-      type: "text",
-      id: "school_name",
-      icon: "fa-solid-university",
-      placeholder: t("universityName"),
-    },
-    {
-      label: t("passportFirstPage"),
-      type: "file",
-      id: "passport_file",
-      icon: "i-heroicons-folder",
-      placeholder: t("passportFirstPage") + " (1 MB max) :",
-    },
-    {
-      label: t("highSchoolCertificate"),
-      type: "file",
-      id: "high_school_file",
-      icon: "i-heroicons-folder",
-      placeholder: t("highSchoolCertificate") + " :",
-    },
-    {
-      label: t("englishProficiencyQualification"),
-      type: "file",
-      id: "english_qualification_file",
-      icon: "i-heroicons-folder",
-      placeholder: t("englishProficiencyQualification") + " :",
-      required: false,
-    },
-    {
-      label: t("otherSupportingDocument"),
-      type: "file",
-      id: "other_supporting_file",
-      icon: "i-heroicons-folder",
-      placeholder: t("otherSupportingDocument"),
-    },
-  ],
-  Ba: [
-    {
-      label: t("currentUniversityName"),
-      type: "text",
-      id: "current_university_name",
-      icon: "fa-solid-university",
-      placeholder: t("currentUniversityName"),
-    },
-    {
-      label: t("numberOfSemesters"),
-      type: "text",
-      id: "num_sem_graduation",
-      icon: "system-uicons:book",
-      placeholder: t("numberOfSemesters"),
-    },
-    {
-      label: t("feesPerSemester"),
-      type: "text",
-      id: "feesPerSemester",
-      icon: "solar-money-bag-broken",
-      placeholder: t("feesPerSemester"),
-    },
-    {
-      label: t("passportFirstPage"),
-      type: "file",
-      id: "passport_file",
-      icon: "i-heroicons-folder",
-      placeholder: t("passportFirstPage") + " (1 MB max) :",
-    },
-    {
-      label: t("candidateProgressReport"),
-      type: "file",
-      id: "candidate_progress_report",
-      icon: "i-heroicons-folder",
-    },
-    {
-      label: t("tuitionFeesStatement"),
-      type: "file",
-      id: "tuition_fees_statement_file",
-      icon: "i-heroicons-folder",
-    },
-    {
-      label: t("confirmationLetter"),
-      type: "file",
-      id: "confirmation_letter",
-      icon: "i-heroicons-folder",
-    },
-    {
-      label: t("offerLetter"),
-      type: "file",
-      id: "offer_letter_file",
-      icon: "i-heroicons-folder",
-    },
-    {
-      label: t("otherSupportingDocument"),
-      type: "file",
-      id: "other_supporting_file",
-      icon: "i-heroicons-folder",
-      placeholder: t("otherSupportingDocument"),
-    },
-  ],
-  MaPHD: [
-    {
-      label: t("currentUniversityName"),
-      type: "text",
-      id: "current_university_name",
-      icon: "fa-solid-university",
-      placeholder: t("currentUniversityName"),
-    },
-    {
-      label: t("nameGraduateUniversity"),
-      type: "text",
-      id: "name_graduate_university",
-      icon: "fa-solid-university",
-      placeholder: t("nameGraduateUniversity"),
-    },
-    {
-      label: t("academicSpecialization"),
-      type: "text",
-      id: "academic_specialization_file",
-      icon: "system-uicons:book",
-      placeholder: t("academicSpecialization"),
-    },
-    {
-      label: t("passportFirstPage"),
-      type: "file",
-      id: "passport_file",
-      icon: "i-heroicons-folder",
-    },
-    {
-      label: t("paperFromSupervisor"),
-      type: "file",
-      id: "paper_from_supervisor_file",
-      icon: "i-heroicons-folder",
-    },
-    {
-      label: t("tuitionFeesStatement"),
-      type: "file",
-      id: "tuition_fees_statement_file",
-      icon: "i-heroicons-folder",
-    },
-    {
-      label: t("confirmationLetter"),
-      type: "file",
-      id: "confirmation_letter",
-      icon: "i-heroicons-folder",
-    },
-    {
-      label: t("offerLetter"),
-      type: "file",
-      id: "offer_letter_file",
-      icon: "i-heroicons-folder",
-    },
-    {
-      label: t("otherSupportingDocument"),
-      type: "file",
-      id: "other_supporting_file",
-      icon: "i-heroicons-folder",
-    },
-  ],
-});
+const levelsQuestions = computed(() => {
+  return {
+    HS: [
+      {
+        label: t("universityName"),
+        type: "text",
+        id: "school_name",
+        icon: "fa-solid-university",
+        placeholder: t("universityName"),
+      },
+      {
+        label: t("passportFirstPage"),
+        type: "file",
+        id: "passport_file",
+        icon: "i-heroicons-folder",
+        placeholder: t("passportFirstPage") + " (1 MB max) :",
+      },
+      {
+        label: t("highSchoolCertificate"),
+        type: "file",
+        id: "high_school_file",
+        icon: "i-heroicons-folder",
+        placeholder: t("highSchoolCertificate") + " :",
+      },
+      {
+        label: t("englishProficiencyQualification"),
+        type: "file",
+        id: "english_qualification_file",
+        icon: "i-heroicons-folder",
+        placeholder: t("englishProficiencyQualification") + " :",
+        required: false,
+      },
+      {
+        label: t("otherSupportingDocument"),
+        type: "file",
+        id: "other_supporting_file",
+        icon: "i-heroicons-folder",
+        placeholder: t("otherSupportingDocument"),
+      },
+    ],
+    Ba: [
+      {
+        label: t("currentUniversityName"),
+        type: "text",
+        id: "current_university_name",
+        icon: "fa-solid-university",
+        placeholder: t("currentUniversityName"),
+      },
+      {
+        label: t("numberOfSemesters"),
+        type: "text",
+        id: "num_sem_graduation",
+        icon: "system-uicons:book",
+        placeholder: t("numberOfSemesters"),
+      },
+      {
+        label: t("feesPerSemester"),
+        type: "text",
+        id: "feesPerSemester",
+        icon: "solar-money-bag-broken",
+        placeholder: t("feesPerSemester"),
+      },
+      {
+        label: t("passportFirstPage"),
+        type: "file",
+        id: "passport_file",
+        icon: "i-heroicons-folder",
+        placeholder: t("passportFirstPage") + " (1 MB max) :",
+      },
+      {
+        label: t("candidateProgressReport"),
+        type: "file",
+        id: "candidate_progress_report",
+        icon: "i-heroicons-folder",
+      },
+      {
+        label: t("tuitionFeesStatement"),
+        type: "file",
+        id: "tuition_fees_statement_file",
+        icon: "i-heroicons-folder",
+      },
+      {
+        label: t("confirmationLetter"),
+        type: "file",
+        id: "confirmation_letter",
+        icon: "i-heroicons-folder",
+      },
+      {
+        label: t("offerLetter"),
+        type: "file",
+        id: "offer_letter_file",
+        icon: "i-heroicons-folder",
+      },
+      {
+        label: t("otherSupportingDocument"),
+        type: "file",
+        id: "other_supporting_file",
+        icon: "i-heroicons-folder",
+        placeholder: t("otherSupportingDocument"),
+      },
+    ],
+    MaPHD: [
+      {
+        label: t("currentUniversityName"),
+        type: "text",
+        id: "current_university_name",
+        icon: "fa-solid-university",
+        placeholder: t("currentUniversityName"),
+      },
+      {
+        label: t("nameGraduateUniversity"),
+        type: "text",
+        id: "name_graduate_university",
+        icon: "fa-solid-university",
+        placeholder: t("nameGraduateUniversity"),
+      },
+      {
+        label: t("academicSpecialization"),
+        type: "text",
+        id: "academic_specialization_file",
+        icon: "system-uicons:book",
+        placeholder: t("academicSpecialization"),
+      },
+      {
+        label: t("passportFirstPage"),
+        type: "file",
+        id: "passport_file",
+        icon: "i-heroicons-folder",
+      },
+      {
+        label: t("paperFromSupervisor"),
+        type: "file",
+        id: "paper_from_supervisor_file",
+        icon: "i-heroicons-folder",
+      },
+      {
+        label: t("tuitionFeesStatement"),
+        type: "file",
+        id: "tuition_fees_statement_file",
+        icon: "i-heroicons-folder",
+      },
+      {
+        label: t("confirmationLetter"),
+        type: "file",
+        id: "confirmation_letter",
+        icon: "i-heroicons-folder",
+      },
+      {
+        label: t("offerLetter"),
+        type: "file",
+        id: "offer_letter_file",
+        icon: "i-heroicons-folder",
+      },
+      {
+        label: t("otherSupportingDocument"),
+        type: "file",
+        id: "other_supporting_file",
+        icon: "i-heroicons-folder",
+      },
+    ],
+  }
+})
 
 const educationLevelSelected = ref("EL");
 

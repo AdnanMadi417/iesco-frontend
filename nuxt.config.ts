@@ -6,8 +6,10 @@ export default defineNuxtConfig({
   modules: ["@nuxt/ui", '@nuxtjs/i18n','@nuxtjs/google-fonts'],
   googleFonts: {
     families: {
-      Nunito: [300, 400, 600, 700] // Add the weights you need
-    }
+      Nunito: [300, 400, 600, 700],
+      Almarai: [300, 400, 700]
+    },
+    display: 'swap',
   },
   i18n: {
     vueI18n: './i18n.config.ts'

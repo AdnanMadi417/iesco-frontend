@@ -106,7 +106,7 @@ export default defineI18nConfig(() => ({
             studentNameInEnglish: "اسم الطالب بالإنجليزية",
             enterEnglishName: "أدخل اسمك بالإنجليزية",
             passportNumberInEnglish: "رقم جواز السفر بالإنجليزية",
-            passportNumberPlaceholder: "23432125",
+            passportNumberPlaceholder: "٢٣٤٣٢١٢٥",
             dateOfBirth: "تاريخ الميلاد",
             dateOfBirthPlaceholder: "MM/dd/yyyy",
             studentEmailAddress: "عنوان البريد الإلكتروني للطالب",
@@ -116,7 +116,7 @@ export default defineI18nConfig(() => ({
             whatsappNumber: "رقم واتساب",
             enterWhatsAppNumber: "أدخل رقم واتساب",
             addressInMalaysia: "العنوان في ماليزيا",
-            addressPlaceholder: "Kuala Lumpur Ampang",
+            addressPlaceholder: "كوالالمبور امبانج",
             gender: "الجنس",
             male: "ذكر",
             female: "أنثى",
@@ -138,7 +138,7 @@ export default defineI18nConfig(() => ({
             universityName: "اسم الجامعة",
             passportFirstPage: "الصفحة الأولى من جواز السفر",
             highSchoolCertificate: "نسخة أصلية مصدقة من شهادة الثانوية العامة",
-            englishProficiencyQualification: "نسخة أصلية مصدقة من مؤهل إتقان اللغة الإنجليزية (MUET، TOEFL، IELTS، أو ما يعادلها، إن وجدت)",
+            englishProficiencyQualification: "نسخة أصلية مصدقة من مؤهل إتقان اللغة الإنجليزية (مويت، التوفل، إيلتس، أو ما يعادلها، إن وجدت)",
             otherSupportingDocument: "وثيقة داعمة أخرى",
             currentUniversityName: "اسم الجامعة الحالية",
             numberOfSemesters: "عدد الفصول الدراسية المتبقية حتى التخرج",
@@ -162,7 +162,7 @@ export default defineI18nConfig(() => ({
             location: "الموقع",
             followIesco: "تابع إيسكو",
             address: "E-3A-07، بوسات كومرسيال سيتاباك، جون تامان إيبو كوتا، تامان داناو كوتا، 53300 كوالالمبور، ماليزيا",
-            copyright: "© 2024 –  جميع الحقوق محفوظة ل إيسكو."
+            copyright: "© ٢٠٢٤ –  جميع الحقوق محفوظة ل إيسكو."
         }
     }
 }))

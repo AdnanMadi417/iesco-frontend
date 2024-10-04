@@ -1,14 +1,23 @@
-<script setup lang="ts">
+<script setup>
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
+
+const localeFontClass = computed(() => (locale.value === 'ar' ? 'arabic-font' : 'english-font'))
 </script>
 <template>
-  <div>
+  <div :class="localeFontClass">
     <nuxt-page/>
     <UNotifications/>
   </div>
 </template>
 <style>
 
-body{
+.arabic-font {
+  font-family: 'Almarai', sans-serif;
+}
+
+.english-font {
   font-family: 'Nunito', sans-serif;
 }
 
