@@ -204,7 +204,7 @@ const educationLevel = computed(() => [
   }
 ]);
 
-const levelsQuestions = computed(() => {
+const levelsQuestions = computed<{ [key: string]: any }>(() => {
   return {
     HS: [
       {
