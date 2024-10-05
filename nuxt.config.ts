@@ -6,10 +6,8 @@ export default defineNuxtConfig({
   modules: ["@nuxt/ui", '@nuxtjs/i18n','@nuxtjs/google-fonts'],
   googleFonts: {
     families: {
-      Nunito: [300, 400, 600, 700],
-      Almarai: [300, 400, 700]
-    },
-    display: 'swap',
+      Nunito: [300, 400, 600, 700] // Add the weights you need
+    }
   },
   i18n: {
     vueI18n: './i18n.config.ts'
@@ -18,7 +16,7 @@ export default defineNuxtConfig({
     preference: 'light'
   },
   app: {
-    baseURL: '/'
+    baseURL: '/iesco-frontend/'
   },
   plugins: [
     './plugins/axios.ts'
