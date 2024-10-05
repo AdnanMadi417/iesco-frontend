@@ -15,6 +15,13 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'light'
   },
+  target: 'static',
+  router: {
+    base: '/'
+  },
+  generate: {
+    fallback: true
+  },
   app: {
     baseURL: 'https://application.iesco.my/'
   },
