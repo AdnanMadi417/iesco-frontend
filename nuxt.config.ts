@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     preference: 'light'
   },
   app: {
-    baseURL: '/'
+    baseURL: ''
   },
   plugins: [
     './plugins/axios.ts'
