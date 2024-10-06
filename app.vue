@@ -9,7 +9,6 @@ const localeFontClass = computed(() => (locale.value === 'ar' ? 'arabic-font' : 
   <div :class="localeFontClass">
     <nuxt-page/>
     <UNotifications/>
-    <div>Hi</div>
   </div>
 </template>
 <style>
