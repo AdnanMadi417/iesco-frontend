@@ -74,7 +74,7 @@ const previousLevelsQuestions = computed(() => [
     type: "email",
     id: "email",
     icon: "ic-outline-email",
-    placeholder: t("emailPlaceholder"),
+    placeholder: t("studentEmailAddressPlaceholder"),
   },
   {
     label: t("localNumber"),
