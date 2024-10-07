@@ -2,6 +2,7 @@
 import type {Avatar} from '#ui/types'
 import UKFLAG from '../public/images/UKFLAG.png';
 import SAFLAG from '../public/images/SA.png';
+
 const {locale, setLocale} = useI18n()
 const items = [
   [{
@@ -14,12 +15,12 @@ const languages = [
   {
     id: 'en',
     label: 'English',
-    avatar: { src: UKFLAG },
+    avatar: {src: UKFLAG},
   },
   {
     id: 'ar',
     label: 'Arabic',
-    avatar: { src: SAFLAG }
+    avatar: {src: SAFLAG}
   }
 ]
 
@@ -28,6 +29,10 @@ const selectedLanguage = ref(languages[0])
 watchEffect(() => {
   setLocale(selectedLanguage.value.id)
 })
+
+const route = useRoute();
+
+const isAnAdminPage = computed(() => route.path === '/admin')
 
 </script>
 
@@ -42,7 +47,7 @@ watchEffect(() => {
     </div>
     <div class="project-name">
       <span class="project-name">{{ $t('projectName') }}</span>
-      <span class="translate-version">
+      <span class="translate-version" v-if="!isAnAdminPage">
         <USelectMenu v-model="selectedLanguage" :options="languages">
           <template #leading>
             <UAvatar v-bind="(selectedLanguage.avatar as Avatar)" size="2xs"/>
