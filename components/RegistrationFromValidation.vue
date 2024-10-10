@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {z} from "zod";
-import {ref,computed} from "vue";
+import {ref, computed} from "vue";
 import {nationalities} from "~/utils/nationalties";
 import {useI18n} from 'vue-i18n';
 
@@ -11,24 +11,24 @@ let {$axios} = useNuxtApp()
 const api = $axios()
 
 const schema = computed(() => z.object({
-  arabic_name: z.string()
-      .regex(/^[\u0600-\u06FF\s]+$/, t('arabic_characters'))
-      .min(8, t('min_characters_8')),
-  english_name: z.string()
-      .regex(/^[a-zA-Z\s]+$/,  t('english_characters'))
-      .min(8,  t('min_characters_8')),
-  passport_number: z.string(),
-  email: z.string().email(t('invalid_email')),
-  local_number: z.string().regex(/^\d{8,}$/,  t('min_8_numbers')),
-  whats_app_number: z.string().regex(/^\d{8,}$/,  t('min_8_numbers')),
-  malaysian_address: z.string().min(12,  t('invalid_address')),
-  school_name: z.string()
-      .min(8,  t('min_characters_8')),
-  current_university_name: z.string()
-      .min(8, t('min_characters_8')),
-  name_graduate_university: z.string()
-      .min(8,  t('min_characters_8')),
-  })
+      arabic_name: z.string()
+          .regex(/^[\u0600-\u06FF\s]+$/, t('arabic_characters'))
+          .min(8, t('min_characters_8')),
+      english_name: z.string()
+          .regex(/^[a-zA-Z\s]+$/, t('english_characters'))
+          .min(8, t('min_characters_8')),
+      passport_number: z.string(),
+      email: z.string().email(t('invalid_email')),
+      local_number: z.string().regex(/^\d{8,}$/, t('min_8_numbers')),
+      whats_app_number: z.string().regex(/^\d{8,}$/, t('min_8_numbers')),
+      malaysian_address: z.string().min(12, t('invalid_address')),
+      school_name: z.string()
+          .min(8, t('min_characters_8')),
+      current_university_name: z.string()
+          .min(8, t('min_characters_8')),
+      name_graduate_university: z.string()
+          .min(8, t('min_characters_8')),
+    })
 );
 
 const userNationalityInput = ref('');
@@ -368,6 +368,7 @@ const levelsQuestions = computed<{ [key: string]: any }>(() => {
 })
 
 const educationLevelSelected = ref("EL");
+const toast = useToast()
 
 async function onSubmit() {
   const formData = new FormData();
@@ -392,6 +393,7 @@ async function onSubmit() {
     emit('showSuccess')
   } catch (error) {
     console.error('Error submitting the form:', error);
+    toast.add({title: t('failedApplicationMessage')})
   }
 }
 
