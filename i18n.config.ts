@@ -81,7 +81,8 @@ export default defineI18nConfig(() => ({
             location: "Location",
             followIesco: "Follow IESCO",
             address: "E-3A-07, Pusat Komersial Setapak, Jln Taman Ibu Kota, Taman Danau Kota, 53300 Kuala Lumpur, Malaysia",
-            copyright: "© 2024 – IESCO. All rights reserved."
+            copyright: "© 2024 – IESCO. All rights reserved.",
+            nameGraduateUniversity: 'Graduate University',
         },
         ar: {
             projectName: "منحة إيسكو في ماليزيا ",
@@ -162,7 +163,8 @@ export default defineI18nConfig(() => ({
             location: "الموقع",
             followIesco: "تابع إيسكو",
             address: "E-3A-07، بوسات كومرسيال سيتاباك، جون تامان إيبو كوتا، تامان داناو كوتا، 53300 كوالالمبور، ماليزيا",
-            copyright: "© ٢٠٢٤ –  جميع الحقوق محفوظة ل إيسكو."
+            copyright: "© ٢٠٢٤ –  جميع الحقوق محفوظة ل إيسكو.",
+            nameGraduateUniversity: 'الجامعة المتخرج منها'
         }
     }
 }))

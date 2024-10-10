@@ -428,7 +428,6 @@ const handleFileInput = (inputValue: any, question: any) => {
           <div v-for="student in previousSelectQuestions" :key="student.id">
             <UFormGroup class="form-group" :label="student.label" :name="student.id">
               <USelect
-                  :type="student.type"
                   size="md"
                   variant="outline"
                   :icon="student.icon"
