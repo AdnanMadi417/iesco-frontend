@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import {ref} from 'vue';
 
+const localePath = useLocalePath()
+const router = useRouter()
+
 const showPopup = ref(false);
 
 watchEffect(() => {
   if (showPopup.value) {
-    navigateTo('/congrats')
+    router.push(localePath('/congrats'))
   }
 })
 
