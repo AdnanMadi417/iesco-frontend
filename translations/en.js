@@ -72,7 +72,7 @@ export default {
     invalid_address: 'Must be at least 12 characters',
     congratulations: "Congratulations",
     application_submitted: "Application Submitted Successfully!",
-    submission_thank_you: "Thank you for submitting your application! We have received your information, and our team will review it shortly. You will receive a confirmation email soon. If you have any questions or need further assistance, please don't hesitate to contact us.",
+    submission_thank_you: "Thank you for submitting your application! We have received your information, and our team will review it shortly. You will receive a confirmation email soon. If you have any questions or need further assistance, please don't hesitate to <a style='font-weight: bold;' href='https://iesco.my/contact-us/' target=_blank'>Contact Us</a>.",
     contactUs: "Contact Us",
     location: "Location",
     followIesco: "Follow IESCO",

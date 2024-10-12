@@ -1,14 +1,14 @@
 <script setup lang="ts">
 const toast = useToast()
 
-function onCallback () {
+function onCallback() {
   alert('Notification expired!')
 }
 </script>
 
 <template>
   <div class="notification">
-      <div class="main-container">
+    <div class="main-container">
       <div class="container">
         <div class="icon">
           <UIcon name="ep-success-filled"/>
@@ -17,7 +17,7 @@ function onCallback () {
           <h1>{{ $t('congratulations') }}</h1>
           <h2>{{ $t('application_submitted') }}</h2>
           <hr class="m-2">
-          <p>{{ $t('submission_thank_you') }}</p>
+          <p v-html="$t('submission_thank_you')"></p>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@ function onCallback () {
 
 <style scoped>
 
-.notification{
+.notification {
   display: block;
   position: absolute;
   top: 50%;
@@ -36,7 +36,7 @@ function onCallback () {
 }
 
 @media (max-width: 800px) {
-  .notification{
+  .notification {
     display: block;
     width: 90%;
   }
@@ -53,13 +53,13 @@ function onCallback () {
   background-color: #eeeeee;
 }
 
-.main-container .container .icon{
+.main-container .container .icon {
   font-size: 10rem;
   color: var(--main-color);
 }
 
 .main-container .container h2,
-.main-container .container h1{
+.main-container .container h1 {
   text-transform: capitalize;
   font-size: 1.5rem;
   color: var(--main-color);
@@ -69,11 +69,9 @@ function onCallback () {
   font-size: 1rem;
   color: var(--main-color);
   text-align: justify;
-  margin: 0;
   padding: 30px 0;
   line-height: 20px;
-  margin:0 40px ;
+  margin: 0 40px;
 }
-
 
 </style>
