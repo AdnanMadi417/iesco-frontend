@@ -2,7 +2,9 @@
 import type {FormSubmitEvent} from '#ui/types'
 import {z} from "zod";
 
-import axios from "axios";
+useHead({
+  title: 'Admin Login'
+})
 
 let {$axios} = useNuxtApp()
 const api = $axios()

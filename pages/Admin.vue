@@ -3,6 +3,7 @@ definePageMeta({
   middleware: ["auth"]
 });
 useHead({
+  title: "Dashboard",
   meta: [
     {name: 'robots', content: 'noindex'}
   ]

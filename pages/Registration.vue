@@ -2,6 +2,10 @@
 import type {FormSubmitEvent} from '#ui/types'
 import {z} from "zod";
 
+useHead({
+  title: 'Admin Registration',
+})
+
 const schema = z.object({
   english_name: z.string()
       .regex(/^[a-zA-Z\s]+$/, 'Name must contain only letters and spaces')
