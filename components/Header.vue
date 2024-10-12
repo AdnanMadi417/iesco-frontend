@@ -1,38 +1,4 @@
 <script setup lang="ts">
-import type {Avatar} from '#ui/types'
-import UKFLAG from '../public/images/UKFLAG.png';
-import SAFLAG from '../public/images/SA.png';
-
-const {locale, setLocale} = useI18n()
-const items = [
-  [{
-    label: 'Profile',
-  }]
-]
-
-
-const languages = [
-  {
-    id: 'en',
-    label: 'English',
-    avatar: {src: UKFLAG},
-  },
-  {
-    id: 'ar',
-    label: 'Arabic',
-    avatar: {src: SAFLAG}
-  }
-]
-
-const selectedLanguage = ref(languages[0])
-
-watchEffect(() => {
-  setLocale(selectedLanguage.value.id)
-})
-
-const route = useRoute();
-
-const isAnAdminPage = computed(() => route.path === '/admin')
 
 </script>
 
@@ -47,13 +13,6 @@ const isAnAdminPage = computed(() => route.path === '/admin')
     </div>
     <div class="project-name">
       <span class="project-name">{{ $t('projectName') }}</span>
-      <span class="translate-version" v-if="!isAnAdminPage">
-        <USelectMenu v-model="selectedLanguage" :options="languages">
-          <template #leading>
-            <UAvatar v-bind="(selectedLanguage.avatar as Avatar)" size="2xs"/>
-          </template>
-        </USelectMenu>
-      </span>
     </div>
   </header>
 </template>
@@ -89,11 +48,5 @@ const isAnAdminPage = computed(() => route.path === '/admin')
   font-size: 24px;
   font-weight: normal;
   color: #eee;
-}
-
-.translate-version {
-  margin: 0 10px 0 30px;
-  display: inline-block;
-  width: 125px;
 }
 </style>

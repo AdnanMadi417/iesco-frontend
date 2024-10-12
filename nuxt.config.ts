@@ -3,14 +3,20 @@ export default defineNuxtConfig({
   ssr: false,
   compatibilityDate: '2024-04-03',
   devtools: {enabled: true},
-  modules: ["@nuxt/ui", '@nuxtjs/i18n','@nuxtjs/google-fonts'],
+  modules: ["@nuxt/ui", '@nuxtjs/i18n', '@nuxtjs/google-fonts'],
   googleFonts: {
     families: {
       Nunito: [300, 400, 600, 700] // Add the weights you need
     }
   },
   i18n: {
-    vueI18n: './i18n.config.ts'
+    locales: [
+      {code: 'en', iso: 'en-US', file: 'translations/en.js'},
+      {code: 'ar', iso: 'ar-SA', file: 'translations/ar.js'}
+    ],
+    defaultLocale: 'en',
+    detectBrowserLanguage: false,
+    strategy: 'prefix_except_default'
   },
   colorMode: {
     preference: 'light'
