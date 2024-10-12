@@ -23,7 +23,8 @@ watchEffect(() => {
           <ul class="">
             <li class="">
               <UIcon name="line-md-check-all" class="w-5 h-5" style="color: white"/>
-              {{ $t('first_point') }}</li>
+              {{ $t('first_point') }}
+            </li>
             <li class="">
               <UIcon name="line-md-check-all" class="w-5 h-5" style="color: white"/>
               {{ $t('online_system') }}
@@ -49,16 +50,17 @@ watchEffect(() => {
   display: flex;
   flex-wrap: wrap;
   padding: 30px 0;
+  justify-content: space-between;
 }
 
 .registrationForm .container .description {
-  flex: 30%;
   background-color: var(--main-color);
   padding: 40px 20px;
+  width: 34%;
 }
 
 .registrationForm .container .registerationQuestions {
-  flex: 70%;
+  width: 64%;
 }
 
 @media (max-width: 800px) {
@@ -98,10 +100,6 @@ watchEffect(() => {
   font-size: 16px;
   text-align: justify;
   padding-top: 40px;
-}
-
-.registerationQuestions {
-  padding-left: 50px;
 }
 
 .registrationForm .container .form-row {

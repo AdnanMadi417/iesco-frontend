@@ -1,12 +1,13 @@
 <script setup>
-import { useI18n } from 'vue-i18n'
+import {useI18n} from 'vue-i18n'
 
-const { locale } = useI18n()
+const {locale} = useI18n()
 
 const localeFontClass = computed(() => (locale.value === 'ar' ? 'arabic-font' : 'english-font'))
+const documentDirection = computed(() => (locale.value === 'ar' ? 'rtl' : 'ltr'))
 </script>
 <template>
-  <div :class="localeFontClass">
+  <div :class="localeFontClass" :dir=documentDirection>
     <nuxt-page/>
     <UNotifications/>
   </div>
