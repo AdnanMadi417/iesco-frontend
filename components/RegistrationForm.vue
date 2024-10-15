@@ -21,7 +21,7 @@ watchEffect(() => {
       <div class="container">
         <div class="description">
           <img src="../public/images/isco-logo.png" alt="">
-          <h2>{{ $t('registration') }}</h2>
+          <h1>{{ $t('registration') }}</h1>
           <p>{{ $t('paragraph') }}</p>
           <ul class="">
             <li class="">

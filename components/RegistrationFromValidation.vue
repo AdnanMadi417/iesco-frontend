@@ -389,7 +389,6 @@ async function onSubmit() {
         'Content-Type': 'multipart/form-data'
       }
     })
-
     emit('showSuccess')
   } catch (error) {
     console.error('Error submitting the form:', error);
@@ -443,7 +442,7 @@ const handleFileInput = (inputValue: any, question: any) => {
             </UFormGroup>
           </div>
           <div class="form-group-file" id="educationLevelDiv">
-            <label for="conformationFile">{{ t('educationLevelLabel') }} </label>
+            <label for="conformationFile">{{ t("educationLevelLabel") }} </label>
             <USelect
                 id="educationLevel"
                 :options="educationLevel"
