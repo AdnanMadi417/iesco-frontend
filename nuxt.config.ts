@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     baseURL: '',
     head: {
       link: [
-        { rel: 'canonical', href: 'https://iesco.my/how-to-apply-for-scholarships/' }
+        {rel: 'canonical', href: 'https://iesco.my/how-to-apply-for-scholarships/'}
       ]
     }
   },
