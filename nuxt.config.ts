@@ -22,7 +22,12 @@ export default defineNuxtConfig({
     preference: 'light'
   },
   app: {
-    baseURL: ''
+    baseURL: '',
+    head: {
+      link: [
+        { rel: 'canonical', href: 'https://iesco.my/how-to-apply-for-scholarships/' }
+      ]
+    }
   },
   plugins: [
     './plugins/axios.ts'

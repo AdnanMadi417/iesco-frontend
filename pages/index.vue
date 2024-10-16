@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useHead({
-  title: 'IESCO | Application For Scholarships in Malaysia'
+  title: 'IESCO Scholarship Application Form'
 })
 </script>
 
