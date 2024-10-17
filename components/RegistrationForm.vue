@@ -21,7 +21,7 @@ watchEffect(() => {
       <div class="container">
         <div class="description">
           <img src="../public/images/isco-logo.png" alt="">
-          <h1>{{ $t('registration') }}</h1>
+          <h2>{{ $t('registration') }}</h2>
           <p>{{ $t('paragraph') }}</p>
         </div>
         <div class="registerationQuestions">
@@ -127,7 +127,7 @@ watchEffect(() => {
   box-sizing: border-box;
 }
 
-.registrationForm .registerationQuestions > h1 {
+.registrationForm .registerationQuestions > h2 {
   color: var(--main-color);
   font-size: 30px;
   font-weight: bolder;
