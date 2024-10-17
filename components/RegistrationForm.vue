@@ -23,19 +23,9 @@ watchEffect(() => {
           <img src="../public/images/isco-logo.png" alt="">
           <h1>{{ $t('registration') }}</h1>
           <p>{{ $t('paragraph') }}</p>
-          <ul class="">
-            <li class="">
-              <UIcon name="line-md-check-all" class="w-5 h-5" style="color: white"/>
-              {{ $t('first_point') }}
-            </li>
-            <li class="">
-              <UIcon name="line-md-check-all" class="w-5 h-5" style="color: white"/>
-              {{ $t('online_system') }}
-            </li>
-          </ul>
         </div>
         <div class="registerationQuestions">
-          <h1>{{ $t('online_system') }}</h1>
+          <h2>{{ $t('online_system') }}</h2>
           <RegistrationFromValidation @show-success="showPopup=true"/>
         </div>
       </div>
