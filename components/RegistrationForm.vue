@@ -22,7 +22,7 @@ watchEffect(() => {
         <div class="description">
           <img src="../public/images/isco-logo.png" alt="">
           <h2>{{ $t('registration') }}</h2>
-          <p>{{ $t('paragraph') }}</p>
+          <p style="color: white">{{ $t('paragraph') }}</p>
         </div>
         <div class="registerationQuestions">
           <h2>{{ $t('online_system') }}</h2>
