@@ -373,8 +373,11 @@ const toast = useToast()
 
 const form = ref<Form<Schema>>()
 
+const isSubmitting = ref(false)
+
 async function onSubmit() {
   const formData = new FormData();
+  isSubmitting.value = true;
 
   for (const key in state) {
     const value = state[key];
@@ -407,6 +410,8 @@ async function onSubmit() {
 
     console.log(data)
     toast.add({title: t('failedApplicationMessage')})
+  } finally {
+    isSubmitting.value = false
   }
 }
 
@@ -484,7 +489,7 @@ const handleFileInput = (inputValue: any, question: any) => {
             </div>
           </div>
         </div>
-        <UButton style="background-color: rgb(28, 100, 188)" type="submit" @click="onSubmit">
+        <UButton style="background-color: rgb(28, 100, 188)" :loading="isSubmitting" type="submit" @click="onSubmit">
           Submit
         </UButton>
       </UForm>
