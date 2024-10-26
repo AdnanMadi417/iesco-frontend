@@ -40,7 +40,7 @@
 
 .logo {
   height: 40px;
-  width: 80px;
+  width: 70px;
   margin-right: 10px;
 }
 

@@ -5,8 +5,7 @@
         <div class="img-logo">
           <a href="https://iesco.my/">
             <img
-                class="logo img-fluid"
-                style="width: 100px; height: 60px"
+                class="logo"
                 src="../public/images/isco-logo.png"
                 alt="https://iesco.my/"
             />
@@ -113,8 +112,8 @@ footer .container div {
 
 footer .img-logo {
   max-width: 100%;
-  height: auto;
   display: block;
+  margin-top: -5rem;
 }
 
 footer .container .cantact-detail div {
