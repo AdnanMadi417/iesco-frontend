@@ -80,4 +80,5 @@ export default {
     copyright: "© ٢٠٢٤ –  جميع الحقوق محفوظة ل إيسكو.",
     nameGraduateUniversity: 'الجامعة المتخرج منها',
     failedApplicationMessage: 'فشل في الإرسال، يرجى التحقق مرة أخرى من المعلومات المقدمة!',
+    'application with this email already exists.': 'هذا البريد الإلكتروني مستخدم سابقًا.',
 }

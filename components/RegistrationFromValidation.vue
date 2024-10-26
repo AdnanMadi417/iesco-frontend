@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import {z} from "zod";
+import {Schema, z} from "zod";
 import {ref, computed} from "vue";
 import {nationalities} from "~/utils/nationalties";
 import {useI18n} from 'vue-i18n';
+import type {Form} from "#ui/types";
 
 const emit = defineEmits(['showSuccess'])
 const {t} = useI18n()
@@ -370,6 +371,8 @@ const levelsQuestions = computed<{ [key: string]: any }>(() => {
 const educationLevelSelected = ref("EL");
 const toast = useToast()
 
+const form = ref<Form<Schema>>()
+
 async function onSubmit() {
   const formData = new FormData();
 
@@ -386,12 +389,23 @@ async function onSubmit() {
   try {
     await api.post("/applications/", formData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
+        'Accept-Language': 'ar'
       }
     })
     emit('showSuccess')
   } catch (error) {
-    console.error('Error submitting the form:', error);
+    const { response: { data } } = error
+
+    let errors = []
+
+    for (const [path, messages] of Object.entries(data)) {
+      errors.push({path: path, message: t(messages[0], 'Error in this field.')})
+    }
+
+    form.value?.setErrors(errors)
+
+    console.log(data)
     toast.add({title: t('failedApplicationMessage')})
   }
 }
@@ -410,7 +424,7 @@ const handleFileInput = (inputValue: any, question: any) => {
 <template>
   <div>
     <div class="registrationForm">
-      <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
+      <UForm ref="form" :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
         <div class="control-container">
           <div v-for="student in previousLevelsQuestions" :key="student.id">
             <UFormGroup class="form-group" :label="student.label" :name="student.id">

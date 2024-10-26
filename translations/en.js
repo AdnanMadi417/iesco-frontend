@@ -80,4 +80,5 @@ export default {
     copyright: "© 2024 – IESCO. All rights reserved.",
     nameGraduateUniversity: 'Graduate University',
     failedApplicationMessage: 'Failed to submit, please double check the information provided!',
+    'application with this email already exists.': 'application with this email already exists.'
 }
