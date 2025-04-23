@@ -117,9 +117,7 @@ onMounted(async () => {
 }
 
 .inter-container {
-  width: 70%;
-  max-width: 1000px;
-  height: 500px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
