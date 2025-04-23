@@ -20,7 +20,7 @@ const showDetailsPopup = ref(false);
 const currentStudentToShow = ref();
 const q = ref('');
 const currentPage = ref(1);
-const pageSize = 30;
+const pageSize = 20;
 
 const showStudentDetails = (row: any) => {
   currentStudentToShow.value = row;
@@ -50,33 +50,32 @@ onMounted(async () => {
 
 <template>
   <div class="main-container">
-    <div class="interContainer">
-      <!-- Popup -->
-      <UModal v-model="showDetailsPopup" :ui="{ width: 'w-full sm:max-w-3xl'}">
-        <UCard :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
+    <div class="inter-container">
+
+      <UModal v-model="showDetailsPopup" :ui="{ width: 'w-full'}">
+        <UCard :ui="{ ring: '', divide: 'divide-y divide-gray-100' }">
           <template #header>
-            <div class="projectName text-center">
+            <div class="project-name">
               <h2>Welcome back to IESCO Scholarship System</h2>
             </div>
           </template>
-          <Placeholder class="h-32">
-            <PopupContent style="margin-top: -10px" :student-info="currentStudentToShow" />
+          <Placeholder class="popup-content">
+            <PopupContent :student-info="currentStudentToShow" />
           </Placeholder>
           <template #footer>
-            <div class="popupFooter h-8 ">
+            <div class="popup-footer">
               <h2>Thank you</h2>
             </div>
           </template>
         </UCard>
       </UModal>
 
-      <!-- Main Section -->
-      <div class="projectName">
-        <h2 class="m-4">Welcome back !!</h2>
+      <div class="project-name">
+        <h2>Welcome back !!</h2>
       </div>
 
-      <div class="DashboardDiv">
-        <div class="headerAdminPage">
+      <div class="dashboard">
+        <div class="search-container">
           <UInput
               color="blue"
               variant="outline"
@@ -86,39 +85,80 @@ onMounted(async () => {
           />
         </div>
 
-        <div class="studentDetailsTable">
+        <div class="table-container">
           <UTable
-              class="table"
+              class="data-table"
               :columns="columns"
               :rows="paginatedStudentDetails"
           >
             <template #extend-data="{ row }">
-              <div class="popupButtonExted">
+              <div class="action-button">
                 <a class="button" @click="showStudentDetails(row)">Extend</a>
               </div>
             </template>
           </UTable>
 
-          <!-- Pagination -->
           <UPagination
               v-model="currentPage"
               :total="filteredStudentDetails.length"
               :page-count="pageSize"
-              class="mt-4 flex justify-center"
+              class="pagination"
           />
         </div>
       </div>
+
     </div>
   </div>
 </template>
 
 <style scoped>
+.main-container {
+  padding: 2rem;
+}
+
+.inter-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-name h2 {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 1.25rem;
+  color: var(--main-color);
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.dashboard {
+  background-color: #eeeeee;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.search-container {
+  padding: 1rem 0;
+  margin: 0 1.5rem;
+}
+
+
+.table-container {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  margin: 0 auto;
+}
+
 .button {
-  font-size: 1em;
-  padding: 5px;
+  display: inline-block;
+  font-size: 0.875rem;
+  padding: 0.375rem 0.75rem;
   color: var(--main-color);
   border: 2px solid var(--main-color);
-  border-radius: 20px/50px;
+  border-radius: 1.25rem;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease-out;
@@ -129,143 +169,48 @@ onMounted(async () => {
   color: #eeeeee;
 }
 
-.main-container {
-  margin: 50px;
+.action-button {
+  text-align: center;
 }
 
-@media (max-width: 600px) {
-  .main-container {
-    margin: 10px;
-    justify-items: center;
-  }
-}
-
-.main-container .classPopup {
-  width: 70% !important;
-  height: 300px !important;
-}
-
-.interContainer .DashboardDiv {
-  flex: 70%;
-  background-color: #eeeeee;
-}
-
-.headerAdminPage {
+.pagination {
   display: flex;
-  justify-content: space-between;
-  margin: 0 30px;
-  padding: 20px 0 10px 0;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem auto;
+  padding: 1rem;
 }
 
-@media (max-width: 600px) {
-  .headerAdminPage {
-    display: block;
+.popup-content {
+  min-height: 8rem;
+}
+
+.popup-footer h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: var(--main-color);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    padding: 1rem;
   }
 
-  .headerAdminPage .projectName {
-    display: none;
+  .search-container {
+    margin: 0 0.5rem;
   }
 }
 
-.projectName h2 {
-  font-weight: bold;
-  text-transform: capitalize;
-  font-size: 20px;
-  color: var(--main-color);
-}
+@media (max-width: 480px) {
+  .project-name h2 {
+    font-size: 1.1rem;
+  }
 
-.dashboardContainer > div {
-  padding: 10px;
-  text-align: center;
-  font-size: 20px;
-  font-weight: normal;
-  color: var(--main-color);
-  text-transform: capitalize;
-  border-radius: 10px;
-}
-
-.dashboardContainer div > div {
-  padding: 10px;
-  text-align: center;
-}
-
-.dashboardContainer div > div span {
-  font-size: 25px;
-  font-weight: bold;
-  color: var(--main-color);
-}
-
-.dashboardContainer .adminPhoto > img {
-  border: 2px solid var(--main-color);
-  border-radius: 30px 0;
-}
-
-.container .DashboardDiv .dashboardContainer h2 {
-  text-align: center;
-  text-transform: capitalize;
-  font-size: 26px;
-  font-weight: normal;
-  padding: 30px 0;
-}
-
-.container .DashboardDiv {
-  flex: 100%;
-}
-
-.container .DashboardDiv .dashboardContainer h2 {
-  font-size: 18px;
-}
-
-.adminSettingDiv > img {
-  position: relative;
-  padding: 25px;
-  width: calc(100% - 50px);
-  text-align: center;
-}
-
-.adminSettingDiv h2 {
-  font-size: 25px;
-  color: #eeeeee;
-  font-weight: normal;
-  padding: 30px 0;
-  text-align: center;
-}
-
-.adminSettingDiv span {
-  font-weight: bold;
-}
-
-.adminSettingDiv .adminInfo img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 2px solid var(--main-color);
-}
-
-.DashboardDiv .studentDetailsTable .table {
-  display: block;
-  width: calc(100% - 100px);
-  overflow-x: auto;
-}
-
-.popupFooter {
-  font-size: 20px;
-  font-weight: bold;
-  text-transform: capitalize;
-  color: var(--main-color);
-  text-align: center;
-}
-
-.popupHedaer {
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
-  color: var(--main-color);
-}
-
-
-.popupFooter span {
-  width: 1.5rem;
-  height: 1.5rem;
+  .button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
 }
 </style>
