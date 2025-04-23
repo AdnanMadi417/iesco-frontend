@@ -20,7 +20,7 @@ const showDetailsPopup = ref(false);
 const currentStudentToShow = ref();
 const q = ref('');
 const currentPage = ref(1);
-const pageSize = 20;
+const pageSize = 15;
 
 const showStudentDetails = (row: any) => {
   currentStudentToShow.value = row;
@@ -117,7 +117,9 @@ onMounted(async () => {
 }
 
 .inter-container {
-  max-width: 1200px;
+  width: 70%;
+  max-width: 1000px;
+  height: 500px;
   margin: 0 auto;
 }
 
