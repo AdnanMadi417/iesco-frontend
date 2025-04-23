@@ -1,85 +1,57 @@
 <script setup lang="ts">
-import axios from "axios";
-import {computed, onMounted, ref} from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import PopupContent from "~/components/PopupContent.vue";
 
-let {$axios} = useNuxtApp()
-const api = $axios()
+let { $axios } = useNuxtApp();
+const api = $axios();
 
 const columns = [
-  {
-    key: "id",
-    label: "ID",
-  },
-  {
-    key: "english_name",
-    label: "Name",
-    sortable: true
-  },
-  {
-    key: 'passport_number',
-    label: 'Passport Number'
-  },
-  {
-    key: 'email',
-    label: 'Email',
-    sortable: true,
-    direction: 'desc' as const
-  },
-  {
-    key: 'whats_app_number',
-    label: 'WhatsApp Number'
-  },
-  {
-    key: 'school_name',
-    label: 'University',
-    sortable: true
-  },
-  {
-    key: "application_status",
-    label: "State",
-    sortable: true
-  },
-  {
-    label: "Extend",
-    key: "extend"
-  }
-]
+  { key: "english_name", label: "Name", sortable: true },
+  { key: 'passport_number', label: 'Passport Number' },
+  { key: 'email', label: 'Email', sortable: true, direction: 'desc' as const },
+  { key: 'whats_app_number', label: 'WhatsApp Number' },
+  { key: 'school_name', label: 'University', sortable: true },
+  { key: "application_status", label: "State", sortable: true },
+  { label: "Extend", key: "extend" }
+];
 
-const studentDetails = ref([])
-
-const showDetailsPopup = ref(false)
-
-const currentStudentToShow = ref()
+const studentDetails = ref([]);
+const showDetailsPopup = ref(false);
+const currentStudentToShow = ref();
+const q = ref('');
+const currentPage = ref(1);
+const pageSize = 30;
 
 const showStudentDetails = (row: any) => {
   currentStudentToShow.value = row;
-  showDetailsPopup.value = true
-}
-
-const q = ref('');
+  showDetailsPopup.value = true;
+};
 
 const filteredStudentDetails = computed(() => {
   if (!q.value) return studentDetails.value;
-  return studentDetails.value.filter(student => {
-    return Object.keys(student).some(key =>
-        String(student[key]).toLowerCase().includes(q.value.toLowerCase())
-    );
-  });
+  return studentDetails.value.filter(student =>
+      Object.keys(student).some(key =>
+          String(student[key]).toLowerCase().includes(q.value.toLowerCase())
+      )
+  );
+});
+
+const paginatedStudentDetails = computed(() => {
+  const start = (currentPage.value - 1) * pageSize;
+  const end = start + pageSize;
+  return filteredStudentDetails.value.slice(start, end);
 });
 
 onMounted(async () => {
-  // const response = await axios.get("https://66c21796f83fffcb587b22a8.mockapi.io/api/v1/students/")
-
-  const response = await api.get("/applications/")
+  const response = await api.get("/applications/");
   studentDetails.value = response.data;
-})
-
+});
 </script>
 
 <template>
   <div class="main-container">
     <div class="interContainer">
+      <!-- Popup -->
       <UModal v-model="showDetailsPopup" :ui="{ width: 'w-full sm:max-w-3xl'}">
         <UCard :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
           <template #header>
@@ -88,7 +60,7 @@ onMounted(async () => {
             </div>
           </template>
           <Placeholder class="h-32">
-            <PopupContent style="margin-top: -10px" :student-info="currentStudentToShow"/>
+            <PopupContent style="margin-top: -10px" :student-info="currentStudentToShow" />
           </Placeholder>
           <template #footer>
             <div class="popupFooter h-8 ">
@@ -97,26 +69,28 @@ onMounted(async () => {
           </template>
         </UCard>
       </UModal>
+
+      <!-- Main Section -->
       <div class="projectName">
         <h2 class="m-4">Welcome back !!</h2>
       </div>
+
       <div class="DashboardDiv">
         <div class="headerAdminPage">
-          <div>
-            <UInput
-                color="blue"
-                variant="outline"
-                icon="iconoir-doc-search"
-                v-model="q"
-                placeholder="Search..."
-            />
-          </div>
+          <UInput
+              color="blue"
+              variant="outline"
+              icon="iconoir-doc-search"
+              v-model="q"
+              placeholder="Search..."
+          />
         </div>
-        <div class="studentDetailsTable ">
+
+        <div class="studentDetailsTable">
           <UTable
               class="table"
               :columns="columns"
-              :rows="filteredStudentDetails"
+              :rows="paginatedStudentDetails"
           >
             <template #extend-data="{ row }">
               <div class="popupButtonExted">
@@ -124,6 +98,14 @@ onMounted(async () => {
               </div>
             </template>
           </UTable>
+
+          <!-- Pagination -->
+          <UPagination
+              v-model="currentPage"
+              :total="filteredStudentDetails.length"
+              :page-count="pageSize"
+              class="mt-4 flex justify-center"
+          />
         </div>
       </div>
     </div>
