@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import {ref, computed, onMounted} from 'vue';
 import PopupContent from "~/components/PopupContent.vue";
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
-
+import jsPDF from "jspdf";
+import autoTable from 'jspdf-autotable';
 
 interface Student {
   english_name: string;
@@ -11,20 +10,21 @@ interface Student {
   email: string;
   whats_app_number: string;
   school_name: string;
+  nationality: string;
   application_status: string;
 }
 
-let { $axios } = useNuxtApp();
+let {$axios} = useNuxtApp();
 const api = $axios();
-
 const columns = [
-  { key: "english_name", label: "Name", sortable: true },
-  { key: 'passport_number', label: 'Passport Number' },
-  { key: 'email', label: 'Email', sortable: true, direction: 'desc' as const },
-  { key: 'whats_app_number', label: 'WhatsApp Number' },
-  { key: 'school_name', label: 'University', sortable: true },
-  { key: "application_status", label: "State", sortable: true },
-  { label: "Extend", key: "extend" }
+  {key: "english_name", label: "Name", sortable: true},
+  {key: 'passport_number', label: 'Passport Number', sortable: true},
+  {key: 'nationality', label: 'Nationality'},
+  {key: 'email', label: 'Email', sortable: true, direction: 'desc' as const},
+  {key: 'whats_app_number', label: 'WhatsApp Number'},
+  {key: 'school_name', label: 'University', sortable: true},
+  {key: "application_status", label: "State", sortable: true},
+  {label: "Extend", key: "extend"}
 ];
 
 const studentDetails = ref<Student[]>([]);
@@ -43,7 +43,7 @@ const filteredStudentDetails = computed(() => {
   if (!q.value) return studentDetails.value;
   return studentDetails.value.filter(student =>
       Object.keys(student).some(key =>
-          String(student[key]).toLowerCase().includes(q.value.toLowerCase())
+          String(student[key as keyof Student]).toLowerCase().includes(q.value.toLowerCase())
       )
   );
 });
@@ -56,39 +56,34 @@ const paginatedStudentDetails = computed(() => {
 
 const generatePDF = () => {
   const doc = new jsPDF();
-  doc.text('Student Applications Report', 14, 20);
+  const reportTitle = "Report on Student Requests";
+  doc.text(reportTitle, 14, 10);
 
-  const tableData = filteredStudentDetails.value.map(student => [
-    student.english_name,
-    student.passport_number,
-    student.email,
-    student.whats_app_number,
-    student.school_name,
-    student.application_status
+  const filteredData = filteredStudentDetails.value.map((request, index) => [
+    index + 1,
+    request.english_name,
+    request.nationality,
+    request.passport_number,
+    request.whats_app_number,
+    request.school_name,
+    request.application_status
   ]);
 
-  // Use type assertion if the declaration file doesn't work
-  (doc as any).autoTable({
-    head: [['Name', 'Passport', 'Email', 'WhatsApp', 'University', 'Status']],
-    body: tableData,
-    startY: 30,
-    styles: {
-      fontSize: 8,
-      cellPadding: 2,
-      overflow: 'linebreak'
-    },
-    headStyles: {
-      fillColor: [41, 128, 185],
-      textColor: 255
-    }
+  autoTable(doc, {
+    head: [['#', 'Name', 'Nationality', 'Passport No', 'WhatsApp', 'School', 'Status']],
+    body: filteredData,
   });
 
-  doc.save('student-applications-report.pdf');
+  doc.save("Report on Student Requests.pdf");
 };
 
 onMounted(async () => {
-  const response = await api.get("/applications/");
-  studentDetails.value = response.data;
+  try {
+    const response = await api.get("/applications/");
+    studentDetails.value = response.data;
+  } catch (error) {
+    console.error("Failed to fetch student applications:", error);
+  }
 });
 </script>
 
@@ -104,7 +99,7 @@ onMounted(async () => {
             </div>
           </template>
           <Placeholder class="popup-content">
-            <PopupContent :student-info="currentStudentToShow" />
+            <PopupContent :student-info="currentStudentToShow"/>
           </Placeholder>
           <template #footer>
             <div class="popup-footer">
@@ -190,6 +185,7 @@ onMounted(async () => {
 }
 
 .search-container {
+  display: inline-flex;
   padding: 1rem 0;
   margin: 0 1.5rem;
 }
