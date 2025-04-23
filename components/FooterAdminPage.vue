@@ -13,11 +13,8 @@
   display: block;
   background-color: var(--main-color);
   text-align: center;
-  padding: 30px 0;
-  font-size: 28px;
+  padding: 15px 0;
+  font-size: 20px;
   color: #eeeeee;
-  //position: absolute;
-  //width: 100%;
-  //bottom: 0;
 }
 </style>
