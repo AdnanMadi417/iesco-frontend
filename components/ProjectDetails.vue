@@ -183,7 +183,6 @@ onMounted(async () => {
 }
 
 .popup-content {
-
   min-height: 8rem;
 }
 
