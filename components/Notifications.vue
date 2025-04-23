@@ -1,4 +1,6 @@
 <script setup lang="ts">
+
+const {t} = useI18n();
 const toast = useToast()
 
 function onCallback() {
@@ -14,10 +16,10 @@ function onCallback() {
           <UIcon name="ep-success-filled"/>
         </div>
         <div class="content">
-          <h1>{{ $t('congratulations') }}</h1>
-          <h2>{{ $t('application_submitted') }}</h2>
+          <h1>{{ t('congratulations') }}</h1>
+          <h2>{{ t('application_submitted') }}</h2>
           <hr class="m-2">
-          <p v-html="$t('submission_thank_you')"></p>
+          <p v-html="t('submission_thank_you')"></p>
         </div>
       </div>
     </div>
