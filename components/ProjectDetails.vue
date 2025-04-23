@@ -1,6 +1,18 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 import PopupContent from "~/components/PopupContent.vue";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
+
+interface Student {
+  english_name: string;
+  passport_number: string;
+  email: string;
+  whats_app_number: string;
+  school_name: string;
+  application_status: string;
+}
 
 let { $axios } = useNuxtApp();
 const api = $axios();
@@ -15,9 +27,9 @@ const columns = [
   { label: "Extend", key: "extend" }
 ];
 
-const studentDetails = ref([]);
+const studentDetails = ref<Student[]>([]);
+const currentStudentToShow = ref<Student>();
 const showDetailsPopup = ref(false);
-const currentStudentToShow = ref();
 const q = ref('');
 const currentPage = ref(1);
 const pageSize = 15;
@@ -42,11 +54,42 @@ const paginatedStudentDetails = computed(() => {
   return filteredStudentDetails.value.slice(start, end);
 });
 
+const generatePDF = () => {
+  const doc = new jsPDF();
+  doc.text('Student Applications Report', 14, 20);
+
+  const tableData = filteredStudentDetails.value.map(student => [
+    student.english_name,
+    student.passport_number,
+    student.email,
+    student.whats_app_number,
+    student.school_name,
+    student.application_status
+  ]);
+
+  // Use type assertion if the declaration file doesn't work
+  (doc as any).autoTable({
+    head: [['Name', 'Passport', 'Email', 'WhatsApp', 'University', 'Status']],
+    body: tableData,
+    startY: 30,
+    styles: {
+      fontSize: 8,
+      cellPadding: 2,
+      overflow: 'linebreak'
+    },
+    headStyles: {
+      fillColor: [41, 128, 185],
+      textColor: 255
+    }
+  });
+
+  doc.save('student-applications-report.pdf');
+};
+
 onMounted(async () => {
   const response = await api.get("/applications/");
   studentDetails.value = response.data;
 });
-
 </script>
 
 <template>
@@ -84,6 +127,14 @@ onMounted(async () => {
               v-model="q"
               placeholder="Search..."
           />
+          <UButton
+              color="blue"
+              icon="i-heroicons-document-arrow-down"
+              @click="generatePDF"
+              class="ml-2"
+          >
+            Export PDF
+          </UButton>
         </div>
 
         <div class="table-container">
