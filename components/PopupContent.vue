@@ -78,8 +78,11 @@ const deleteApplication = async () => {
 
 <style scoped lang="scss">
 
-main-container {
+.main-container {
   display: block;
+  width: 70%;
+  margin: 0 auto;
+  max-width: 800px;
 }
 
 .control-popup {

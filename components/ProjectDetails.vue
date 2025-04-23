@@ -46,6 +46,7 @@ onMounted(async () => {
   const response = await api.get("/applications/");
   studentDetails.value = response.data;
 });
+
 </script>
 
 <template>
@@ -182,6 +183,7 @@ onMounted(async () => {
 }
 
 .popup-content {
+
   min-height: 8rem;
 }
 
