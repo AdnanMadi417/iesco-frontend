@@ -6,7 +6,6 @@ useHead({
 
 <template>
   <div class="congrats-container">
-    <Header/>
     <Notifications/>
   </div>
 </template>
