@@ -37,6 +37,17 @@ const changeApplicationStatus = async (status: string) => {
   toast.add({title: `Application ${status}ed successfully.`})
 }
 
+const deleteApplication = async () => {
+  try {
+    await api.delete(`/applications/${props.studentInfo.id}/`)
+    toast.add({ title: 'Application deleted successfully.' })
+  } catch (error) {
+    console.error(error)
+    toast.add({ title: 'Failed to delete application.', color: 'red' })
+  }
+}
+
+
 </script>
 
 <template>
@@ -59,6 +70,8 @@ const changeApplicationStatus = async (status: string) => {
     <div class="control-botton">
       <a id="reject" style="background-color: red" @click="changeApplicationStatus('reject')">Reject</a>
       <a id="accept" style="background-color: #39701d" @click="changeApplicationStatus('accept')">Accept</a>
+      <a id="delete" style="background-color: #8b0000" @click="deleteApplication">Delete</a>
+
     </div>
   </div>
 </template>
