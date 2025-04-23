@@ -1,27 +1,42 @@
 <template>
   <footer class="">
+
     <div class="footer-section">
       <div class="container">
+
         <div class="img-logo">
+
           <a href="https://iesco.my/">
             <img
                 class="logo"
-                src="../public/images/isco-logo.png"
+                src="../public/images/IESCO_LOGO.png"
                 alt="https://iesco.my/"
             />
           </a>
+
         </div>
-        <div class="cantact-detail">
+
+        <div class="contact-detail">
+
           <h2>{{ $t('contactUs') }}</h2>
-          <div class="whatsappNum">
-          <span>
+
+          <div class="whatsapp-num">
+
+            <span>
             <UIcon name="ic-baseline-whatsapp" class=""/>
-          </span>
-            <span> <a href=""> +(60) 3-4144 2894</a></span>
+            </span>
+
+            <span>
+              <a href="https://wa.me/60341442894" target="_blank"> +(60) 3-4144 2894</a>
+            </span>
+
           </div>
+
         </div>
+
         <div class="location-detail">
           <h2>{{ $t('location') }}</h2>
+
           <div>
             <a class="text-decoration-none address"
                href="https://www.google.com/maps/place/IESCO+MALAYSIA/@3.2046512,101.7219557,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc381168cf8e6f:0xfd29cb7efe012fd4!8m2!3d3.2046512!4d101.7219557!16s%2Fg%2F11bzsgc_qv?entry=ttu"
@@ -31,35 +46,47 @@
               {{ $t('address') }}</p>
             </a>
           </div>
+
         </div>
-        <div class="scoial-media">
+
+        <div class="social-media">
+
           <h2>{{ $t('followIesco') }}</h2>
+
           <div class="container">
-            <ul class="scoial-media-icon">
+            <ul class="social-media-icon">
+
               <li>
                 <a href="https://www.instagram.com/iescomalaysia/">
                   <UIcon name="mdi-instagram"/>
                 </a>
 
               </li>
+
               <li>
                 <a class="" href="https://www.youtube.com/@iescomalaysia7383">
                   <UIcon name="hugeicons-youtube"/>
                 </a>
               </li>
+
               <li>
                 <a class="" href="https://www.facebook.com/IESCOMALAYSIA/">
                   <UIcon name="mingcute-facebook-line"/>
                 </a>
               </li>
+
             </ul>
           </div>
+
         </div>
+
       </div>
     </div>
+
     <div class="copyrights">
       {{ $t('copyright') }}
     </div>
+
   </footer>
 </template>
 <script>
@@ -116,26 +143,26 @@ footer .img-logo {
   margin-top: -5rem;
 }
 
-footer .container .cantact-detail div {
+footer .container .contact-detail div {
   font-size: 20px;
   color: white;
 }
 
-footer .container .cantact-detail div {
+footer .container .contact-detail div {
   font-size: 20px;
 }
 
-footer .container .cantact-detail > h2 {
+footer .container .contact-detail > h2 {
   color: white;
   font-size: 28px;
 }
 
-footer .container .cantact-detail div span:first-child {
+footer .container .contact-detail div span:first-child {
   padding: 0;
   font-size: 22px;
 }
 
-footer .container .cantact-detail div span:nth-child(2) {
+footer .container .contact-detail div span:nth-child(2) {
   padding: 10px;
 }
 
@@ -162,17 +189,17 @@ footer .container .location-detail div span:nth-child(2) {
   padding: 10px;
 }
 
-footer .scoial-media h2 {
+footer .social-media h2 {
   font-size: 28px;
   color: #eeeeee;
 }
 
-footer .scoial-media .scoial-media-icon {
+footer .social-media .social-media-icon {
   list-style: none;
   display: flex;
 }
 
-footer .scoial-media .scoial-media-icon li {
+footer .social-media .social-media-icon li {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -180,7 +207,7 @@ footer .scoial-media .scoial-media-icon li {
   padding: 10px;
 }
 
-footer .scoial-media li a {
+footer .social-media li a {
   font-size: 30px;
   color: white;
 }
