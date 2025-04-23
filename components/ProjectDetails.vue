@@ -18,8 +18,8 @@ let {$axios} = useNuxtApp();
 const api = $axios();
 const columns = [
   {key: "english_name", label: "Name", sortable: true},
-  {key: 'passport_number', label: 'Passport Number', sortable: true},
-  {key: 'nationality', label: 'Nationality'},
+  {key: 'passport_number', label: 'Passport Number'},
+  {key: 'nationality', label: 'Nationality', sortable: true},
   {key: 'email', label: 'Email', sortable: true, direction: 'desc' as const},
   {key: 'whats_app_number', label: 'WhatsApp Number'},
   {key: 'school_name', label: 'University', sortable: true},
@@ -33,6 +33,14 @@ const showDetailsPopup = ref(false);
 const q = ref('');
 const currentPage = ref(1);
 const pageSize = 15;
+const statusFilter = ref('');
+
+const statusOptions = [
+  {label: 'All', value: ''},
+  {label: 'Pending', value: 'pending'},
+  {label: 'Accepted', value: 'accepted'},
+  {label: 'Rejected', value: 'rejected'}
+];
 
 const showStudentDetails = (row: any) => {
   currentStudentToShow.value = row;
@@ -40,12 +48,23 @@ const showStudentDetails = (row: any) => {
 };
 
 const filteredStudentDetails = computed(() => {
-  if (!q.value) return studentDetails.value;
-  return studentDetails.value.filter(student =>
-      Object.keys(student).some(key =>
-          String(student[key as keyof Student]).toLowerCase().includes(q.value.toLowerCase())
-      )
-  );
+  let filtered = studentDetails.value;
+
+  if (q.value) {
+    filtered = filtered.filter(student =>
+        Object.keys(student).some(key =>
+            String(student[key as keyof Student]).toLowerCase().includes(q.value.toLowerCase())
+        )
+    );
+  }
+
+  if (statusFilter.value) {
+    filtered = filtered.filter(student =>
+        student.application_status.toLowerCase() === statusFilter.value.toLowerCase()
+    );
+  }
+
+  return filtered;
 });
 
 const paginatedStudentDetails = computed(() => {
@@ -53,6 +72,12 @@ const paginatedStudentDetails = computed(() => {
   const end = start + pageSize;
   return filteredStudentDetails.value.slice(start, end);
 });
+
+const resetFilters = () => {
+  q.value = '';
+  statusFilter.value = '';
+  currentPage.value = 1;
+};
 
 const generatePDF = () => {
   const doc = new jsPDF();
@@ -115,21 +140,70 @@ onMounted(async () => {
 
       <div class="dashboard">
         <div class="search-container">
-          <UInput
-              color="blue"
-              variant="outline"
-              icon="iconoir-doc-search"
-              v-model="q"
-              placeholder="Search..."
-          />
-          <UButton
-              color="blue"
-              icon="i-heroicons-document-arrow-down"
-              @click="generatePDF"
-              class="ml-2"
-          >
-            Export PDF
-          </UButton>
+          <div class="filter-row flex flex-wrap gap-2 items-center">
+
+            <UInput
+                color="blue"
+                variant="outline"
+                icon="iconoir-doc-search"
+                v-model="q"
+                placeholder="Search..."
+                class="flex-grow md:w-auto"
+            />
+
+            <USelect
+                v-model="statusFilter"
+                :options="statusOptions"
+                placeholder="Status"
+                icon="i-heroicons-funnel"
+                color="blue"
+                variant="outline"
+                class="min-w-40 md:w-auto"
+            />
+
+            <UButton
+                color="gray"
+                variant="soft"
+                icon="i-heroicons-x-mark"
+                @click="resetFilters"
+                :disabled="!q && !statusFilter"
+            >
+              Clear
+            </UButton>
+
+
+            <div class="status-chips flex gap-2 mt-3">
+              <UBadge
+                  v-for="option in statusOptions.slice(1)"
+                  :key="option.value"
+                  :color="statusFilter === option.value ? 'blue' : 'gray'"
+                  variant="soft"
+                  class="cursor-pointer"
+                  @click="statusFilter = statusFilter === option.value ? '' : option.value"
+              >
+                {{ option.label }}
+                <span v-if="statusFilter === option.value" class="ml-1">✓</span>
+              </UBadge>
+            </div>
+
+            <div v-if="q || statusFilter" class="mt-2 text-sm text-gray-500">
+            <span>Showing {{ filteredStudentDetails.length }} result{{
+                filteredStudentDetails.length !== 1 ? 's' : ''
+              }}</span>
+              <span v-if="statusFilter"
+                    class="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+              Status: {{ statusFilter.charAt(0).toUpperCase() + statusFilter.slice(1) }}
+            </span>
+            </div>
+
+            <UButton
+                color="blue"
+                icon="i-heroicons-document-arrow-down"
+                @click="generatePDF"
+            >
+              Export PDF
+            </UButton>
+          </div>
         </div>
 
         <div class="table-container">
@@ -137,11 +211,25 @@ onMounted(async () => {
               class="data-table"
               :columns="columns"
               :rows="paginatedStudentDetails"
+              :empty-state="{
+                icon: 'i-heroicons-document-magnifying-glass',
+                label: filteredStudentDetails.length === 0 ? 'No matching records found' : 'No applications available'
+              }"
           >
             <template #extend-data="{ row }">
               <div class="action-button">
                 <a class="button" @click="showStudentDetails(row)">Extend</a>
               </div>
+            </template>
+
+            <template #application_status-data="{ row }">
+              <UBadge
+                  :color="row.application_status === 'accepted' ? 'green' :
+                       row.application_status === 'rejected' ? 'red' : 'yellow'"
+                  variant="subtle"
+              >
+                {{ row.application_status.charAt(0).toUpperCase() + row.application_status.slice(1) }}
+              </UBadge>
             </template>
           </UTable>
 
@@ -157,7 +245,6 @@ onMounted(async () => {
     </div>
   </div>
 </template>
-
 <style scoped>
 .main-container {
   padding: 2rem;
@@ -190,6 +277,12 @@ onMounted(async () => {
   margin: 0 1.5rem;
 }
 
+.status-chips {
+  display: flex;
+  align-items: center;
+  margin: 1rem auto;
+  gap: 1rem;
+}
 
 .table-container {
   overflow-x: auto;
