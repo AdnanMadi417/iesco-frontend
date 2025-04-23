@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+const {t} = useI18n();
+
 </script>
 
 <template>
@@ -7,12 +9,12 @@
     <div class="logo-container">
       <div>
         <a href="https://iesco.my/">
-          <img src="../public/images/isco-logo.png" alt="Logoo" class="logo"/>
+          <img src="../public/images/IESCO_LOGO.png" alt="Logo" class="logo"/>
         </a>
       </div>
     </div>
     <div class="project-name">
-      <span class="project-name">{{ $t('projectName') }}</span>
+      <span class="project-name">{{ t('projectName') }}</span>
     </div>
   </header>
 </template>
