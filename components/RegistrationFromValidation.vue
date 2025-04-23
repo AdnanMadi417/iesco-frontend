@@ -506,7 +506,7 @@ const handleFileInput = (inputValue: any, question: any) => {
 .control-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
 
   > div {
     width: 49%;
