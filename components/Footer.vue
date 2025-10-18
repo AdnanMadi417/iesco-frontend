@@ -159,7 +159,7 @@
   margin-top: 2rem;
   padding-top: 1rem;
   width: 100%;
-  text-align: start;
+  text-align: center;
 }
 
 .footer-bottom p {
@@ -168,7 +168,6 @@
   margin: 0;
 }
 
-/* Tablet */
 @media (max-width: 992px) {
   .footer h2 {
     font-size: 1.15rem;
@@ -179,7 +178,6 @@
   }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .footer {
     padding: 2rem 1rem 1rem;
