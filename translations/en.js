@@ -77,7 +77,7 @@ export default {
     location: "Location",
     followIesco: "Follow IESCO",
     address: "E-3A-07, Pusat Komersial Setapak, Jln Taman Ibu Kota, Taman Danau Kota, 53300 Kuala Lumpur, Malaysia",
-    copyright: "© 2024 – IESCO. All rights reserved.",
+    copyright: "© 2025 – IESCO. All rights reserved.",
     nameGraduateUniversity: 'Graduate University',
     failedApplicationMessage: 'Failed to submit, please double check the information provided!',
     'application with this email already exists.': 'application with this email already exists.'

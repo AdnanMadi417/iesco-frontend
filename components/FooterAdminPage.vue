@@ -4,7 +4,7 @@
 
 <template>
   <div class="footer">
-    <div>© 2024 – IESCO. All rights reserved.</div>
+    <div>© 2025 – IESCO. All rights reserved.</div>
   </div>
 </template>
 
