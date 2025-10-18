@@ -30,7 +30,7 @@ watchEffect(() => {
         </div>
       </div>
     </div>
-    <FooterView/>
+    <Footer/>
   </div>
 </template>
 
