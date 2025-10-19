@@ -17,7 +17,7 @@ useHead({
     <div class="content-container">
       <ProjectDetails/>
     </div>
-    <FooterAdminPage/>
+    <AdminFooter/>
   </div>
 </template>
 
