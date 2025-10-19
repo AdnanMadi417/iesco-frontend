@@ -1,210 +1,216 @@
+<script setup lang="ts">
+const navLinks = [
+  { name: "Home", link: "https://iesco.my/" },
+  { name: "About Us", link: "https://iesco.my/about-us/" },
+  { name: "Programs", link: "https://iesco.my/scholarships-and-grants-program/" },
+  { name: "Scholarships", link: "https://iesco.my/how-to-apply-for-scholarships/" },
+  { name: "FAQ", link: "https://iesco.my/faq/" },
+  { name: "Privacy Policy", link: "https://iesco.my/privacy-policy/" }
+];
+</script>
+
 <template>
   <footer class="footer">
-    <div class="footer-section">
-      <div class="footer-container">
+    <div class="footer-container">
 
-        <div class="footer-logo">
-          <a href="https://iesco.my/" target="_blank" rel="noopener">
-            <img class="logo" src="/images/isco-logo.png" alt="IESCO Logo"/>
-          </a>
-        </div>
+      <div class="footer-logo">
+        <img src="/images/isco-logo.png" alt="IESCO Logo" class="logo" />
+      </div>
 
-        <div class="footer-contact">
-          <h2>{{ $t('contactUs') }}</h2>
-          <div class="footer-item">
-            <UIcon name="ic-baseline-whatsapp"/>
-            <a href="https://wa.me/60341442894" target="_blank">+(60) 3-4144 2894</a>
-          </div>
-        </div>
-
-        <div class="footer-location">
-          <h2>{{ $t('location') }}</h2>
-
-          <div class="footer-item">
-            <a
-                href="https://www.google.com/maps/place/IESCO+MALAYSIA/"
-                target="_blank">
-              {{ $t('address') }}
+      <div class="footer-links">
+        <h2>Useful Links</h2>
+        <ul>
+          <li v-for="(item, index) in navLinks" :key="index">
+            <UIcon name="mdi-chevron-right" />
+            <a :href="item.link" target="_blank" rel="noopener noreferrer">
+              {{ item.name }}
             </a>
-          </div>
+          </li>
+        </ul>
+      </div>
 
+      <div class="footer-social">
+        <h2>Follow Us</h2>
+        <ul class="social-icons">
+          <li>
+            <a href="https://www.facebook.com/IESCOMALAYSIA/" target="_blank">
+              <UIcon name="mingcute-facebook-line" />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/iescomalaysia/" target="_blank">
+              <UIcon name="mdi-instagram" />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@iescomalaysia7383" target="_blank">
+              <UIcon name="hugeicons-youtube" />
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h2>Contact Us</h2>
+
+        <div class="contact-item">
+          <UIcon name="mdi-map-marker" />
+          <span>
+            E-3A-07, Pusat Komersial Setapak,<br />
+            Jln Taman Ibu Kota, Taman Danau Kota,<br />
+            53300 Kuala Lumpur
+          </span>
         </div>
 
-        <div class="footer-social">
-          <h2>{{ $t('followIesco') }}</h2>
-          <ul class="social-icons">
-            <li><a href="https://www.instagram.com/iescomalaysia/" target="_blank">
-              <UIcon name="mdi-instagram"/>
-            </a></li>
-            <li><a href="https://www.youtube.com/@iescomalaysia7383" target="_blank">
-              <UIcon name="hugeicons-youtube"/>
-            </a></li>
-            <li><a href="https://www.facebook.com/IESCOMALAYSIA/" target="_blank">
-              <UIcon name="mingcute-facebook-line"/>
-            </a></li>
-          </ul>
+        <div class="contact-item">
+          <UIcon name="mdi-phone" />
+          <a href="tel:+60341442894">+(60) 3-4144 2894</a>
         </div>
 
+        <div class="contact-item">
+          <UIcon name="mdi-email" />
+          <a href="mailto:info@iesco.my">info@iesco.my</a>
+        </div>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>{{ $t('copyright') }}</p>
+      <p>Copyright 2025, IESCO. All Rights Reserved.</p>
     </div>
   </footer>
 </template>
 
 <style scoped>
 .footer {
-  background: linear-gradient(to top, #0e8e71, var(--main-hovor-color));
+  background: linear-gradient(to bottom, #1e67b1, #0e8e71);
   color: #fff;
+  font-family: "Inter", sans-serif;
   padding: 3rem 1rem 1rem;
-  font-family: 'Inter', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .footer-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  width: 100%;
-  max-width: 1200px;
-  text-align: start;
-  padding: 2rem 1rem;
-  box-sizing: border-box;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
-.footer-section {
-  text-align: start;
-  width: 100%;
+.footer-logo img.logo {
+  width: 220px;
+  margin-bottom: 1rem;
 }
 
-.footer h2 {
+.footer-logo p {
+  font-size: 0.95rem;
+  color: #e5e5e5;
+  line-height: 1.5;
+  max-width: 260px;
+}
+
+.footer-links h2,
+.footer-social h2,
+.footer-contact h2 {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
-.footer-item {
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
   display: flex;
-  align-items: start;
-  gap: 0.6rem;
-  color: #e8e8e8;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
 }
 
-.footer-item a {
-  color: inherit;
+.footer-links a {
+  color: #e8e8e8;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.footer-item a:hover {
+.footer-links a:hover {
   color: #fff;
 }
 
-.footer-item svg {
-  font-size: 1.3rem;
+.footer-links svg {
+  font-size: 1rem;
 }
 
-.footer-logo {
+.social-icons {
   display: flex;
-  justify-content: flex-start;
-  margin-bottom: 1rem;
-}
-
-.footer-logo .logo {
-  width: 200px;
-  height: auto;
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.footer-logo .logo:hover {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
-.footer-social .social-icons {
-  list-style: none;
-  display: flex;
-  justify-content: flex-start;
   gap: 1rem;
   margin-top: 1rem;
-  padding: 0;
-  flex-wrap: wrap;
 }
 
-.footer-social .social-icons li a {
-  font-size: 1.6rem;
+.social-icons a {
   color: #fff;
-  transition: all 0.3s ease;
+  font-size: 1.4rem;
+  transition: transform 0.3s, color 0.3s;
 }
 
-.footer-social .social-icons li a:hover {
+.social-icons a:hover {
   color: #c2ffe4;
-  transform: translateY(-4px);
+  transform: translateY(-3px);
+}
+
+.footer-contact .contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+  color: #e8e8e8;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.footer-contact .contact-item a {
+  color: #e8e8e8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-contact .contact-item a:hover {
+  color: #fff;
 }
 
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  margin-top: 2rem;
-  padding-top: 1rem;
-  width: 100%;
   text-align: center;
+  padding-top: 1rem;
+  margin-top: 2rem;
 }
 
 .footer-bottom p {
   font-size: 0.9rem;
   color: #f0f0f0;
-  margin: 0;
-}
-
-@media (max-width: 992px) {
-  .footer h2 {
-    font-size: 1.15rem;
-  }
-
-  .footer-logo .logo {
-    width: 180px;
-  }
 }
 
 @media (max-width: 768px) {
   .footer {
-    padding: 2rem 1rem 1rem;
+    padding: 2rem 1rem;
   }
 
   .footer-container {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    text-align: center;
   }
 
-  .footer h2 {
-    font-size: 1rem;
+  .footer-logo img.logo {
+    margin: 0 auto 1rem;
   }
 
-  .footer-item {
-    font-size: 0.95rem;
-    gap: 0.5rem;
+  .footer-links li {
+    justify-content: center;
   }
 
-  .footer-logo .logo {
-    width: 140px;
-  }
-
-  .footer-social .social-icons li a {
-    font-size: 1.4rem;
+  .footer-contact .contact-item {
+    justify-content: center;
   }
 }
 </style>
-<script setup lang="ts">
-</script>

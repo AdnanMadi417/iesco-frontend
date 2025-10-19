@@ -1,7 +1,7 @@
 export default {
     projectName: "IESCO Scholarship in Malaysia",
         selectLanguage: "Select Language",
-    title: 'HOW DO NEW STUDENTS APPLY FOR IESCO SCHOLARSHIP?',
+    title: 'How Do New Students Apply for IESCO Scholarship?',
     instruction: 'Applicants need to:',
     requirement1: 'Requierment 1',
     content1: 'Apply at one of the selected universities for the programme of your choice and get the offer letter and VISA approval letter (VAL).',

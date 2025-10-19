@@ -1,44 +1,60 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
-import { computed } from 'vue'; // Import computed for reactive properties
+import {useI18n} from 'vue-i18n';
+import {computed} from 'vue';
 
-const { t } = useI18n();
+const {t} = useI18n();
 
 const items = computed(() => [
   {
     label: t('requirement1'),
-    icon: 'i-heroicons-square-3-stack-3d',
     content: t('content1'),
     style: {
-      color: 'rgb(28, 100, 188)',
-      backgroundColor: 'rgb(28, 100, 188, .5)'
+      color: '#093a76',
+      backgroundColor: 'rgb(241, 244, 249)',
+      padding: '1rem',
+      margin: '0',
+      borderRadius: '0',
+      borderBottom: '1px solid #e0e0e0',
+      fontWeight: 'bold',
     }
   },
   {
     label: t('requirement2'),
-    icon: 'i-heroicons-square-3-stack-3d',
     content: t('content2'),
     style: {
-      color: 'rgb(28, 100, 188)',
-      backgroundColor: 'rgb(28, 100, 188, .5)'
+      color: '#093a76',
+      backgroundColor: 'rgb(241, 244, 249)',
+      padding: '1rem',
+      margin: '0',
+      borderRadius: '0',
+      borderBottom: '1px solid #e0e0e0',
+      fontWeight: 'bold',
     }
   },
   {
     label: t('requirement3'),
-    icon: 'i-heroicons-square-3-stack-3d',
     content: t('content3'),
     style: {
-      color: 'rgb(28, 100, 188)',
-      backgroundColor: 'rgb(28, 100, 188, .5)'
+      color: '#093a76',
+      backgroundColor: 'rgb(241, 244, 249)',
+      padding: '1rem',
+      margin: '0',
+      borderRadius: '0',
+      borderBottom: '1px solid #e0e0e0',
+      fontWeight: 'bold',
     }
   },
   {
     label: t('requirement4'),
-    icon: 'i-heroicons-square-3-stack-3d',
     content: t('content4'),
     style: {
-      color: 'rgb(28, 100, 188)',
-      backgroundColor: 'rgb(28, 100, 188, .5)'
+      color: '#093a76',
+      backgroundColor: 'rgb(241, 244, 249)',
+      padding: '1rem',
+      margin: '0',
+      borderRadius: '0',
+      borderBottom: '1px solid #e0e0e0',
+      fontWeight: 'bold',
     }
   }
 ]);
@@ -49,8 +65,7 @@ const items = computed(() => [
     <div></div>
     <div class="requirement">
       <h1>{{ t('title') }}</h1>
-      <h5>{{ t('instruction') }}</h5>
-      <UAccordion :items="items"/>
+      <UAccordion :items="items" class="box"/>
     </div>
     <div></div>
   </div>
@@ -59,9 +74,9 @@ const items = computed(() => [
 <style scoped>
 .requirement-container h1 {
   text-align: center;
-  padding: 30px 0;
-  font-size: 26px;
-  font-weight: bold;
+  padding: 25px 0;
+  font-size: 32px;
+  font-weight: normal;
   color: var(--main-color);
 }
 
@@ -79,11 +94,15 @@ const items = computed(() => [
 }
 
 .requirement-container div {
-  flex: 20%;
+  flex: 15%;
 }
 
 .requirement-container .requirement {
-  flex: 60%;
+  flex: 70%;
+}
+
+.box {
+  box-shadow: rgba(149, 157, 165, 0.1) 0 8px 24px;
 }
 
 @media (max-width: 800px) {

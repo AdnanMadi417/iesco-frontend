@@ -1,157 +1,103 @@
 <script setup lang="ts">
-import {ref} from 'vue';
+import { ref, watchEffect } from 'vue'
 
 const localePath = useLocalePath()
 const router = useRouter()
-
-const showPopup = ref(false);
+const showPopup = ref(false)
 
 watchEffect(() => {
   if (showPopup.value) {
     router.push(localePath('/congrats'))
   }
 })
-
 </script>
+
 <template>
-  <div>
-    <Header/>
-    <Requirement/>
-    <div class="registrationForm">
-      <div class="container">
-        <div class="description">
-          <img src="../public/images/isco-logo.png" alt="">
-          <h2>{{ $t('registration') }}</h2>
-          <p style="color: white">{{ $t('paragraph') }}</p>
-        </div>
-        <div class="registerationQuestions">
-          <h2>{{ $t('online_system') }}</h2>
-          <RegistrationFromValidation @show-success="showPopup=true"/>
+  <section class="registration-section">
+    <div class="container">
+      <h2 class="title">Online Registration System</h2>
+
+      <div class="registration-form">
+        <div class="form-container">
+          <RegistrationFromValidation @show-success="showPopup = true" />
         </div>
       </div>
     </div>
-    <Footer/>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
-.registrationForm {
-  margin: 0 50px;
-}
-
-.registrationForm .container {
+.registration-section {
+  padding: 4rem 1rem;
   display: flex;
-  flex-wrap: wrap;
-  padding: 30px 0;
-  justify-content: space-between;
-}
-
-.registrationForm .container .description {
-  background-color: var(--main-color);
-  padding: 40px 20px;
-  width: 34%;
-}
-
-.registrationForm .container .registerationQuestions {
-  width: 64%;
-}
-
-@media (max-width: 800px) {
-  .registrationForm {
-    margin: 0;
-  }
-  registrationForm .container {
-    margin: 0;
-    padding: 0;
-  }
-  .registrationForm .container .description,
-  .registrationForm .container .registerationQuestions {
-    flex: 100%;
-    max-width: 100%;
-    padding: 20px;
-  }
-}
-
-.registrationForm .container .description .form-group-file {
-  display: flex;
-  flex: 100%;
-}
-
-.registrationForm .container .description h2 {
-  font-size: 30px;
-  color: #eeeeee;
-  text-align: center;
-}
-
-.registrationForm .container .description p {
-  font-size: 16px;
-  text-align: justify;
-}
-
-.registrationForm .container .description ul {
-  list-style: none;
-  font-size: 16px;
-  text-align: justify;
-  padding-top: 40px;
-}
-
-.registrationForm .container .form-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.registrationForm .container .form-group {
-  flex: 1;
-  min-width: calc(50% - 15px);
-}
-
-.registrationForm .container .form-group-file {
-  flex: 1;
-  min-width: 100%;
-}
-
-@media (max-width: 768px) {
-  .registrationForm .container .form-group {
-    min-width: 100%;
-  }
-}
-
-.registrationForm .container label {
-  display: block;
-}
-
-.registrationForm .container input {
-  width: 100%;
-  padding: 8px;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
+  min-height: 100vh;
 }
 
-.registrationForm .registerationQuestions > h2 {
-  color: var(--main-color);
-  font-size: 30px;
-  font-weight: bolder;
+.container {
+  width: 100%;
+  max-width: 960px;
   text-align: center;
 }
 
-.registrationForm .container button {
-  padding: 10px 20px;
+.title {
+  font-size: 2rem;
+  color: var(--main-color);
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.registration-form {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.form-container {
+  width: 100%;
+}
+
+button {
   background-color: var(--main-color);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  padding: 12px 24px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-.registrationForm .container button:hover {
-  background-color: #eeeeee;
+button:hover {
+  background-color: #fff;
   color: var(--main-color);
   border: 1px solid var(--main-color);
-  transition: .3s;
 }
 
-.registrationForm .container .subBotton {
-  text-align: center;
-  margin-top: 20px;
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-top: 6px;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .registration-form {
+    padding: 2rem 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
 }
 </style>

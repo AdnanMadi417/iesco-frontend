@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Card from "~/components/Card.vue";
+
 useHead({
   title: 'IESCO Scholarship Application Form'
 })
@@ -6,11 +8,12 @@ useHead({
 
 <template>
   <div class="home-container">
-    <div class="steps-container">
-      <div class="step">
-        <RegistrationForm/>
-      </div>
-    </div>
+
+    <Header/>
+    <Card/>
+    <Requirement/>
+    <RegistrationForm/>
+    <Footer/>
   </div>
 </template>
 

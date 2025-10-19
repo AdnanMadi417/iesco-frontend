@@ -489,8 +489,22 @@ const handleFileInput = (inputValue: any, question: any) => {
             </div>
           </div>
         </div>
-        <UButton style="background-color: rgb(28, 100, 188)" :loading="isSubmitting" type="submit" @click="onSubmit">
-          Submit
+        <UButton
+            style="
+            background-color: rgb(28, 100, 188);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 0;
+            text-align: center;
+            border: none;
+            border-radius: 6px;
+          "
+            :loading="isSubmitting" type="submit" @click="onSubmit">
+          Submit Application
         </UButton>
       </UForm>
     </div>
